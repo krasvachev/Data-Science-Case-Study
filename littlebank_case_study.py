@@ -517,20 +517,20 @@ sns.set_theme(style = "ticks")
 for i, month in enumerate(months_in_the_year_df):
     row_idx = i // cols
     col_idx = i % cols
-    current_month_df = df_melted[df_melted['month'] == month]
+    current_month_df = df_melted[df_melted["month"] == month]
 
     sns.barplot(data = current_month_df,
-                x = 'contact',
-                y = 'outcome_count',
-                hue = 'outcome_type',
+                x = "contact",
+                y = "outcome_count",
+                hue = "outcome_type",
                 palette = "tab10",
                 ax = ax[row_idx, col_idx])
 
     ax[row_idx, col_idx].set_title(f"Subscriptions for {month.capitalize()}")
     ax[row_idx, col_idx].set_ylabel("Number of Subscriptions")
     ax[row_idx, col_idx].set_xlabel("")
-    ax[row_idx, col_idx].tick_params(axis = 'x', rotation = 45)
-    ax[row_idx, col_idx].legend(title = 'Outcome')
+    ax[row_idx, col_idx].tick_params(axis = "x", rotation = 45)
+    ax[row_idx, col_idx].legend(title = "Outcome")
 
 plt.tight_layout()
 plt.show()
@@ -551,11 +551,8 @@ df_tr.groupby(["month", "outcome"], sort = False)["call_centre_volume"].agg("med
 
 To Do:
 - Person Info Connected To Outcome
-    - Job (make the first plot cool; plot the second data)
-    - Education (Copy-Paste Job)
     - Age (Average Age or in Some Scope)
     - Marital, Mortage, Personal Loan
-    - Bonus Metrics...
 """
 
 df["job"].value_counts().plot(kind = "pie", autopct = "%1.2f", figsize = (10, 8))
@@ -576,18 +573,21 @@ df_jobs_pivot["Successful_Rate"].values
 x = df_jobs_pivot.index
 y = df_jobs_pivot["Successful_Rate"].values
 
+y1 = np.ones(len(y)) * 15              # Draw a line for 15%
+
 plt.figure(figsize = (12, 10))
 plt.plot(x, y, color = "green", marker = "o", linestyle = "dashed", dash_capstyle = "butt",
          gapcolor = "orange")
+plt.plot(x, y1, color = "red", linewidth = 2, linestyle = "dashed")
 
-plt.title("Subscriptions by Profesion of a ")
-plt.xlabel("Month")
-plt.xticks(rotation = 45, ha = "right")
+plt.title("Subscriptions by Profession of the Customers")
+plt.xlabel("Jobs of Customers")
+plt.xticks(rotation = 45, ha = "center")
 
-plt.ylabel("Number of Calls")
+plt.ylabel("Rate of Successful Marketing")
 
 ax = plt.gca()
-#ax.xaxis.set_major_formatter(plt.FuncFormatter(lambda x, _: f"${int(x / 1000)}K"))
+ax.yaxis.set_major_formatter(plt.FuncFormatter(lambda x, _: f"{int(x)}%"))
 
 plt.show()
 
@@ -599,5 +599,56 @@ df_jobs_outcome_f = df_tr[df_tr["outcome"] == "False"].pivot_table(values = "out
                                                                    index = "job",
                                                                    columns = "contact",
                                                                    aggfunc = "size")
+df_jobs_outcome = df_tr.pivot_table(values = "outcome",
+                                    index = "job",
+                                    columns = "contact",
+                                    aggfunc = "size")
+
+fig, ax = plt.subplots(3, 1, figsize = (12, 16))
+
+df_jobs_outcome_t.plot(kind = "bar", ax = ax[0], rot = 45,
+                       colormap = "Spectral")
+ax[0].set_title("Positive Outcome of Marketing by the Type of Contact")
+ax[0].set_xlabel("Jobs")
+ax[0].set_ylabel("Number of Contacts")
+
+df_jobs_outcome_f.plot(kind = "bar", ax = ax[1], rot = 45,
+                       colormap = "Spectral")
+ax[1].set_title("Negative Outcome of Marketing by the Type of Contact")
+ax[1].set_xlabel("Jobs")
+ax[1].set_ylabel("Number of Contacts")
+
+df_jobs_outcome.plot(kind = "bar", ax = ax[2], rot = 45,
+                     colormap = "Spectral")
+ax[2].set_title("Type of Contact for Customer's Job")
+ax[2].set_xlabel("Jobs")
+ax[2].set_ylabel("Number of Contacts")
+
+fig.tight_layout()
+
+df_education = df_tr.pivot_table(index = "education",
+                                 columns = "outcome",
+                                 aggfunc = "size",
+                                 sort = False)
+df_education
+
+df_education.drop(index="none", inplace=True)
+
+df_education.sort_values(by = "education", inplace = True)
+
+df_education
+
+#df_education = df_education.reset_index()
+# df_education_plot = df_education.melt(id_vars = ['education', 'contact'],
+#                                       value_vars = ["True", "False"],
+#                                       var_name = 'outcome_type',
+#                                       value_name = 'outcome_count')
+# df_education_plot
+
+df_education.plot(kind = "bar", rot = 45, figsize = (12, 10), colormap = "Spectral",
+                  xlabel = "Education", ylabel = "Outcome of the contact",
+                  title = "Outcome of the Contact based on Education");
+
+df_tr["age"].value_counts()
 
 df_tr.info()
