@@ -12,11 +12,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 import seaborn as sns
 
-"""## 0. Load and Overview the Data
-
-To Do:
-- groupby... could you extract valuable data from 2, 3 or more columns
-"""
+"""## 0. Load and Overview the Data"""
 
 df = pd.read_csv("/content/data/PwC_CaseStudy_LittleBank_train.csv").convert_dtypes()
 
@@ -27,7 +23,6 @@ df["outcome"] = df["outcome"].astype("string")
 
 df.info()
 
-#df["outcome"].describe()
 df["outcome"].value_counts()            # From 35000 consumers only 3952 accepted the product, i.e. approx. 10 %
 
 df["outcome"].value_counts().plot(kind = "pie", startangle = 90, autopct = "%1.2f")
@@ -58,8 +53,6 @@ df["num_contacts"].unique()
 df["outcome_previous"].unique()
 df["default"].unique()
 
-df["default"].describe()
-
 df["default"].value_counts()    # Default is not adding any value to the analysis;
                                 # The Marketing was done only towards new clients
 
@@ -71,7 +64,7 @@ df["contact"].value_counts().plot(kind = "bar", xlabel = "", ylabel = "Number of
                                   title = "Type of Communication with Customers",
                                   rot = 0)
 
-"""# 1. Cleaning the Data"""
+"""## 1. Cleaning the Data"""
 
 df_tr = df.copy()
 
@@ -90,7 +83,7 @@ df_tr["forward_rate"].median()
 # Store the file after the data is cleaned
 #df_tr.to_csv("PwC_CaseStudy_LittleBank_train_cleaned.csv", index=False)
 
-"""## 3. Macroeconomic and Enviromental Factors Analysis"""
+"""## 2. Macroeconomic and Enviromental Factors Analysis"""
 
 import pandas as pd
 import numpy as np
@@ -135,6 +128,7 @@ df_tr
 ## Insert a new column in the data frame that maps the days with the corresponding number
 #df_tr.insert(loc = 3, column = "day_no", value = df_tr["day_of_week"].map(days_of_the_week_dict))
 
+## Drop the new Column if necessary
 #df_tr.drop(labels = "month_no", axis = 1, inplace = True)
 #df_tr
 
@@ -147,11 +141,11 @@ columns = [df_tr.columns[0]] + list(df_tr.columns[18:])   #24 with drop /25 with
 df_economy = df_tr[columns]
 
 df_economy.describe()
+
 # There is a higher probability that num_employed and price_index do not influence the results
 # forward_rate, consumer_confidence and employment_variation have the highest fluctuations
 
 df_economy[df_economy["outcome"] == "True"].describe()
-#f_true = df_tr[df_tr["outcome"] == "True"]
 
 df_economy[df_economy["outcome"] == "False"].describe()
 
@@ -243,20 +237,15 @@ plt.show()
 # The top month for positive outcomes is May. June, August and especially July are
 # also top months
 
-"""To Do:
-- Analyze why May is so good for positive customer subscription
-- Analyze May to August
-- Analyze what is happening between September and December, and why the subscriptions decrease
+"""## 3. Analyze the Influence of Day and Months Over the Outcome
 
-## 4. Analyze the Influence of Day and Months Over the Outcome
-
-This is the most important analysis and it should be made first. In such data science tasks the main two goals are to understand the data and overview result of the marketing campaign.
+This is the most important analysis. It should be done first. Don't forget that in data science tasks the main two goals are to understand the data and to make the right conclusions. It is a must to overview the result of the marketing campaign.
 """
 
 df_outcome_pivot = df_tr.pivot_table(index = "month",
-                                    columns = "outcome",
-                                    aggfunc = "size",
-                                    sort = False)
+                                     columns = "outcome",
+                                     aggfunc = "size",
+                                     sort = False)
 df_outcome_pivot["Total"] = df_outcome_pivot.iloc[:, 0] + df_outcome_pivot.iloc[:, 1]
 df_outcome_pivot["Successful_Rate"] = (df_outcome_pivot.iloc[:, 0] / df_outcome_pivot.iloc[:, 2]) * 100
 
@@ -264,23 +253,19 @@ df_outcome_pivot
 # Total Column, Percent of Successful Outcomes
 # Day and Months Connected To the Successfull Outcome
 
-df_outcome_pivot.iloc[:, 0:3].plot(kind = "bar")
+df_outcome_pivot.iloc[:, 0:3].plot(kind = "bar", figsize = (10, 8))
 
 plt.xlabel("Month")
 plt.ylabel("Number of Subscriptions")
 plt.title("Subscriptions by Months")
 plt.show()
 
-# labels = df_outcome_pivot.index
-# index_month = range(len(labels))
-# labels, index_month
-
 df_outcome_pivot.iloc[:, 3].plot(kind = "line")
 
 label_month = df_outcome_pivot.index
 index_month = range(len(label_month))
 
-plt.xlabel("Months")
+plt.xlabel("Month")
 plt.xticks(index_month, label_month)
 plt.ylabel("Succesful Rate (%)")
 plt.title("Successful Rate of the Campaign by Months")
@@ -301,8 +286,7 @@ df_tr_days
 df_tr_days_pivot = df_tr.pivot_table(index = ["month", "day_of_week"],
                                      columns = "outcome",
                                      aggfunc = "size",
-                                     sort = False
-)
+                                     sort = False)
 df_tr_days_pivot
 
 df_tr_days_pivot["Total"] = df_tr_days_pivot.iloc[:, 0] + df_tr_days_pivot.iloc[:, 1]
@@ -335,7 +319,7 @@ df_melted = df_plot.melt(id_vars = ['month', 'day_of_week'],
 total_months_df = len(months_in_the_year_df)
 rows = int(total_months_df / 2)
 cols = 2
-y_axis_max_value = df_plot["Total"].max() #+ 1.05 * df_plot["Total"].max()
+y_axis_max_value = df_plot["Total"].max() # Possible scaling 1.05 * df_plot["Total"].max()
 
 fig, ax = plt.subplots(rows, cols, figsize = (15, 21))
 sns.set_theme(style = "ticks")
@@ -366,64 +350,13 @@ plt.show()
 df_plot.plot(kind = "line",
              title = "The Outcome of the Advertisement Campaign",
              xticks = [],
-             xlabel = "Days of the Months ",
+             xlabel = "Days of the Months",
              ylabel = "Outcome Count");
 # The advertisement campaign was a total failure...
 
 df_tr.info()
 
-
-
-"""## _. Analysis Based on the Jobs of the Customers"""
-
-df_tr.info()
-
-#df_tr.groupby("outcome")[["num_contacts", "days_since_previous", "num_contacts_previous", "call_centre_volume"]].agg(["median", "min", "max"])
-
-df_outcome_true = df_tr[df_tr["outcome"] == "True"]
-df_outcome_false = df_tr[df_tr["outcome"] == "False"]
-
-df_jobs_count = df["job"].value_counts()
-df_outcome_true_jobs_count = df_outcome_true["job"].value_counts()
-df_outcome_false_jobs_count = df_outcome_false["job"].value_counts()
-
-plt.bar(df_jobs_count.index, df_jobs_count)
-plt.title("Jobs of the customers")
-plt.ylabel("The count of jobs")
-plt.xticks(rotation = 45, ha = "right")
-plt.show()
-
-fig, ax = plt.subplots(1, 2, figsize = (14, 7))
-
-ax[0].barh(df_outcome_true_jobs_count.index, df_outcome_true_jobs_count)
-ax[1].barh(df_outcome_false_jobs_count.index, df_outcome_false_jobs_count)
-
-plt.show()
-
-df_outcome_true_pivot_fr = df_outcome_true.pivot_table(values = "forward_rate",
-                                                       index = "job",
-                                                       columns = "education",
-                                                       aggfunc = "median")
-df_outcome_true_pivot_fr.sample(10)
-
-df_outcome_false_pivot = df_outcome_false.pivot_table(values = "forward_rate",
-                                                      index = "job",
-                                                      columns = "education",
-                                                      aggfunc = "median")
-df_outcome_false_pivot.sample(10)
-
-df_outcome_true_pivot_fr = df_outcome_true.pivot_table(values = "forward_rate",
-                                                       index = "job",
-                                                       columns = "personal_loan",
-                                                       aggfunc = "median")
-df_outcome_true_pivot_fr.sample(10)
-
-df_outcome_false_pivot = df_outcome_false.pivot_table(values = "forward_rate",
-                                                      index = "job",
-                                                      columns = "education",
-                                                      aggfunc = "median")
-
-"""## 5. Marketing Campaign Analysis"""
+"""## 4. Marketing Campaign Analysis"""
 
 df_tr.info()
 
@@ -432,18 +365,6 @@ df["contact"].value_counts().plot(kind = "bar", xlabel = "", ylabel = "Number of
                                   rot = 0)
 
 sns.boxplot(data = df_tr, x = "num_contacts", y = "outcome")
-sns.set_theme(style="ticks")
-
-# this is all the same
-plt.title("The Number of Contacts and the Corresponding Outcome")
-plt.xlabel("Number of Contacts")
-plt.ylabel("Outcome of the Contact")
-
-plt.xlim(0, 45)
-
-plt.show()
-
-sns.boxplot(data = df_tr, x = "num_contacts", y = "contact")
 sns.set_theme(style="ticks")
 
 # this is all the same
@@ -545,9 +466,7 @@ df_days_previous.groupby("contact")[["days_since_previous", "call_centre_volume"
 
 df_tr.groupby(["month", "outcome"], sort = False)["call_centre_volume"].agg("median")
 
-# Plot by months the call centre volume
-
-"""## 7. Analysis Based on the Personal Info of The Customers"""
+"""## 5. Analysis Based on the Personal Info of The Customers"""
 
 df["job"].value_counts().plot(kind = "pie", autopct = "%1.2f", figsize = (10, 8))
 plt.title("Job of the Customers")
@@ -717,3 +636,52 @@ df_marital_pivot.plot(kind = "bar", rot = 45, figsize = (12, 10),
                       title = "Outcome of the Contact based on Marital Status");
 
 df_tr.info()
+
+"""## 6. Analysis Based on the Jobs of the Customers"""
+
+df_tr.info()
+
+#df_tr.groupby("outcome")[["num_contacts", "days_since_previous", "num_contacts_previous", "call_centre_volume"]].agg(["median", "min", "max"])
+
+df_outcome_true = df_tr[df_tr["outcome"] == "True"]
+df_outcome_false = df_tr[df_tr["outcome"] == "False"]
+
+df_jobs_count = df["job"].value_counts()
+df_outcome_true_jobs_count = df_outcome_true["job"].value_counts()
+df_outcome_false_jobs_count = df_outcome_false["job"].value_counts()
+
+plt.bar(df_jobs_count.index, df_jobs_count)
+plt.title("Jobs of the customers")
+plt.ylabel("The count of jobs")
+plt.xticks(rotation = 45, ha = "right")
+plt.show()
+
+fig, ax = plt.subplots(1, 2, figsize = (14, 7))
+
+ax[0].barh(df_outcome_true_jobs_count.index, df_outcome_true_jobs_count)
+ax[1].barh(df_outcome_false_jobs_count.index, df_outcome_false_jobs_count)
+
+plt.show()
+
+df_outcome_true_pivot_fr = df_outcome_true.pivot_table(values = "forward_rate",
+                                                       index = "job",
+                                                       columns = "education",
+                                                       aggfunc = "median")
+df_outcome_true_pivot_fr.sample(10)
+
+df_outcome_false_pivot = df_outcome_false.pivot_table(values = "forward_rate",
+                                                      index = "job",
+                                                      columns = "education",
+                                                      aggfunc = "median")
+df_outcome_false_pivot.sample(10)
+
+df_outcome_true_pivot_fr = df_outcome_true.pivot_table(values = "forward_rate",
+                                                       index = "job",
+                                                       columns = "personal_loan",
+                                                       aggfunc = "median")
+df_outcome_true_pivot_fr.sample(10)
+
+df_outcome_false_pivot = df_outcome_false.pivot_table(values = "forward_rate",
+                                                      index = "job",
+                                                      columns = "education",
+                                                      aggfunc = "median")
