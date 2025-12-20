@@ -547,13 +547,7 @@ df_tr.groupby(["month", "outcome"], sort = False)["call_centre_volume"].agg("med
 
 # Plot by months the call centre volume
 
-"""## 7. Analysis Based on the Personal Info of The Customers
-
-To Do:
-- Person Info Connected To Outcome
-    - Age (Average Age or in Some Scope)
-    - Marital, Mortage, Personal Loan
-"""
+"""## 7. Analysis Based on the Personal Info of The Customers"""
 
 df["job"].value_counts().plot(kind = "pie", autopct = "%1.2f", figsize = (10, 8))
 plt.title("Job of the Customers")
@@ -649,6 +643,77 @@ df_education.plot(kind = "bar", rot = 45, figsize = (12, 10), colormap = "Spectr
                   xlabel = "Education", ylabel = "Outcome of the contact",
                   title = "Outcome of the Contact based on Education");
 
-df_tr["age"].value_counts()
+df_age = df_tr[df_tr["age"] < 70]                # The Number of Customers above 70 is small and can be omited
+age_unique = df_age["age"].unique().tolist()
+age_unique.sort()
+#print(age_unique)
+
+age_counts = df_age["age"].value_counts().sort_index()
+
+df_age_true = df_outcome_true[df_outcome_true["age"] < 70]                # The Number of Customers above 70 is small and can be omited
+age_unique_true = df_age_true["age"].unique().tolist()
+age_unique_true.sort()
+#print(age_unique_true)
+
+age_counts_true = df_age_true["age"].value_counts().sort_index()
+
+plt.plot(age_unique, age_counts)
+plt.plot(age_unique_true, age_counts_true)
+
+plt.title("Number of Customers by Age")
+plt.xlabel("Age of Customers")
+plt.ylabel("Number of Customers")
+plt.legend(["All Customers", "Positive Outcome"])
+#plt.xticks(df_tr["month_no"].unique())
+plt.show()
+
+labels = df_tr["marital"].unique()
+
+df_tr["marital"].value_counts().plot(kind = "pie", ylabel = "", labels = labels,
+                                     textprops = {"ha": "left", "va": "center"},
+                                     labeldistance = 1.15, title = "Marital Status of Clients");
+
+df_tr["mortgage"].value_counts().plot(kind = "pie", startangle = -5, ylabel = "",
+                                      title = "Mortgage Status of Clients");
+
+df_tr["personal_loan"].value_counts().plot(kind = "pie", ylabel = "",
+                                           legend = "Personal Loan Status of Clients");
+
+clients_with_mortgage = len(df_outcome_true[df_outcome_true["mortgage"] == "yes"])
+clients_with_loan = len(df_outcome_true[df_outcome_true["personal_loan"] == "yes"])
+clients_true_total = len(df_outcome_true)
+
+clients_with_mortgage, clients_with_loan, clients_true_total
+
+fig, ax = plt.subplots(figsize = (8, 6))
+
+personal_info = ["mortgage", "mortgage_total", "personal_loan", "personal_loan_total"]
+counts = [clients_with_mortgage, clients_true_total, clients_with_loan, clients_true_total]
+bar_labels = ['With Mortgage', 'Total', 'With Personal Loan', 'Total']
+bar_colors = ['red', 'green', 'darkorchid', 'green']
+
+ax.bar(personal_info, counts, label = bar_labels, color = bar_colors)
+
+ax.set_xlabel("Personal Info")
+ax.set_ylabel("Counts")
+ax.set_title("Subscription for the Product based on Personal Information")
+ax.legend(title = 'Personal Info')
+
+plt.show()
+
+marital_unknown = df_tr[df_tr["marital"] == "unknown"]
+df_marital = df_tr.drop(index = marital_unknown.index)
+
+df_marital_pivot = df_marital.pivot_table(index = "marital",
+                                          columns = "outcome",
+                                          aggfunc = "size")
+
+df_marital_pivot["Total"] = df_marital_pivot.iloc[:, 0] + df_marital_pivot.iloc[:, 1]
+
+df_marital_pivot
+
+df_marital_pivot.plot(kind = "bar", rot = 45, figsize = (12, 10),
+                      xlabel = "Marital Status", ylabel = "Outcome of the Contact",
+                      title = "Outcome of the Contact based on Marital Status");
 
 df_tr.info()
