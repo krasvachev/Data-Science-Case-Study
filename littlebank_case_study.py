@@ -49,8 +49,8 @@ plt.title("Education of the Customers")
 plt.ylabel("")
 plt.show()
 
-df["num_contacts"].unique()
-df["outcome_previous"].unique()
+# df["num_contacts"].unique()
+# df["outcome_previous"].unique()
 df["default"].unique()
 
 df["default"].value_counts()    # Default is not adding any value to the analysis;
@@ -64,7 +64,35 @@ df["contact"].value_counts().plot(kind = "bar", xlabel = "", ylabel = "Number of
                                   title = "Type of Communication with Customers",
                                   rot = 0)
 
-"""## 1. Cleaning the Data"""
+"""#### Three Main Observations 📝
+
+1. From 35000 people, only 3952 subscribed. 31048 people declined the offer. This means that only 11.3% of the people subscribed to the classic savings account. Further, there is a variable for the outcome of previous campaigns. However, 86% of the values do not exist, i.e. more than 30,000 values. Hence, the column will be useless for the analysis.
+
+2. The customers work in various areas. Most of them are administrative, industrial or technical jobs.
+
+3. There are two ways in the campaign to approach the customers - via mobile or via landline. However, nowadays there are more effective ways to advertise your product. There is a question that comes to my mind: "Who under the blue skies is using a landline phone nowadays?"
+
+## 1. Cleaning the Data
+
+#### Dataset Overview 📊
+
+> The **number of data entries** is 35000. They could be divided into 5 main groups:
+>
+> * When a contact was made
+> * Contact Info
+> * Personal Info of the Customer
+> * Environmental parameters
+> * Macroeconomic Situation
+
+#### Target Value 🎯
+> The last column of the data frame is **the outcome of the contact**. It indicates whether the client has purchased the product or not. This column will be the target of the ML model. Furthermore, the outcome column will be the main part for most of the figures.
+
+#### Hypotheses ⁉️
+> A few **hypotheses** should be defined at the beginning of the analysis. It is very likely that the economic factors will influence the outcome of the campaign. In real-world scenarios, the economy directly affects the customer's behaviour. In addition, it is very important to review the marketing campaign and estimate how positive it was. It should be compared to what type of contact is more successful. Lastly, there is a big possibility that the personal status of each customer (age, job, mortgage, marital status, etc) has a key role in the success of the marketing.
+
+#### Day & Month 📅
+> There are two very interesting columns for the *month and the day when the contact with the customer was made*. One of the most important analyses will be to see the outcome of the campaign based on day and month.
+"""
 
 df_tr = df.copy()
 
@@ -80,7 +108,7 @@ df_tr.loc[:, "call_centre_volume":"outcome"].describe()
 
 df_tr["forward_rate"].median()
 
-# Store the file after the data is cleaned
+# Store the file after the data cleaning
 #df_tr.to_csv("PwC_CaseStudy_LittleBank_train_cleaned.csv", index=False)
 
 """## 2. Macroeconomic and Enviromental Factors Analysis"""
@@ -232,14 +260,11 @@ plt.xticks(months_x_axis)
 plt.legend()
 plt.show()
 
-# Months 9-12 should have high counts of new clients, but in reality they are not
+"""> The figures are not very informative. Most of the section will be deleted in the solution file that is submitted.
 
-# The top month for positive outcomes is May. June, August and especially July are
-# also top months
+## 3. Analyze the Influence of Day and Months Over the Outcome
 
-"""## 3. Analyze the Influence of Day and Months Over the Outcome
-
-This is the most important analysis. It should be done first. Don't forget that in data science tasks the main two goals are to understand the data and to make the right conclusions. It is a must to overview the result of the marketing campaign.
+This is the most important analysis. It should be done first. Don't forget that in data science tasks, the main goals are to understand the data and to make the right conclusions.
 """
 
 df_outcome_pivot = df_tr.pivot_table(index = "month",
@@ -253,11 +278,11 @@ df_outcome_pivot
 # Total Column, Percent of Successful Outcomes
 # Day and Months Connected To the Successfull Outcome
 
-df_outcome_pivot.iloc[:, 0:3].plot(kind = "bar", figsize = (10, 8))
+df_outcome_pivot.iloc[:, 0:3].plot(kind = "bar", figsize = (10, 8), rot = 45)
 
 plt.xlabel("Month")
 plt.ylabel("Number of Subscriptions")
-plt.title("Subscriptions by Months")
+plt.title("Success of the Marketing Campaign by Months")
 plt.show()
 
 df_outcome_pivot.iloc[:, 3].plot(kind = "line")
@@ -268,7 +293,7 @@ index_month = range(len(label_month))
 plt.xlabel("Month")
 plt.xticks(index_month, label_month)
 plt.ylabel("Succesful Rate (%)")
-plt.title("Successful Rate of the Campaign by Months")
+plt.title("Percentage of Possitive Outcomes by Months")
 
 ax = plt.gca()
 ax.yaxis.set_major_formatter(plt.FuncFormatter(lambda y, _: f"{int(y)}%"))
@@ -354,15 +379,22 @@ df_plot.plot(kind = "line",
              ylabel = "Outcome Count");
 # The advertisement campaign was a total failure...
 
-df_tr.info()
+"""😥😥😫
 
-"""## 4. Marketing Campaign Analysis"""
+> The marketing campaign was a total failure. The first and the last figures show that the subscriptions do not increase, even though thousands of contacts were made. For May, the savings account product was advertised to 11721 people. Only 749 of them have subscribed. This is exactly 6.39%. That's a disaster.
+
+> When we compare the results of the campaign by days of each month, the conclusion is the same - the marketing was a total failure. There are days when the success rate is above 50%, but a small number of people subscribed in absolute terms. The hypothesis that there is a day in the month when the subscription rate is relatively high could not be accepted.
+
+> Lets compare the positive outcomes with the total number of calls. In March, September, October and December, there is the highest percentage of successful outcomes. In March, more than half of the customers subscribed to the product (50.64%). However, these are the months when the marketing campaign is not very persuasive.
+
+## 4. Marketing Campaign Analysis
+"""
 
 df_tr.info()
 
 df["contact"].value_counts().plot(kind = "bar", xlabel = "", ylabel = "Number of Contacts",
                                   title = "Type of Communication with Customers",
-                                  rot = 0)
+                                  rot = 0);
 
 sns.boxplot(data = df_tr, x = "num_contacts", y = "outcome")
 sns.set_theme(style="ticks")
@@ -466,7 +498,21 @@ df_days_previous.groupby("contact")[["days_since_previous", "call_centre_volume"
 
 df_tr.groupby(["month", "outcome"], sort = False)["call_centre_volume"].agg("median")
 
-"""## 5. Analysis Based on the Personal Info of The Customers"""
+"""#### Overview of the Marketing Campaign 📊
+> The classic savings account was advertised through a call. The clients were contacted on their mobile (22215 calls) and on their landline (12785 calls). There are strange outliers in the data. There are a few people whom we called 56 times, 43 times, 42 times, etc. If someone dares to think of calling me 56 times to advertise his bloody product, he would receive a warm and energetic blessing after the third call. And that lucky number will be added to my "forever after happy block list" for eternity.
+
+#### Nonexistent Variable ❌
+> In addition, most of the values of the days_since_previous column are nonexistent. The same could be said about the outcome_previous column. The mean number of contacts for a successful call is 2.
+
+#### Successful Calls ✅
+> The second call for the successful outcome was made around 6 days after the first call. Hence, to increase the chances of success, the second call should be made around 6 days after the first call. In addition,
+It is very possible that the volume of the call centre does not affect the success of the call.
+
+#### Marketing in the Digital Era 💬
+> As it could be expected, most of the subscriptions came from a mobile device. This is valid for each month. Nevertheless, in the digital era where everyone has a profile in more than one social network, there are certainly better ways to connect with your potential customers.
+
+## 5. Analysis Based on the Personal Info of the Customers
+"""
 
 df["job"].value_counts().plot(kind = "pie", autopct = "%1.2f", figsize = (10, 8))
 plt.title("Job of the Customers")
@@ -497,7 +543,7 @@ plt.title("Subscriptions by Profession of the Customers")
 plt.xlabel("Jobs of Customers")
 plt.xticks(rotation = 45, ha = "center")
 
-plt.ylabel("Rate of Successful Marketing")
+plt.ylabel("Success Rate")
 
 ax = plt.gca()
 ax.yaxis.set_major_formatter(plt.FuncFormatter(lambda x, _: f"{int(x)}%"))
@@ -521,13 +567,13 @@ fig, ax = plt.subplots(3, 1, figsize = (12, 16))
 
 df_jobs_outcome_t.plot(kind = "bar", ax = ax[0], rot = 45,
                        colormap = "Spectral")
-ax[0].set_title("Positive Outcome of Marketing by the Type of Contact")
+ax[0].set_title("Positive Outcome and the Type of Contact")
 ax[0].set_xlabel("Jobs")
 ax[0].set_ylabel("Number of Contacts")
 
 df_jobs_outcome_f.plot(kind = "bar", ax = ax[1], rot = 45,
                        colormap = "Spectral")
-ax[1].set_title("Negative Outcome of Marketing by the Type of Contact")
+ax[1].set_title("Negative Outcome and the Type of Contact")
 ax[1].set_xlabel("Jobs")
 ax[1].set_ylabel("Number of Contacts")
 
@@ -543,7 +589,6 @@ df_education = df_tr.pivot_table(index = "education",
                                  columns = "outcome",
                                  aggfunc = "size",
                                  sort = False)
-df_education
 
 df_education.drop(index="none", inplace=True)
 
@@ -576,8 +621,8 @@ age_unique_true.sort()
 
 age_counts_true = df_age_true["age"].value_counts().sort_index()
 
-plt.plot(age_unique, age_counts)
-plt.plot(age_unique_true, age_counts_true)
+plt.plot(age_unique, age_counts, "g")
+plt.plot(age_unique_true, age_counts_true, "b")
 
 plt.title("Number of Customers by Age")
 plt.xlabel("Age of Customers")
@@ -625,7 +670,8 @@ df_marital = df_tr.drop(index = marital_unknown.index)
 
 df_marital_pivot = df_marital.pivot_table(index = "marital",
                                           columns = "outcome",
-                                          aggfunc = "size")
+                                          aggfunc = "size",
+                                          sort = False)
 
 df_marital_pivot["Total"] = df_marital_pivot.iloc[:, 0] + df_marital_pivot.iloc[:, 1]
 
@@ -635,9 +681,17 @@ df_marital_pivot.plot(kind = "bar", rot = 45, figsize = (12, 10),
                       xlabel = "Marital Status", ylabel = "Outcome of the Contact",
                       title = "Outcome of the Contact based on Marital Status");
 
-df_tr.info()
+"""#### Job of Customers 🛠️
+> Most of the people with a classic savings account have an administrative or technical job. Let's set a 15% treshold for the success rate. The success rate is the ratio of the successful outcomes of a call and the total calls. People who have an administrative job are above the threshold. We could add to them the people who retired, unemployed people and people who participate in full-time education. The product is not very attractive to customers working in other areas. A survey should be made amongst the customers, in order to understand how to improve the product.
 
-"""## 6. Analysis Based on the Jobs of the Customers"""
+#### Type of Contact and Outcome of the Contact ☎️
+> The relation between the type of contact and the positive outcome was analysed. Figures proved one more time the point that mobile calls lead to more subscriptions, compared to landline phones.
+
+#### Personal Info of Customers Bonus Analysis 👦🏽
+> Most of the customers have a high school education or a university degree. In addition, marketing was focused on people between the ages of 20 and 60. More than half of the people who subscribed for the product also have a mortgage (2133 out of 3952). On the other hand, only 573 out of 3952 have a personal loan in the bank. Lastly, a connection between the marital status and the positive outcome wasn't found
+
+## 6. Analysis Based on the Jobs of the Customers
+"""
 
 df_tr.info()
 
