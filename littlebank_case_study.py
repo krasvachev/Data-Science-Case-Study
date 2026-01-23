@@ -16,14 +16,14 @@ import seaborn as sns
 
 df = pd.read_csv("/content/data/PwC_CaseStudy_LittleBank_train.csv").convert_dtypes()
 
-pd.set_option('display.max_columns', None)
+pd.set_option("display.max_columns", None)
 df
 
 df["outcome"] = df["outcome"].astype("string")
 
 df.info()
 
-df["outcome"].value_counts()            # From 35000 consumers only 3952 accepted the product, i.e. approx. 10 %
+df["outcome"].value_counts()            # From 35000 consumers only 3952 accepted the product, i.e. approx. 10%
 
 df["outcome"].value_counts().plot(kind = "pie", startangle = 90, autopct = "%1.2f")
 plt.title("Outcome of the Customer's Subscription")
@@ -62,15 +62,15 @@ df["mortgage"].value_counts()
 
 df["contact"].value_counts().plot(kind = "bar", xlabel = "", ylabel = "Number of Contacts",
                                   title = "Type of Communication with Customers",
-                                  rot = 0)
+                                  rot = 0);
 
 """#### Three Main Observations 📝
 
-1. From 35000 people, only 3952 subscribed. 31048 people declined the offer. This means that only 11.3% of the people subscribed to the classic savings account. Further, there is a variable for the outcome of previous campaigns. However, 86% of the values do not exist, i.e. more than 30,000 values. Hence, the column will be useless for the analysis.
+1. Of 35000 people, only 3952 subscribed. 31048 people declined the offer. This means that only 11.3% of the people subscribed to the classic savings account. Further, there is a variable for the outcome of previous campaigns. However, 86% of the values do not exist, i.e. more than 30,000 values. Hence, the column will be useless for the analysis.
 
-2. The customers work in various areas. Most of them are administrative, industrial or technical jobs.
+2. The customers work in various areas. Most of them have administrative, industrial or technical jobs.
 
-3. There are two ways in the campaign to approach the customers - via mobile or via landline. However, nowadays there are more effective ways to advertise your product. There is a question that comes to my mind: "Who under the blue skies is using a landline phone nowadays?"
+3. There are two ways to approach the customers - via mobile or via landline. However, nowadays there are more effective ways to advertise your product. There is one question that bothers me. This comes to my mind looking at the advertising campaign: "Who under the blue skies is using a landline phone nowadays?"
 
 ## 1. Cleaning the Data
 
@@ -88,10 +88,10 @@ df["contact"].value_counts().plot(kind = "bar", xlabel = "", ylabel = "Number of
 > The last column of the data frame is **the outcome of the contact**. It indicates whether the client has purchased the product or not. This column will be the target of the ML model. Furthermore, the outcome column will be the main part for most of the figures.
 
 #### Hypotheses ⁉️
-> A few **hypotheses** should be defined at the beginning of the analysis. It is very likely that the economic factors will influence the outcome of the campaign. In real-world scenarios, the economy directly affects the customer's behaviour. In addition, it is very important to review the marketing campaign and estimate how positive it was. It should be compared to what type of contact is more successful. Lastly, there is a big possibility that the personal status of each customer (age, job, mortgage, marital status, etc) has a key role in the success of the marketing.
+> A few **hypotheses** should be defined at the beginning of the analysis. It is very likely that the economic factors will influence the outcome of the campaign. In real-world scenarios, the economy directly affects the customer's behaviour. In addition, it is very important to review the marketing campaign and estimate how positive it was. The success of each type of contact should be compared. Lastly, there is a big possibility that the personal status of each customer (age, job, mortgage, marital status, etc) has a key role in the success of the marketing.
 
 #### Day & Month 📅
-> There are two very interesting columns for the *month and the day when the contact with the customer was made*. One of the most important analyses will be to see the outcome of the campaign based on day and month.
+> There are two very interesting columns for the *month and the day when the contact with the customer was made*. One of the most important analyses will be the outcome of the campaign based on day and month.
 """
 
 df_tr = df.copy()
@@ -260,11 +260,11 @@ plt.xticks(months_x_axis)
 plt.legend()
 plt.show()
 
-"""> The figures are not very informative. Most of the section will be deleted in the solution file that is submitted.
+"""> The figures are not quite informative. Most of the section will be deleted in the final solution.
 
 ## 3. Analyze the Influence of Day and Months Over the Outcome
 
-This is the most important analysis. It should be done first. Don't forget that in data science tasks, the main goals are to understand the data and to make the right conclusions.
+This is the most important analysis. It should be done first. Don't forget that in data science tasks, the main goals are to understand the data and make the right conclusions.
 """
 
 df_outcome_pivot = df_tr.pivot_table(index = "month",
@@ -328,6 +328,7 @@ months_in_the_year_df = ["mar", "apr", "may", "jun",
 df_tr_days_pivot.loc["dec"].columns
 #df_tr_days_pivot.loc["dec"].plot(kind = "bar")
 
+## View the dataframes
 #df_plot
 
 #pd.set_option('display.max_rows', None)
@@ -385,7 +386,7 @@ df_plot.plot(kind = "line",
 
 > When we compare the results of the campaign by days of each month, the conclusion is the same - the marketing was a total failure. There are days when the success rate is above 50%, but a small number of people subscribed in absolute terms. The hypothesis that there is a day in the month when the subscription rate is relatively high could not be accepted.
 
-> Lets compare the positive outcomes with the total number of calls. In March, September, October and December, there is the highest percentage of successful outcomes. In March, more than half of the customers subscribed to the product (50.64%). However, these are the months when the marketing campaign is not very persuasive.
+> Lets compare the positive outcomes with the total number of calls. In March, September, October and December, there is the highest percentage of successful outcomes. In March, more than half of the customers subscribed to the product (50.64%). However, in these months the marketing campaign was not very persuasive.
 
 ## 4. Marketing Campaign Analysis
 """
@@ -410,7 +411,9 @@ plt.show()
 
 df["num_contacts"].sort_values(ascending = False).head(15)  # 30-56 calls for one offer for the same person ???
 #df["num_contacts"].sort_values(ascending = False).value_counts(sort = False).head(30) # The Marketing is Total Failure;
-# It is very likely that the data is generated by AI; There is no logic to make 56 contacts for 1 person for marketing
+
+# It is very likely that the data is generated by AI; There isn't any logic to make 56 contacts for 1 person for marketing.
+# Guess what present you will receive from me when call me for 4th time to promote me your product...
 
 df_tr.loc[:, "contact":"outcome_previous"].describe()
 
@@ -427,7 +430,7 @@ plt.title("Previous Outcome of the Customer's Subscription")
 plt.ylabel("")
 plt.show()
 
-# Successful outcome by month, day for type of contact
+# Successful outcome by month (day) for a type of contact
 
 df_contact = df_tr.pivot_table(index = "contact",
                                columns = "outcome",
@@ -443,7 +446,7 @@ df_contact.plot(kind = "bar", xlabel = "Type of contact", ylabel = "Outcome",
 mean_contacts_successful_outcome = df_tr[df_tr["outcome"] == "True"]["num_contacts"].mean()     # 2.045
 num_contacts_successful_outcome = df_tr[df_tr["outcome"] == "True"]["num_contacts"].median()    # 2.0
 
-print(f"The average number contacts for a successful outcome is {int(num_contacts_successful_outcome)}.")
+print(f"The average number of contacts for a successful outcome is {int(num_contacts_successful_outcome)}.")
 
 df_contact_type_pivot = df_tr.pivot_table(index = ["month", "contact"],
                                           columns = "outcome",
@@ -499,7 +502,7 @@ df_days_previous.groupby("contact")[["days_since_previous", "call_centre_volume"
 df_tr.groupby(["month", "outcome"], sort = False)["call_centre_volume"].agg("median")
 
 """#### Overview of the Marketing Campaign 📊
-> The classic savings account was advertised through a call. The clients were contacted on their mobile (22215 calls) and on their landline (12785 calls). There are strange outliers in the data. There are a few people whom we called 56 times, 43 times, 42 times, etc. If someone dares to think of calling me 56 times to advertise his bloody product, he would receive a warm and energetic blessing after the third call. And that lucky number will be added to my "forever after happy block list" for eternity.
+> The classic savings account was advertised through a call. The clients were contacted on mobile (22215 calls) or on their landline (12785 calls). There are strange outliers in the data. There are a few people whom we called 56 times, 43 times, 42 times, etc. If someone dares to think of calling me 56 times to advertise his bloody product, he would receive a warm and energetic blessing after the third call. And that lucky number will be added to my "forever after happy block list" for eternity.
 
 #### Nonexistent Variable ❌
 > In addition, most of the values of the days_since_previous column are nonexistent. The same could be said about the outcome_previous column. The mean number of contacts for a successful call is 2.
@@ -509,7 +512,7 @@ df_tr.groupby(["month", "outcome"], sort = False)["call_centre_volume"].agg("med
 It is very possible that the volume of the call centre does not affect the success of the call.
 
 #### Marketing in the Digital Era 💬
-> As it could be expected, most of the subscriptions came from a mobile device. This is valid for each month. Nevertheless, in the digital era where everyone has a profile in more than one social network, there are certainly better ways to connect with your potential customers.
+> As it could be expected, most of the subscriptions came from a mobile device. This is true for each month. Nevertheless, in the digital era where everyone has a profile in more than one social network, there are certainly better ways to connect with your potential customers.
 
 ## 5. Analysis Based on the Personal Info of the Customers
 """
@@ -641,7 +644,7 @@ df_tr["mortgage"].value_counts().plot(kind = "pie", startangle = -5, ylabel = ""
                                       title = "Mortgage Status of Clients");
 
 df_tr["personal_loan"].value_counts().plot(kind = "pie", ylabel = "",
-                                           legend = "Personal Loan Status of Clients");
+                                           title = "Personal Loan Status of Clients");
 
 clients_with_mortgage = len(df_outcome_true[df_outcome_true["mortgage"] == "yes"])
 clients_with_loan = len(df_outcome_true[df_outcome_true["personal_loan"] == "yes"])
@@ -682,7 +685,7 @@ df_marital_pivot.plot(kind = "bar", rot = 45, figsize = (12, 10),
                       title = "Outcome of the Contact based on Marital Status");
 
 """#### Job of Customers 🛠️
-> Most of the people with a classic savings account have an administrative or technical job. Let's set a 15% treshold for the success rate. The success rate is the ratio of the successful outcomes of a call and the total calls. People who have an administrative job are above the threshold. We could add to them the people who retired, unemployed people and people who participate in full-time education. The product is not very attractive to customers working in other areas. A survey should be made amongst the customers, in order to understand how to improve the product.
+> Most of the people with a classic savings account have an administrative or technical job. Let's set a 15% treshold for the success rate. The success rate is the ratio of the successful outcomes of a call and the total calls. People who have an administrative job are above the threshold. We could add to them the people who retired, unemployed people and people who participate in full-time education. The product is not so attractive to customers working in other areas. A survey should be made amongst the customers, in order to understand how to improve the product.
 
 #### Type of Contact and Outcome of the Contact ☎️
 > The relation between the type of contact and the positive outcome was analysed. Figures proved one more time the point that mobile calls lead to more subscriptions, compared to landline phones.
