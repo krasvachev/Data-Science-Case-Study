@@ -9,4 +9,4 @@ New update with the analysis.
 
 New update 23.01, before starting the ML task...
 
-Final action. Upload the ML Solution + Update the Data science Solution
+Final action. Upload the ML Solution + Update the Data Science Solution.
