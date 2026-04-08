@@ -1,0 +1,12 @@
+# Data Science Case Study
+
+Data Scientist or Machine Learning Engineer in the Big Four (Deloitte, EY, KPMG, PwC)... This is a great opportunity that should not be missed. The Big Four companies generate $219 bilion in revenue, with worldwide offices and more than 1.5 milion employees. This makes them the largest professional service and accountant companies in the world. To be a part of them mean that you could work on various of project in wide variety of fields. One could build a lot of experience in broad specter of topics, especially in the early stages of the career. However, to be a part of Big Four, first you have to pass the interview process. And the case study task... I mean the technical case study.
+
+What is a case study? That's the question I asked myself when heard that I have to tackle such a problem. Typically, there are between 3 and 5 interviews when applying in a Big Four. The case study is a business task, that the candidate has to solve for a specific time. For the tech interview, often the company will give you a real-world dataset. The goal is to perform Exploratory Data Analysis (EDA), apply simple Machine Learning (ML) model and answer specific questions, connected to the task. Usually, the time to solve the three tasks is 3 hours.
+
+When I was doing my preparation I couldn't find a case study example for Data Scientist or ML Engineers. This is the first reason of creating this Repository - to provide the job seekers with exercise to practic. There is also a second reason. I failed to pass the data science case study. However, I decided to solve the task outstandably with a solution that passes successfully the case stydy interview. And last but not least, the goal of the repo is not just helping me, but also helping you to land that dream job.
+
+The repo solves exaustive a data science case study task, that the Big Four Company give on a tech interview. It also provide a guidence how to prepare for the interwiews. The main focus is put on how to tackle the case study. There are also hints how to use the LLM models to help you efficiently with the interviews. 
+
+The solutions are not just limited to the Big Four Accountant Companies. They could be helpful for accountant and service companies, which are not part of Big Four. In addition, the solutions apply most common ML and Data Science practices. That's why
+they could be a good resource for each ML Engineer or Data Scientist for the tech interview preparation. 
