@@ -184,3 +184,55 @@ The third task provides a ready-made GLM ElasticNet (binomial) coefficient table
 | `outcome` | **Target** — whether the customer subscribed |
 
 ---
+
+## Brief and Detailed Solutions
+
+This repository provides **two solution tiers** for each task. They exist for very different purposes.
+
+### Why Two Solutions?
+
+| | Detailed Solution | Concise (Brief) Solution |
+|-|-------------------|--------------------------|
+| **Purpose** | Deep learning and portfolio showcase | Interview time-pressure practice |
+| **Location** | `LittleBank_Case_Study.ipynb` / `LittleBank_Case_Study_ML.ipynb` | `interview_solutions/task_1_eda/` / `interview_solutions/task_2_machine_learning/` |
+| **Depth** | Exhaustive — written insight after every section | Focused on the essential steps only |
+| **Length** | ~140 cells per notebook | Designed to fit comfortably within a 3-hour window |
+| **Best for** | Building a complete understanding of the techniques | Timed mock interviews |
+
+> **Recommended workflow.** Study the detailed solution first to fully absorb the data and techniques. Then practise with the concise solution under realistic time pressure until you can consistently finish within the 3-hour limit.
+
+---
+
+## Structure of the Notebooks
+
+### Task 1 — EDA Notebook (`LittleBank_Case_Study.ipynb`)
+
+| Section | Content |
+|---------|---------|
+| **0.** Load and Overview | Load CSV, inspect dtypes, value counts, class distribution |
+| **1.** Data Cleaning | Remove duplicates, audit missing data, handle `"unknown"` categories |
+| **2.** Macroeconomic & Environmental | Forward rate, consumer confidence, employment, price index, temperature |
+| **3.** Day & Month Influence | Success rate by month and day-of-week |
+| **4.** Marketing Campaign Analysis | Contact type, number of contacts, previous-campaign outcomes |
+| **5.** Customer Profile | Age, marital status, job, education |
+| **6.** Job Category Deep Dive | Subscription rates broken down by profession |
+
+### Task 2 — ML Notebook (`LittleBank_Case_Study_ML.ipynb`)
+
+| Section | Content |
+|---------|---------|
+| **0.** Load and Overview | Same as Task 1 |
+| **1.** Data Cleaning | Encode months/days, drop `"unknown"`, remove outliers |
+| **2.** Distribution & Correlation | Histograms and correlation heatmap |
+| **3.** Class Imbalance (SMOTE) | Apply Synthetic Minority Oversampling Technique |
+| **3.2.** Train–Test Split | 80 / 20 split |
+| **4.** Preprocessing | MinMax scaling + One-Hot Encoding |
+| **5.** Save | Export preprocessed data to parquet |
+| **6.** Baseline Models | Random-guess and all-negative baselines |
+| **6.2.** Logistic Regression | GridSearchCV hyper-parameter tuning |
+| **7.** Lasso & ElasticNet | L1 and L1+L2 regularisation |
+| **8.** Decision Tree & Random Forest | Tree-based models with hyper-parameter tuning |
+| **9.** XGBoost | Gradient boosting |
+| **10.** Model Saving | Export best model with `joblib` / `pickle` |
+
+---
