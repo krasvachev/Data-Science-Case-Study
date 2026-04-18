@@ -92,3 +92,95 @@ Data-Science-Case-Study/
 | `save/` | Preprocessed train/test parquet files (not tracked in git). |
 
 ---
+
+## The Task
+
+### Customer Analytics Case Study — Cross-sell Opportunities for LittleBank
+
+> **Client:** LittleBank — a retail bank providing deposit accounts, loans, and savings products.
+>
+> **Problem:** The head of loan sales has noticed a recent **drop in subscriptions of the "classic savings account"** product, despite consistent telemarketing efforts offering the account to customers. He has turned to our company for advice on how to improve sales of this product.
+
+LittleBank has shared a data file (`LittleBank_Case_Study.csv`) containing historical telemarketing-campaign records. The file includes:
+
+- (i) Attributes of customer contacts when a classic savings product was offered.
+- (ii) Details of any previous campaigns where a similar product had been offered.
+- (iii) Customer attributes.
+- (iv) Macroeconomic and environmental factors at the time each contact was made.
+- (v) An indicator variable showing whether or not the client bought the product.
+
+Since LittleBank has not yet used advanced analytics in its sales and marketing activities, the candidate must come prepared to **describe every algorithm employed and the approach taken** in plain, non-technical language.
+
+### Business Questions
+
+| # | Task | Type |
+|---|------|------|
+| **1** | What steps would you take to **understand and clean this data**? Perform **Exploratory Data Analysis (EDA)**. | Data Analysis |
+| **2** | Produce **feature-importance estimates** from a trained predictive model. The target column is `outcome` — use **only the numerical columns**. Describe how you would explain the technique(s) to the head of loan sales. | Machine Learning |
+| **3** | The table below demonstrates the **coefficients produced from a GLM ElasticNet** on the dataset to predict `outcome`. **Interpret** the table and put together **three recommendations** for the client in the form of one or two PowerPoint slides. | Business Strategy |
+
+> **Time limit:** 3 hours for all three tasks combined.
+
+### GLM ElasticNet Coefficients Provided by the Client
+
+The third task provides a ready-made GLM ElasticNet (binomial) coefficient table. Interpreting it is a core part of the exercise.
+
+| Variable | Coefficient | | Variable | Coefficient |
+|----------|:-----------:|-|----------|:-----------:|
+| `outcome_previous.success` | **+0.2101** | | `default.unknown` | −0.0181 |
+| `month.mar` | +0.0830 | | `job.industrial` | −0.0195 |
+| `days_since_previous` | +0.0453 | | `num_contacts` | −0.0263 |
+| `contact.mobile` | +0.0366 | | `month.nov` | −0.0279 |
+| `job.retired` | +0.0336 | | `contact.landline` | −0.0375 |
+| `consumer_confidence` | +0.0331 | | `day_of_week.mon` | −0.0444 |
+| `job.full_time_education` | +0.0203 | | `forward_rate` | −0.0477 |
+| `default.no` | +0.0194 | | `outcome_previous.failure` | −0.0652 |
+| `month.jul` | +0.0106 | | `employment_variation` | −0.1579 |
+| `low_temp` | +0.0091 | | `month.may` | **−0.2845** |
+| | | | `num_employed` | **−0.5581** |
+| | | | *(Intercept)* | −2.4090 |
+
+> *Notes: all categorical variables were one-hot encoded, all variables were centred and scaled, zero-coefficient variables excluded, and the GLM uses the **binomial** distribution.*
+
+---
+
+## Dataset
+
+| Attribute | Value |
+|-----------|-------|
+| **File** | `data/LittleBank_Case_Study.csv` |
+| **Rows** | 35,000 |
+| **Columns** | 24 (12 numerical, 11 categorical, 1 target) |
+| **Target** | `outcome` — TRUE / FALSE |
+| **Positive class rate** | **11.29 %** (3,952 subscribers vs. 31,048 non-subscribers) |
+| **Imbalance** | Severe — requires resampling or cost-sensitive training |
+
+### Feature Descriptions
+
+| Column | Description |
+|--------|-------------|
+| `month` | Month of latest contact |
+| `day_of_week` | Day of latest contact |
+| `contact` | Type of communication used (mobile / landline) |
+| `num_contacts` | Number of contacts during this telemarketing campaign |
+| `days_since_previous` | Days since contact in previous campaign (`-1` if not contacted before) |
+| `num_contacts_previous` | Number of contacts in previous campaigns |
+| `outcome_previous` | Outcome of previous campaigns |
+| `age` | Age in years |
+| `marital` | Marital status |
+| `job` | Type of job |
+| `education` | Education level |
+| `default` | Is currently in default on a credit product |
+| `mortgage` | Has a mortgage |
+| `personal_loan` | Has personal loans |
+| `call_centre_volume` | Index of load on call centre at time of contact |
+| `high_temp` | Recorded high temperature at customer location on the contact day (°C) |
+| `low_temp` | Recorded low temperature at customer location on the contact day (°C) |
+| `forward_rate` | 3-month forward rate |
+| `num_employed` | Number of employees (macroeconomic indicator) |
+| `consumer_confidence` | Consumer confidence index at time of contact |
+| `price_index` | Weighted average prices of goods |
+| `employment_variation` | Relative employment variation over time |
+| `outcome` | **Target** — whether the customer subscribed |
+
+---
