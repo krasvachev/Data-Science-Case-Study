@@ -699,3 +699,88 @@ State clearly: *"Because the positive rate is only 11 %, I'll apply SMOTE **only
 - Do not argue with the constraint — comply, but **mention** that in production you would retrain on all features and expect a meaningful lift. This shows judgement without defying the brief.
 
 ---
+
+## Python Scripts
+
+The `.py` files are auto-generated script equivalents of the Jupyter notebooks, suitable for batch execution, CI pipelines, or quick command-line re-runs.
+
+| Script | Notebook Equivalent | Description |
+|--------|---------------------|-------------|
+| `littlebank_case_study.py` | `LittleBank_Case_Study.ipynb` | Full EDA pipeline — sections 0 through 6 |
+| `littlebank_case_study_ml.py` | `LittleBank_Case_Study_ML.ipynb` | Full ML pipeline — cleaning through model saving |
+| `interview_solutions/task_1_eda/littlebank_case_study_concise_solution.py` | Concise EDA notebook | Streamlined EDA for time-constrained practice |
+| `interview_solutions/task_2_machine_learning/littlebank_case_study_ml_concise_solution.py` | Concise ML notebook | Streamlined ML pipeline for time-constrained practice |
+
+To run any script:
+
+```bash
+python littlebank_case_study.py
+```
+
+---
+
+## Requirements
+
+Install all dependencies in a fresh virtual environment:
+
+```bash
+python -m venv .venv
+source .venv/bin/activate          # on Windows: .venv\Scripts\activate
+pip install -r requirements.txt
+```
+
+**Key libraries used in the analysis:**
+
+| Library | Version | Purpose |
+|---------|---------|---------|
+| `pandas` | ≥ 2.0 | Data manipulation |
+| `numpy` | ≥ 1.24 | Numerical computing |
+| `matplotlib` | ≥ 3.7 | Plotting |
+| `seaborn` | ≥ 0.12 | Statistical visualisation |
+| `scikit-learn` | ≥ 1.3 | ML models, preprocessing, metrics |
+| `imbalanced-learn` | ≥ 0.11 | SMOTE for class imbalance |
+| `xgboost` | ≥ 1.7 | Gradient boosting |
+| `pyarrow` | ≥ 13.0 | Parquet file support |
+| `joblib` | ≥ 1.3 | Model serialisation |
+| `jupyter` | ≥ 1.0 | Notebook runtime |
+
+---
+
+## Contributing
+
+Contributions, suggestions, and improvements are very welcome — the repository is updated regularly.
+
+**To contribute:**
+
+1. **Fork** the repository.
+2. **Create** a feature branch (`git checkout -b feature/your-feature-name`).
+3. **Commit** your changes (`git commit -m "Add: your feature description"`).
+4. **Push** to the branch (`git push origin feature/your-feature-name`).
+5. **Open** a Pull Request — PRs are welcome!
+
+For major changes, please open an issue first to discuss what you would like to change.
+
+**Good first contributions:**
+
+- Additional interview tips and "gotcha" questions from your own Big Four experience.
+- Alternative modelling approaches (CatBoost, LightGBM, neural models).
+- More visualisations for the EDA notebook.
+- Translations of the README into other languages.
+
+**Maintainer:** [@krasvachev](https://github.com/krasvachev) — feel free to open an issue or reach out directly.
+
+---
+
+## License
+
+This project is licensed under the **MIT License** — see the [LICENSE](LICENSE) file for the full text.
+
+You are free to use, copy, modify, merge, publish, distribute, and adapt this work, including for commercial purposes, as long as the original author is credited.
+
+---
+
+<p align="center">
+  <em>Good luck with your interview. You've got this. 🎯</em>
+  <br><br>
+  <strong>If this repository helped you, please consider giving it a ⭐ — it helps other candidates find it.</strong>
+</p>
