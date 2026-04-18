@@ -359,3 +359,139 @@ success_rate.sort_values(ascending=False)
 > **Insight.** **Retired customers and students (full-time education) are the most receptive segments**, confirmed by positive GLM coefficients (`job.retired` = +0.034, `job.full_time_education` = +0.020). **Industrial workers** are the least likely to subscribe (`job.industrial` = −0.020). Customer segmentation should favour demographics with a higher propensity to save and deprioritise segments with structurally low conversion.
 
 ---
+
+### Task 2 — Machine Learning
+
+#### 0–1. Data Loading and Cleaning
+
+For the ML pipeline, categorical months and days are encoded as integers, `"unknown"` rows are dropped, and IQR-based outlier removal is applied to the numerical columns.
+
+```python
+month_map = {"jan":1,"feb":2,"mar":3,"apr":4,"may":5,"jun":6,
+             "jul":7,"aug":8,"sep":9,"oct":10,"nov":11,"dec":12}
+day_map   = {"mon":1,"tue":2,"wed":3,"thu":4,"fri":5}
+
+df["month"]       = df["month"].map(month_map)
+df["day_of_week"] = df["day_of_week"].map(day_map)
+
+# Drop rows containing "unknown"
+df = df[~df.isin(["unknown"]).any(axis=1)]
+```
+
+---
+
+#### 2. Distribution and Correlation
+
+Histograms of the numerical features and a correlation heatmap are drawn to detect skew, multicollinearity, and obvious outliers. Several macroeconomic variables (`num_employed`, `employment_variation`, `forward_rate`) are highly correlated — an important consideration when choosing a model class (linear models penalise this; tree models are immune).
+
+---
+
+#### 3. Handling Class Imbalance — SMOTE
+
+The 11 % positive rate makes raw accuracy a misleading metric. SMOTE (Synthetic Minority Oversampling Technique) is applied to the **training set only** to create balanced classes during fitting.
+
+```python
+from collections import Counter
+from imblearn.over_sampling import SMOTE
+
+smote = SMOTE(random_state=42)
+X_train_res, y_train_res = smote.fit_resample(X_train, y_train)
+
+print(f"Before SMOTE: {Counter(y_train)}")
+print(f"After  SMOTE: {Counter(y_train_res)}")
+```
+
+> **Why SMOTE?** A naive classifier that always predicts *"no subscription"* achieves ~88.7 % accuracy — but **0 % recall**. Since the business goal is to **find potential subscribers**, recall is the primary evaluation metric.
+
+---
+
+#### 4. Preprocessing
+
+```python
+from sklearn.compose import ColumnTransformer
+from sklearn.preprocessing import MinMaxScaler, OneHotEncoder
+
+numerical_features = [
+    "num_contacts", "days_since_previous", "num_contacts_previous", "age",
+    "call_centre_volume", "high_temp", "low_temp", "forward_rate",
+    "num_employed", "consumer_confidence", "price_index", "employment_variation"
+]
+
+categorical_features = [
+    "month", "day_of_week", "contact", "outcome_previous", "marital",
+    "job", "education", "default", "mortgage", "personal_loan"
+]
+
+preprocessor = ColumnTransformer([
+    ("num", MinMaxScaler(), numerical_features),
+    ("cat", OneHotEncoder(handle_unknown="ignore"), categorical_features),
+])
+```
+
+> **Task 2 constraint.** The client specifically requires **only the numerical columns** to be used for the feature-importance model. The importance analysis below is therefore restricted to the 12 numerical features listed above.
+
+---
+
+#### 5. Model Training
+
+The notebook trains six model families in ascending complexity:
+
+1. **Baselines** (random-guess and all-negative) — to anchor expectations.
+2. **Logistic Regression** with `GridSearchCV`.
+3. **Lasso** (L1) and **ElasticNet** (L1 + L2) regularised logistic models.
+4. **Decision Tree** — interpretable, prone to over-fitting.
+5. **Random Forest** — the winner on recall.
+6. **XGBoost** — close second, slightly higher precision.
+
+```python
+from sklearn.ensemble import RandomForestClassifier
+from sklearn.metrics import accuracy_score, recall_score, precision_score
+
+rf = RandomForestClassifier(n_estimators=500, random_state=42, n_jobs=-1)
+rf.fit(X_train_res, y_train_res)
+
+y_pred = rf.predict(X_test)
+print(f"Test Accuracy: {accuracy_score(y_test, y_pred):.4f}")
+print(f"Recall       : {recall_score(y_test, y_pred):.4f}")
+print(f"Precision    : {precision_score(y_test, y_pred):.4f}")
+```
+
+---
+
+#### 6. Feature Importance
+
+Feature importance reveals which **numerical** variables drive subscription predictions the most.
+
+```python
+importances = pd.Series(rf.feature_importances_, index=numerical_features)
+importances.nlargest(12).sort_values().plot(kind="barh", figsize=(10, 6))
+plt.title("Feature Importance — Random Forest")
+plt.xlabel("Importance score")
+plt.tight_layout()
+plt.show()
+```
+
+<p align="center">
+  <img src="images/task_2_figures/feature_importance_random_forest.png" width="680" alt="Random Forest feature importance"/>
+</p>
+
+> **Insight.** The **macroeconomic indicators** dominate — `forward_rate`, `num_employed`, `consumer_confidence`, and `employment_variation` are the top drivers. This strongly supports the recommendation to **time campaigns around economic conditions**. `age` and `num_contacts` contribute meaningfully but are secondary.
+
+**How to explain Random Forest to a non-technical stakeholder:**
+> *"We build hundreds of small decision trees on random subsets of customers and features. Each tree 'votes' on whether a customer will subscribe, and the forest's final answer is the majority vote. A feature's importance is how often and how decisively it is used across all trees to separate subscribers from non-subscribers."*
+
+---
+
+#### 7. Month and Day-of-Week Patterns (ML view)
+
+<p align="center">
+  <img src="images/task_2_figures/month_vs_outcome.png" width="640" alt="Month vs outcome"/>
+</p>
+
+<p align="center">
+  <img src="images/task_2_figures/days_of_week_vs_outcome.png" width="640" alt="Day of week vs outcome"/>
+</p>
+
+> **Insight.** The month-vs-outcome and day-vs-outcome plots reinforce the EDA findings. Thursday and Friday slightly outperform Monday, and the monthly pattern matches Task 1 exactly — a reassuring cross-check.
+
+---
