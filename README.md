@@ -559,3 +559,143 @@ The recent drop in classic-savings subscriptions has **three interconnected root
 > **Estimated commercial impact:** realistically, applying all three recommendations (mobile-only, March/July timing, retired + student segments, capped contacts, top-decile scoring) can roughly **double the campaign conversion rate** from its current 11 % — without increasing call-centre volume.
 
 ---
+
+## How to Tackle the Interview
+
+This is the section you came here for. It is split into three parts:
+
+1. **Basic advice** for a Data Science / ML interview at a Big Four firm.
+2. **Task-1 specific advice** — how to approach the EDA task.
+3. **Task-2 specific advice** — how to approach the ML task.
+
+> This section will continue to be expanded with additional tips, failure modes to avoid, and LLM-assisted workflows. The core framework is below.
+
+---
+
+### Basic Advice for a Big Four Data Science / ML Interview
+
+**Know the environment.**
+
+- Big Four interview panels frequently include **non-technical stakeholders** (engagement managers, partners). Every explanation must land for a smart business audience, not just a machine-learning peer.
+- There are usually **3–5 interviews** in total: HR screen, technical case study (this one), business-case presentation, a partner / fit interview, and sometimes a modelling deep-dive.
+- The **technical case study** is typically **3 hours** for all questions combined and is done on your own machine.
+
+**Prepare your environment.**
+
+- Have a clean Jupyter/VS Code setup ready with `pandas`, `numpy`, `matplotlib`, `seaborn`, `scikit-learn`, `imbalanced-learn`, and `xgboost` pre-installed.
+- Keep a **personal snippets file** with your favourite EDA boilerplate (`df.info()`, `df.describe()`, missing-value audit, class-imbalance check).
+- Have the dataset loaded and the concise notebook template open before the clock starts.
+
+**Use a repeatable answer structure.**
+
+- For every question, use **Problem → Approach → Result → Recommendation**. Big Four reviewers score you on structured thinking as much as on code quality.
+
+**Time-box aggressively.**
+
+| Phase | Suggested budget |
+|-------|:-----------------|
+| Data overview + cleaning | 20 min |
+| Core EDA with 5–7 plots | 60 min |
+| ML pipeline (baseline → RF / XGB) | 60 min |
+| Feature importance + interpretation | 20 min |
+| Business recommendations | 20 min |
+
+> My original case-study attempt failed **specifically because I ran out of time**. The single most impactful change was switching to the concise notebook template and practising until I could finish within 3 hours reliably.
+
+**Use LLMs strategically.**
+
+- Use Claude, ChatGPT, or Copilot to generate boilerplate quickly — but **understand every line** you submit.
+- Good prompts: *"Write a function that computes subscription rate by month and plots it as a bar chart."*
+- Bad prompts: *"Solve this case study."* — you will fail when asked to explain your code.
+- Keep a prepared library of prompts for: data-overview, class-imbalance handling, SMOTE, GridSearchCV, feature-importance plotting.
+
+**Rehearse the narrative.**
+
+- Record yourself walking through the notebook as if presenting to the head of loan sales. Focus on *why* each step exists, not *what* you typed.
+
+---
+
+### Advice for Task 1 — Exploratory Data Analysis
+
+**Start with the three-command overview.**
+
+```python
+df.info()
+df.describe(include="all")
+df["outcome"].value_counts(normalize=True)
+```
+
+These three lines reveal dtypes, scale, missing data, and the class distribution — roughly **80 % of everything you need to know** about the dataset.
+
+**Flag class imbalance immediately.**
+
+- Say it out loud: *"The positive class is only 11.3 %. This has three consequences: (i) I'll use recall as the headline metric, (ii) I'll apply SMOTE inside the training fold, and (iii) I'll include a naive all-negative baseline to anchor expectations."*
+
+**Choose 5–7 impactful visualisations — not 15 mediocre ones.**
+
+For this dataset, the must-have plots are:
+
+1. Target class distribution (pie or bar).
+2. Success rate by month.
+3. Success rate by day-of-week.
+4. Success rate by profession.
+5. Correlation heatmap of numerical features.
+6. Histogram of `num_contacts` split by outcome.
+7. (Bonus) Economic indicator trend vs. outcome.
+
+**Always close each section with a one-sentence business insight.**
+
+Not: *"May has the lowest count."*
+Yes: *"May is the worst month for conversion — we should cut campaign spend in May by 70 %."*
+
+**Handle missing data transparently.**
+
+- `"unknown"` is **not** a missing value in a strict sense — it is a category. Treat it as such in EDA. In the ML pipeline, drop it or one-hot encode it explicitly.
+
+---
+
+### Advice for Task 2 — Machine Learning
+
+**Always start with a baseline.**
+
+```python
+# All-negative baseline: predict FALSE for everyone.
+y_pred_baseline = np.zeros_like(y_test)
+print("Baseline accuracy:", (y_pred_baseline == y_test).mean())   # ~88.7 %
+print("Baseline recall  :", 0.0)                                  # zero subscribers found
+```
+
+This single block disarms the "why not just predict majority class?" trap and shows rigour.
+
+**Explain class imbalance and your solution before training.**
+
+State clearly: *"Because the positive rate is only 11 %, I'll apply SMOTE **only inside the training fold** to avoid data leakage, and I'll evaluate using recall and precision — not raw accuracy."*
+
+**Match the metric to the business.**
+
+- **Missing a subscriber (false negative) costs more than contacting a non-subscriber (false positive)** — recall is therefore the primary metric.
+- Be prepared to defend this with a simple cost sketch: *"A missed subscriber is a lost lifetime-value of ~£X; an unwanted call costs a few pence of call-centre time."*
+
+**Climb the model-complexity ladder.**
+
+1. Logistic Regression — fast, interpretable, benchmark.
+2. Lasso / ElasticNet — regularisation + automatic feature selection.
+3. Decision Tree — the interpretability sweet-spot.
+4. Random Forest — the workhorse.
+5. XGBoost — the state-of-the-art finisher.
+
+**Prepare plain-English one-liners for every model.**
+
+- *Logistic Regression*: "A weighted vote over the features — weights tell us direction and strength of influence."
+- *Random Forest*: "A committee of decision trees, each trained on a random subset of the data — we take the majority vote."
+- *XGBoost*: "Many shallow trees built sequentially, each correcting the mistakes of the previous one."
+
+**Feature importance is a storytelling tool.**
+
+- Sort the bars from largest to smallest and read them as a business narrative: *"The model tells us timing and economic context matter most; the customer's profession and recent contact history matter second; demographics matter least."*
+
+**Use the task constraint ("only numerical columns") as a strength.**
+
+- Do not argue with the constraint — comply, but **mention** that in production you would retrain on all features and expect a meaningful lift. This shows judgement without defying the brief.
+
+---
