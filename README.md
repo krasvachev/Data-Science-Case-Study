@@ -46,3 +46,49 @@ The solutions are not limited to the Big Four accounting companies. They can be 
 13. [License](#license)
 
 ---
+
+## Repository Structure
+
+```
+Data-Science-Case-Study/
+│
+├── LittleBank_Case_Study.ipynb              # Exhaustive EDA solution (Task 1)
+├── LittleBank_Case_Study_ML.ipynb           # Exhaustive ML solution (Task 2)
+├── littlebank_case_study.py                 # Script equivalent of the EDA notebook
+├── littlebank_case_study_ml.py              # Script equivalent of the ML notebook
+│
+├── interview_solutions/
+│   ├── task_1_eda/
+│   │   ├── LittleBank_Case_Study_Concise_Solution.ipynb   # Concise EDA (interview use)
+│   │   └── littlebank_case_study_concise_solution.py
+│   └── task_2_machine_learning/
+│       ├── LittleBank_Case_Study_ML_Concise_Solution.ipynb # Concise ML (interview use)
+│       └── littlebank_case_study_ml_concise_solution.py
+│
+├── data/
+│   └── LittleBank_Case_Study.csv            # Source dataset (35,000 records)
+│
+├── models/
+│   └── model_decision_tree.pkl              # Saved Decision Tree model
+│
+├── images/
+│   ├── task_1_figures/                       # EDA visualisations
+│   └── task_2_figures/                       # ML visualisations
+│
+├── save/                                     # Preprocessed data (parquet, gitignored)
+├── requirements.txt
+├── LICENSE
+└── README.md
+```
+
+| Folder / File | Purpose |
+|---------------|---------|
+| `LittleBank_Case_Study.ipynb` | The **detailed** EDA notebook — every section ends with a written business insight. |
+| `LittleBank_Case_Study_ML.ipynb` | The **detailed** ML notebook — baselines, regularised models, tree models, XGBoost, and feature importance. |
+| `interview_solutions/` | **Concise** versions of both notebooks, optimised for the 3-hour time limit. |
+| `data/` | The source CSV provided by the client. |
+| `models/` | Serialised model artefacts. |
+| `images/` | All plots generated during the analysis, split by task. |
+| `save/` | Preprocessed train/test parquet files (not tracked in git). |
+
+---
