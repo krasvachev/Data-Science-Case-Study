@@ -236,3 +236,126 @@ This repository provides **two solution tiers** for each task. They exist for ve
 | **10.** Model Saving | Export best model with `joblib` / `pickle` |
 
 ---
+
+## Solutions
+
+### Task 1 — Exploratory Data Analysis (EDA)
+
+#### 0. Load and Overview
+
+The first step is always to understand what you are working with.
+
+```python
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+import seaborn as sns
+
+df = pd.read_csv("data/LittleBank_Case_Study.csv").convert_dtypes()
+df["outcome"] = df["outcome"].astype("string")
+
+print(df.shape)     # (35000, 24)
+df.info()
+df.describe()
+```
+
+**Class distribution — the single most important finding:**
+
+```python
+df["outcome"].value_counts().plot(kind="pie", startangle=90, autopct="%1.2f")
+plt.title("Outcome of the Customer's Subscription")
+plt.ylabel("")
+plt.show()
+```
+
+<p align="center">
+  <img src="images/task_1_figures/outcome_of_the_customers_subscription.png" width="460" alt="Outcome pie chart"/>
+</p>
+
+> **Insight.** Only **11.29 %** of the 35,000 contacted customers subscribed. This severe class imbalance is the most important data characteristic — it dictates the evaluation metric (recall, not accuracy) and the modelling strategy (resampling) used in Task 2. It also signals that the campaign has been largely ineffective: ~31,000 contacts were made with no sale.
+
+---
+
+#### 1. Data Cleaning
+
+```python
+# Duplicate check
+print(f"Duplicate rows: {df.duplicated().sum()}")
+
+# Missing values are encoded as the literal string "unknown"
+for col in df.select_dtypes(include="string").columns:
+    n_unknown = (df[col] == "unknown").sum()
+    if n_unknown > 0:
+        print(f"{col}: {n_unknown} unknowns ({n_unknown/len(df)*100:.1f}%)")
+
+# 'days_since_previous == -1' encodes 'never contacted before'
+print(f"No previous contact: {(df['days_since_previous'] == -1).sum()}")
+```
+
+**Key cleaning decisions:**
+
+- No duplicate rows found.
+- Several categorical columns contain `"unknown"` — treated as a separate category during EDA, dropped in the ML pipeline.
+- `days_since_previous = -1` is a sentinel for "no previous contact" — handled explicitly rather than imputed.
+
+---
+
+#### 2. Macroeconomic and Environmental Factors
+
+The dataset includes macroeconomic indicators (`num_employed`, `employment_variation`, `consumer_confidence`, `forward_rate`, `price_index`) and weather indicators (`high_temp`, `low_temp`) captured at the time of each contact.
+
+> **Insight.** Economic conditions at the time of contact are powerful predictors. The GLM ElasticNet coefficients confirm this dramatically — `num_employed` (**−0.558**) and `employment_variation` (**−0.158**) are the **two strongest negative predictors in the entire model**. Campaigns launched during periods of high employment and positive employment growth perform significantly worse — customers with stable jobs and rising wages are simply less interested in a classic savings account.
+
+---
+
+#### 3. Day and Month Influence
+
+```python
+# Success rate by month
+success_rate = (
+    df[df["outcome"] == "TRUE"].groupby("month").size()
+    / df.groupby("month").size()
+)
+success_rate.sort_values(ascending=False)
+```
+
+<p align="center">
+  <img src="images/task_1_figures/success_of_the_marketing_campaign_by_months.png" width="680" alt="Success rate by month"/>
+</p>
+
+> **Insight.** **March, September, October, and December** show the highest subscription rates. **May** is by far the worst month — the GLM confirms this with a coefficient of **−0.285**, the second-strongest negative in the model. Campaigns should be concentrated in high-performing months and scaled back in May and November. Monday is consistently the weakest day of the week (GLM: `day_of_week.mon` = −0.044).
+
+---
+
+#### 4. Marketing Campaign Analysis
+
+<p align="center">
+  <img src="images/task_1_figures/outcome_of_the_marketing.png" width="640" alt="Outcome of the marketing campaign"/>
+</p>
+
+<p align="center">
+  <img src="images/task_1_figures/the_outcome_of_the_advertisement_campaign.png" width="640" alt="Advertisement campaign outcome"/>
+</p>
+
+**Strategic levers uncovered by the campaign analysis:**
+
+- **Mobile beats landline.** `contact.mobile` = +0.037 versus `contact.landline` = −0.038. The channel choice alone moves the needle.
+- **Over-contacting hurts.** `num_contacts` = −0.026. Each additional call within the same campaign *reduces* the probability of subscription — a clear case of diminishing returns.
+- **Previous success is the strongest positive signal.** `outcome_previous.success` = **+0.210** — the single largest positive coefficient. Customers who have subscribed before are the highest-value targets.
+- **Recovery time matters.** `days_since_previous` = +0.045 — customers need breathing room between touchpoints.
+
+---
+
+#### 5. Customer Profile
+
+<p align="center">
+  <img src="images/task_1_figures/number_of_customers_by_age.png" width="640" alt="Customer age distribution"/>
+</p>
+
+<p align="center">
+  <img src="images/task_1_figures/subscriptions_by_proffesion_of_the_customers.png" width="700" alt="Subscriptions by profession"/>
+</p>
+
+> **Insight.** **Retired customers and students (full-time education) are the most receptive segments**, confirmed by positive GLM coefficients (`job.retired` = +0.034, `job.full_time_education` = +0.020). **Industrial workers** are the least likely to subscribe (`job.industrial` = −0.020). Customer segmentation should favour demographics with a higher propensity to save and deprioritise segments with structurally low conversion.
+
+---
