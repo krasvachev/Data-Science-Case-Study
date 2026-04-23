@@ -51,11 +51,11 @@ The solutions are not limited to the Big Four accounting companies. They can be 
 
 ### Customer Analytics Case Study — Cross-sell Opportunities for LittleBank
 
-==**Client:**== LittleBank — a retail bank providing deposit accounts, loans and savings products.
+<mark>**Client:**</mark> LittleBank — a retail bank providing deposit accounts, loans and savings products.
 
 <mark>**Problem:**</mark> The head of loan sales has noticed a recent **drop in subscriptions of the "classic savings account"** product, despite consistent telemarketing efforts offering the account to customers. He has turned to our company for advice on how to improve sales of this product.
 
-**Data:** LittleBank has shared a data file (`LittleBank_Case_Study.csv`) containing historical telemarketing-campaign records. 
+<mark>**Data:**</mark> LittleBank has shared [a data file](data) (`LittleBank_Case_Study.csv`) containing historical telemarketing-campaign records. 
 
 The file includes:
 
@@ -71,7 +71,7 @@ Since LittleBank has not yet used advanced analytics in its sales and marketing 
 
 | # | Task |  Type  |
 |---|------|:------:|
-| **1** | What steps would you take to **understand and clean this data**? Perform **Exploratory Data Analysis (EDA)**. | Data Analysis |
+| **1** | What steps would you take to **understand and clean this data**? Perform **Exploratory Data Analysis (EDA)**. | Exploratory Data Analysis |
 | **2** | Produce **feature-importance estimates** from a trained predictive model. The target column is `outcome` — use **only the numerical columns**. Describe how you would explain the technique(s) to the head of loan sales. | Machine Learning |
 | **3** | The table below demonstrates the **coefficients produced from a GLM ElasticNet** on the dataset to predict `outcome`. **Interpret** the table and put together **three recommendations** for the client in the form of one or two PowerPoint slides. | Business Strategy |
 
