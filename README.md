@@ -29,7 +29,7 @@ The solutions are not limited to the Big Four accounting companies. They can be 
 
 ## Table of Contents
 
-1. [Case Study Instructions](#the-task)
+1. [Case Study Instructions](#case-study-instructions)
 2. [Dataset](#dataset)
 3. [Repository Structure](#repository-structure)
 4. [Brief and Detailed Solutions](#brief-and-detailed-solutions)
