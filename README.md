@@ -51,11 +51,13 @@ The solutions are not limited to the Big Four accounting companies. They can be 
 
 ### Customer Analytics Case Study — Cross-sell Opportunities for LittleBank
 
-> **Client:** LittleBank — a retail bank providing deposit accounts, loans and savings products.
->
-> **Problem:** The head of loan sales has noticed a recent **drop in subscriptions of the "classic savings account"** product, despite consistent telemarketing efforts offering the account to customers. He has turned to our company for advice on how to improve sales of this product.
+**Client:** LittleBank — a retail bank providing deposit accounts, loans and savings products.
 
-LittleBank has shared a data file (`LittleBank_Case_Study.csv`) containing historical telemarketing-campaign records. The file includes:
+**Problem:** The head of loan sales has noticed a recent **drop in subscriptions of the "classic savings account"** product, despite consistent telemarketing efforts offering the account to customers. He has turned to our company for advice on how to improve sales of this product.
+
+**Data:** LittleBank has shared a data file (`LittleBank_Case_Study.csv`) containing historical telemarketing-campaign records. 
+
+The file includes:
 
 - (i) Attributes of customer contacts when a classic savings product was offered.
 - (ii) Details of any previous campaigns where a similar product had been offered.
@@ -63,7 +65,7 @@ LittleBank has shared a data file (`LittleBank_Case_Study.csv`) containing histo
 - (iv) Macroeconomic and environmental factors at the time each contact was made.
 - (v) An indicator variable showing whether or not the client bought the product.
 
-Since LittleBank has not yet used advanced analytics in its sales and marketing activities, the candidate must come prepared to **describe every algorithm employed and the approach taken** in plain, non-technical language.
+Since LittleBank has not yet used advanced analytics in its sales and marketing activities, the candidate must come prepared to **describe every algorithm employed and the approach taken** in plain, non-technical language. To conduct your analysis, please develop a Python Jupyter notebook for the coding part of the questions below. 
 
 ### Business Questions
 
