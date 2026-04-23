@@ -55,7 +55,7 @@ The solutions are not limited to the Big Four accounting companies. They can be 
 
 <mark>**Problem:**</mark> The head of loan sales has noticed a recent **drop in subscriptions of the "classic savings account"** product, despite consistent telemarketing efforts offering the account to customers. He has turned to our company for advice on how to improve sales of this product.
 
-<mark>**Data:**</mark> LittleBank has shared [a data file](data) (`LittleBank_Case_Study.csv`) containing historical telemarketing-campaign records. 
+<mark>**Data:**</mark> LittleBank has shared a [data file](https://github.com/krasvachev/Data-Science-Case-Study/tree/749f388c5ddd75bffebf4815294aec153770be96/data) (`LittleBank_Case_Study.csv`) containing historical telemarketing-campaign records. 
 
 The file includes:
 
