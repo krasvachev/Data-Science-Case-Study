@@ -69,8 +69,8 @@ Since LittleBank has not yet used advanced analytics in its sales and marketing 
 
 ### Business Questions
 
-| # | Task | Type |
-|---|------|------|
+| # | Task |  Type  |
+|---|------|:------:|
 | **1** | What steps would you take to **understand and clean this data**? Perform **Exploratory Data Analysis (EDA)**. | Data Analysis |
 | **2** | Produce **feature-importance estimates** from a trained predictive model. The target column is `outcome` — use **only the numerical columns**. Describe how you would explain the technique(s) to the head of loan sales. | Machine Learning |
 | **3** | The table below demonstrates the **coefficients produced from a GLM ElasticNet** on the dataset to predict `outcome`. **Interpret** the table and put together **three recommendations** for the client in the form of one or two PowerPoint slides. | Business Strategy |
@@ -81,22 +81,32 @@ Since LittleBank has not yet used advanced analytics in its sales and marketing 
 
 The third task provides a ready-made GLM ElasticNet (binomial) coefficient table. Interpreting it is a core part of the exercise.
 
-| Variable | Coefficient | | Variable | Coefficient |
-|----------|:-----------:|-|----------|:-----------:|
-| `outcome_previous.success` | **+0.2101** | | `default.unknown` | −0.0181 |
-| `month.mar` | +0.0830 | | `job.industrial` | −0.0195 |
-| `days_since_previous` | +0.0453 | | `num_contacts` | −0.0263 |
-| `contact.mobile` | +0.0366 | | `month.nov` | −0.0279 |
-| `job.retired` | +0.0336 | | `contact.landline` | −0.0375 |
-| `consumer_confidence` | +0.0331 | | `day_of_week.mon` | −0.0444 |
-| `job.full_time_education` | +0.0203 | | `forward_rate` | −0.0477 |
-| `default.no` | +0.0194 | | `outcome_previous.failure` | −0.0652 |
-| `month.jul` | +0.0106 | | `employment_variation` | −0.1579 |
-| `low_temp` | +0.0091 | | `month.may` | **−0.2845** |
-| | | | `num_employed` | **−0.5581** |
-| | | | *(Intercept)* | −2.4090 |
+| Variable                   | Coefficient |
+|:---------------------------|------------:|
+| outcome_previous.success   |      0.2101 |
+| month.mar                  |      0.0830 |
+| days_since_previous        |      0.0453 |
+| contact.mobile             |      0.0366 |
+| job.retired                |      0.0336 |
+| consumer_confidence        |      0.0331 |
+| job.full_time_education    |      0.0203 |
+| default.no                 |      0.0194 |
+| month.jul                  |      0.0106 |
+| low_temp                   |      0.0091 |
+| default.unknown            |     -0.0181 |
+| job.industrial             |     -0.0195 |
+| num_contacts               |     -0.0263 |
+| month.nov                  |     -0.0279 |
+| contact.landline           |     -0.0375 |
+| day_of_week.mon            |     -0.0444 |
+| forward_rate               |     -0.0477 |
+| outcome_previous.failure   |     -0.0652 |
+| employment_variation       |     -0.1579 |
+| month.may                  |     -0.2845 |
+| num_employed               |     -0.5581 |
+| (Intercept)                |     -2.4090 |
 
-> *Notes: all categorical variables were one-hot encoded, all variables were centred and scaled, zero-coefficient variables excluded and the GLM uses the **binomial** distribution.*
+> *Notes: all categorical variables were one-hot encoded, all variables were centred and scaled, zero-coefficient variables excluded; the GLM uses the **binomial** distribution.*
 
 ---
 
