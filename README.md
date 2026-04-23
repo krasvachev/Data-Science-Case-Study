@@ -15,11 +15,11 @@
 
 ## Introduction
 
-A Data Scientist 📊 or Machine Learning Engineer 📈 role at one of the Big Four companies (Deloitte, EY, KPMG, PwC)... That's a great opportunity that should not be missed. The Big Four companies generate  $219 billion 💵 in revenue, with worldwide offices and more than 1.5 million employees 🧑‍💼. This makes them the largest professional service and accounting companies in the world 🧮. Being a part of them means you could work on a variety of projects across a wide range of fields, and build broad experience across many topics — especially in the early stages of your career 🚀. However, to be a part of the Big Four, first you have to pass the interview process. And the case study task... I mean the technical case study 👨‍💻.
+A Data Scientist 📊 or Machine Learning Engineer 📈 role at one of the Big Four companies (Deloitte, EY, KPMG, PwC)... That's a great opportunity that should not be missed. The Big Four companies generate  $219 billion in revenue 💵, with worldwide offices and more than 1.5 million employees 🧑‍💼. This makes them the largest professional service and accounting companies in the world 🧮. Being a part of them means you could work on a variety of projects across a wide range of fields and build broad experience across many topics — especially in the early stages of your career 🚀. However, to be a part of the Big Four, first you have to pass the interview process. And the case study task... I mean the technical case study 👨‍💻.
 
-What is a case study 😦🤨? That is the question I asked myself when I first heard that I had to tackle such a problem. A coding task or implementing an ML algorigh, we all get that. But what a case study actially is 🤷‍♂️🤷‍♂️🤷‍♂️? Typically, there are between 3 and 5 steps when applying to a Big Four company. The case study is a business task that the candidate has to solve within a fixed time ⌛. For the tech interview, the company often provides a real-world dataset. The goal is to perform Exploratory Data Analysis (EDA) 📊, apply Machine Learning (ML) models 📈, and answer specific business questions connected to the task 📝. Usually, the time to solve all three tasks is 3 hours.
+What is a case study 😦🤨? That is the question I asked myself when I first heard that I had to tackle such a problem. A coding task or implementing an ML algorithm, we all get that. But what a case study actially is 🤷‍♂️🤷‍♂️🤷‍♂️? Typically, there are between 3 and 5 steps when applying to a Big Four company. The case study is a business task that the candidate has to solve within a fixed time ⌛. For the tech interview, the company often provides a real-world dataset. The goal is to perform Exploratory Data Analysis (EDA) 📊, apply Machine Learning (ML) models 📈 and answer specific business questions connected to the task 📝. Usually, the time to solve all three tasks is 3 hours.
 
-When I was doing my preparation, I could not find a case study example for Data Scientists or ML Engineers. This is the first reason for creating this repository — to provide job seekers with an exercise to practise on 🔍. There is also a second reason: I failed to pass the data science case study. However, I decided to solve the task outstandingly with a solution that successfully passes the case study interview. And last but not least, the goal of the repo is not just helping me, but also helping **you** land that dream job 💪.
+When I was doing my preparation, I could not find a case study example for Data Scientists or ML Engineers. This is the first reason for creating this repository — to provide job seekers with an exercise to practise on 🔍. There is also a second reason: I failed to pass the data science case study. However, I decided to solve the task outstandingly with a solution that successfully passes the case study interview. And last but not least, the goal of the repo is not just helping me, but also helping **you** land that dream job 💪💪💪.
 
 The repo provides an exhaustive solution to a Data Science case study task given during a Big Four technical interview. It also provides guidance on how to prepare for the interviews 📋. The main focus is put on how to tackle the case study. There are also hints on how to use LLM models to help you efficiently during your interview preparation 🤖.
 
@@ -29,9 +29,9 @@ The solutions are not limited to the Big Four accounting companies. They can be 
 
 ## Table of Contents
 
-1. [Repository Structure](#repository-structure)
-2. [The Task](#the-task)
-3. [Dataset](#dataset)
+1. [Case Study Instructions](#the-task)
+2. [Dataset](#dataset)
+3. [Repository Structure](#repository-structure)
 4. [Brief and Detailed Solutions](#brief-and-detailed-solutions)
 5. [Structure of the Notebooks](#structure-of-the-notebooks)
 6. [Solutions](#solutions)
@@ -47,57 +47,11 @@ The solutions are not limited to the Big Four accounting companies. They can be 
 
 ---
 
-## Repository Structure
-
-```
-Data-Science-Case-Study/
-│
-├── LittleBank_Case_Study.ipynb              # Exhaustive EDA solution (Task 1)
-├── LittleBank_Case_Study_ML.ipynb           # Exhaustive ML solution (Task 2)
-├── littlebank_case_study.py                 # Script equivalent of the EDA notebook
-├── littlebank_case_study_ml.py              # Script equivalent of the ML notebook
-│
-├── interview_solutions/
-│   ├── task_1_eda/
-│   │   ├── LittleBank_Case_Study_Concise_Solution.ipynb   # Concise EDA (interview use)
-│   │   └── littlebank_case_study_concise_solution.py
-│   └── task_2_machine_learning/
-│       ├── LittleBank_Case_Study_ML_Concise_Solution.ipynb # Concise ML (interview use)
-│       └── littlebank_case_study_ml_concise_solution.py
-│
-├── data/
-│   └── LittleBank_Case_Study.csv            # Source dataset (35,000 records)
-│
-├── models/
-│   └── model_decision_tree.pkl              # Saved Decision Tree model
-│
-├── images/
-│   ├── task_1_figures/                       # EDA visualisations
-│   └── task_2_figures/                       # ML visualisations
-│
-├── save/                                     # Preprocessed data (parquet, gitignored)
-├── requirements.txt
-├── LICENSE
-└── README.md
-```
-
-| Folder / File | Purpose |
-|---------------|---------|
-| `LittleBank_Case_Study.ipynb` | The **detailed** EDA notebook — every section ends with a written business insight. |
-| `LittleBank_Case_Study_ML.ipynb` | The **detailed** ML notebook — baselines, regularised models, tree models, XGBoost, and feature importance. |
-| `interview_solutions/` | **Concise** versions of both notebooks, optimised for the 3-hour time limit. |
-| `data/` | The source CSV provided by the client. |
-| `models/` | Serialised model artefacts. |
-| `images/` | All plots generated during the analysis, split by task. |
-| `save/` | Preprocessed train/test parquet files (not tracked in git). |
-
----
-
-## The Task
+## Case Study Instructions
 
 ### Customer Analytics Case Study — Cross-sell Opportunities for LittleBank
 
-> **Client:** LittleBank — a retail bank providing deposit accounts, loans, and savings products.
+> **Client:** LittleBank — a retail bank providing deposit accounts, loans and savings products.
 >
 > **Problem:** The head of loan sales has noticed a recent **drop in subscriptions of the "classic savings account"** product, despite consistent telemarketing efforts offering the account to customers. He has turned to our company for advice on how to improve sales of this product.
 
@@ -140,7 +94,7 @@ The third task provides a ready-made GLM ElasticNet (binomial) coefficient table
 | | | | `num_employed` | **−0.5581** |
 | | | | *(Intercept)* | −2.4090 |
 
-> *Notes: all categorical variables were one-hot encoded, all variables were centred and scaled, zero-coefficient variables excluded, and the GLM uses the **binomial** distribution.*
+> *Notes: all categorical variables were one-hot encoded, all variables were centred and scaled, zero-coefficient variables excluded and the GLM uses the **binomial** distribution.*
 
 ---
 
@@ -182,6 +136,52 @@ The third task provides a ready-made GLM ElasticNet (binomial) coefficient table
 | `price_index` | Weighted average prices of goods |
 | `employment_variation` | Relative employment variation over time |
 | `outcome` | **Target** — whether the customer subscribed |
+
+---
+
+## Repository Structure
+
+```
+Data-Science-Case-Study/
+│
+├── LittleBank_Case_Study.ipynb              # Exhaustive EDA solution (Task 1)
+├── LittleBank_Case_Study_ML.ipynb           # Exhaustive ML solution (Task 2)
+├── littlebank_case_study.py                 # Script equivalent of the EDA notebook
+├── littlebank_case_study_ml.py              # Script equivalent of the ML notebook
+│
+├── interview_solutions/
+│   ├── task_1_eda/
+│   │   ├── LittleBank_Case_Study_Concise_Solution.ipynb   # Concise EDA (interview use)
+│   │   └── littlebank_case_study_concise_solution.py
+│   └── task_2_machine_learning/
+│       ├── LittleBank_Case_Study_ML_Concise_Solution.ipynb # Concise ML (interview use)
+│       └── littlebank_case_study_ml_concise_solution.py
+│
+├── data/
+│   └── LittleBank_Case_Study.csv            # Source dataset (35,000 records)
+│
+├── models/
+│   └── model_decision_tree.pkl              # Saved Decision Tree model
+│
+├── images/
+│   ├── task_1_figures/                       # EDA visualisations
+│   └── task_2_figures/                       # ML visualisations
+│
+├── save/                                     # Preprocessed data (parquet, gitignored)
+├── requirements.txt
+├── LICENSE
+└── README.md
+```
+
+| Folder / File | Purpose |
+|---------------|---------|
+| `LittleBank_Case_Study.ipynb` | The **detailed** EDA notebook — every section ends with a written business insight. |
+| `LittleBank_Case_Study_ML.ipynb` | The **detailed** ML notebook — baselines, regularised models, tree models, XGBoost and feature importance. |
+| `interview_solutions/` | **Concise** versions of both notebooks, optimised for the 3-hour time limit. |
+| `data/` | The source CSV provided by the client. |
+| `models/` | Serialised model artefacts. |
+| `images/` | All plots generated during the analysis, split by task. |
+| `save/` | Preprocessed train/test parquet files (not tracked in git). |
 
 ---
 
@@ -323,7 +323,7 @@ success_rate.sort_values(ascending=False)
   <img src="images/task_1_figures/success_of_the_marketing_campaign_by_months.png" width="680" alt="Success rate by month"/>
 </p>
 
-> **Insight.** **March, September, October, and December** show the highest subscription rates. **May** is by far the worst month — the GLM confirms this with a coefficient of **−0.285**, the second-strongest negative in the model. Campaigns should be concentrated in high-performing months and scaled back in May and November. Monday is consistently the weakest day of the week (GLM: `day_of_week.mon` = −0.044).
+> **Insight.** **March, September, October and December** show the highest subscription rates. **May** is by far the worst month — the GLM confirms this with a coefficient of **−0.285**, the second-strongest negative in the model. Campaigns should be concentrated in high-performing months and scaled back in May and November. Monday is consistently the weakest day of the week (GLM: `day_of_week.mon` = −0.044).
 
 ---
 
@@ -364,7 +364,7 @@ success_rate.sort_values(ascending=False)
 
 #### 0–1. Data Loading and Cleaning
 
-For the ML pipeline, categorical months and days are encoded as integers, `"unknown"` rows are dropped, and IQR-based outlier removal is applied to the numerical columns.
+For the ML pipeline, categorical months and days are encoded as integers, `"unknown"` rows are dropped and IQR-based outlier removal is applied to the numerical columns.
 
 ```python
 month_map = {"jan":1,"feb":2,"mar":3,"apr":4,"may":5,"jun":6,
@@ -382,7 +382,7 @@ df = df[~df.isin(["unknown"]).any(axis=1)]
 
 #### 2. Distribution and Correlation
 
-Histograms of the numerical features and a correlation heatmap are drawn to detect skew, multicollinearity, and obvious outliers. Several macroeconomic variables (`num_employed`, `employment_variation`, `forward_rate`) are highly correlated — an important consideration when choosing a model class (linear models penalise this; tree models are immune).
+Histograms of the numerical features and a correlation heatmap are drawn to detect skew, multicollinearity and obvious outliers. Several macroeconomic variables (`num_employed`, `employment_variation`, `forward_rate`) are highly correlated — an important consideration when choosing a model class (linear models penalise this; tree models are immune).
 
 ---
 
@@ -475,10 +475,10 @@ plt.show()
   <img src="images/task_2_figures/feature_importance_random_forest.png" width="680" alt="Random Forest feature importance"/>
 </p>
 
-> **Insight.** The **macroeconomic indicators** dominate — `forward_rate`, `num_employed`, `consumer_confidence`, and `employment_variation` are the top drivers. This strongly supports the recommendation to **time campaigns around economic conditions**. `age` and `num_contacts` contribute meaningfully but are secondary.
+> **Insight.** The **macroeconomic indicators** dominate — `forward_rate`, `num_employed`, `consumer_confidence` and `employment_variation` are the top drivers. This strongly supports the recommendation to **time campaigns around economic conditions**. `age` and `num_contacts` contribute meaningfully but are secondary.
 
 **How to explain Random Forest to a non-technical stakeholder:**
-> *"We build hundreds of small decision trees on random subsets of customers and features. Each tree 'votes' on whether a customer will subscribe, and the forest's final answer is the majority vote. A feature's importance is how often and how decisively it is used across all trees to separate subscribers from non-subscribers."*
+> *"We build hundreds of small decision trees on random subsets of customers and features. Each tree 'votes' on whether a customer will subscribe and the forest's final answer is the majority vote. A feature's importance is how often and how decisively it is used across all trees to separate subscribers from non-subscribers."*
 
 ---
 
@@ -492,7 +492,7 @@ plt.show()
   <img src="images/task_2_figures/days_of_week_vs_outcome.png" width="640" alt="Day of week vs outcome"/>
 </p>
 
-> **Insight.** The month-vs-outcome and day-vs-outcome plots reinforce the EDA findings. Thursday and Friday slightly outperform Monday, and the monthly pattern matches Task 1 exactly — a reassuring cross-check.
+> **Insight.** The month-vs-outcome and day-vs-outcome plots reinforce the EDA findings. Thursday and Friday slightly outperform Monday and the monthly pattern matches Task 1 exactly — a reassuring cross-check.
 
 ---
 
@@ -568,7 +568,7 @@ This is the section you came here for. It is split into three parts:
 2. **Task-1 specific advice** — how to approach the EDA task.
 3. **Task-2 specific advice** — how to approach the ML task.
 
-> This section will continue to be expanded with additional tips, failure modes to avoid, and LLM-assisted workflows. The core framework is below.
+> This section will continue to be expanded with additional tips, failure modes to avoid and LLM-assisted workflows. The core framework is below.
 
 ---
 
@@ -577,12 +577,12 @@ This is the section you came here for. It is split into three parts:
 **Know the environment.**
 
 - Big Four interview panels frequently include **non-technical stakeholders** (engagement managers, partners). Every explanation must land for a smart business audience, not just a machine-learning peer.
-- There are usually **3–5 interviews** in total: HR screen, technical case study (this one), business-case presentation, a partner / fit interview, and sometimes a modelling deep-dive.
+- There are usually **3–5 interviews** in total: HR screen, technical case study (this one), business-case presentation, a partner / fit interview and sometimes a modelling deep-dive.
 - The **technical case study** is typically **3 hours** for all questions combined and is done on your own machine.
 
 **Prepare your environment.**
 
-- Have a clean Jupyter/VS Code setup ready with `pandas`, `numpy`, `matplotlib`, `seaborn`, `scikit-learn`, `imbalanced-learn`, and `xgboost` pre-installed.
+- Have a clean Jupyter/VS Code setup ready with `pandas`, `numpy`, `matplotlib`, `seaborn`, `scikit-learn`, `imbalanced-learn` and `xgboost` pre-installed.
 - Keep a **personal snippets file** with your favourite EDA boilerplate (`df.info()`, `df.describe()`, missing-value audit, class-imbalance check).
 - Have the dataset loaded and the concise notebook template open before the clock starts.
 
@@ -625,11 +625,11 @@ df.describe(include="all")
 df["outcome"].value_counts(normalize=True)
 ```
 
-These three lines reveal dtypes, scale, missing data, and the class distribution — roughly **80 % of everything you need to know** about the dataset.
+These three lines reveal dtypes, scale, missing data and the class distribution — roughly **80 % of everything you need to know** about the dataset.
 
 **Flag class imbalance immediately.**
 
-- Say it out loud: *"The positive class is only 11.3 %. This has three consequences: (i) I'll use recall as the headline metric, (ii) I'll apply SMOTE inside the training fold, and (iii) I'll include a naive all-negative baseline to anchor expectations."*
+- Say it out loud: *"The positive class is only 11.3 %. This has three consequences: (i) I'll use recall as the headline metric, (ii) I'll apply SMOTE inside the training fold and (iii) I'll include a naive all-negative baseline to anchor expectations."*
 
 **Choose 5–7 impactful visualisations — not 15 mediocre ones.**
 
@@ -669,7 +669,7 @@ This single block disarms the "why not just predict majority class?" trap and sh
 
 **Explain class imbalance and your solution before training.**
 
-State clearly: *"Because the positive rate is only 11 %, I'll apply SMOTE **only inside the training fold** to avoid data leakage, and I'll evaluate using recall and precision — not raw accuracy."*
+State clearly: *"Because the positive rate is only 11 %, I'll apply SMOTE **only inside the training fold** to avoid data leakage and I'll evaluate using recall and precision — not raw accuracy."*
 
 **Match the metric to the business.**
 
@@ -748,7 +748,7 @@ pip install -r requirements.txt
 
 ## Contributing
 
-Contributions, suggestions, and improvements are very welcome — the repository is updated regularly.
+Contributions, suggestions and improvements are very welcome — the repository is updated regularly.
 
 **To contribute:**
 
@@ -775,7 +775,7 @@ For major changes, please open an issue first to discuss what you would like to 
 
 This project is licensed under the **MIT License** — see the [LICENSE](LICENSE) file for the full text.
 
-You are free to use, copy, modify, merge, publish, distribute, and adapt this work, including for commercial purposes, as long as the original author is credited.
+You are free to use, copy, modify, merge, publish, distribute and adapt this work, including for commercial purposes, as long as the original author is credited.
 
 ---
 
