@@ -157,6 +157,8 @@ The third task provides a ready-made GLM ElasticNet (binomial) coefficient table
 
 ## Repository Structure
 
+### Directory Tree
+
 ```
 Data-Science-Case-Study/
 │
@@ -188,6 +190,8 @@ Data-Science-Case-Study/
 ├── LICENSE
 └── README.md
 ```
+
+### Folder Reference Table
 
 | Folder / File | Purpose |
 |---------------|---------|
