@@ -211,7 +211,7 @@ This repository provides **two solution tiers** for each task. They exist for ve
 
 | | Detailed Solution | Concise (Brief) Solution |
 |-|-------------------|--------------------------|
-| **Purpose** | Deep learning and portfolio showcase | Interview time-pressure practice |
+| **Purpose** | In-depth understanding and portfolio showcase | Interview time-pressure practice |
 | **Location** | `LittleBank_Case_Study.ipynb` / `LittleBank_Case_Study_ML.ipynb` | `interview_solutions/task_1_eda/` / `interview_solutions/task_2_machine_learning/` |
 | **Depth** | Exhaustive — written insight after every section | Focused on the essential steps only |
 | **Length** | ~140 cells per notebook | Designed to fit comfortably within a 3-hour window |
@@ -231,7 +231,7 @@ This repository provides **two solution tiers** for each task. They exist for ve
 | **1.** Data Cleaning | Remove duplicates, audit missing data, handle `"unknown"` categories |
 | **2.** Macroeconomic & Environmental | Forward rate, consumer confidence, employment, price index |
 | **3.** Day & Month Influence | Success rate by month and day-of-week |
-| **4.** Marketing Campaign Analysis | Contact type, number of contacts, campaign outcomes |
+| **4.** Marketing Campaign Analysis | Contact type, number of contacts, campaign's outcome |
 | **5.** Customer Profile | Age, job, education, marital status, mortgage, loans |
 | **6.** Job Category Deep Dive | Subscription rates broken down by profession |
 
@@ -263,7 +263,7 @@ This repository provides **two solution tiers** for each task. They exist for ve
 
 #### 0. Load and Overview
 
-The first step is always to understand what you are working with.
+The first step is to examine understand what are the main characteristics of the data.
 
 ```python
 import pandas as pd
@@ -279,7 +279,7 @@ df.info()
 df.describe()
 ```
 
-**Class distribution — the single most important finding:**
+**Outcome Class distribution — the single most important finding:**
 
 ```python
 df["outcome"].value_counts().plot(kind="pie", startangle=90, autopct="%1.2f")
@@ -316,34 +316,45 @@ print(f"No previous contact: {(df['days_since_previous'] == -1).sum()}")
 
 - No duplicate rows found.
 - Several categorical columns contain `"unknown"` — treated as a separate category during EDA, dropped in the ML pipeline.
-- `days_since_previous = -1` is a sentinel for "no previous contact" — handled explicitly rather than imputed.
 
 ---
 
 #### 2. Macroeconomic and Environmental Factors
 
-The dataset includes macroeconomic indicators (`num_employed`, `employment_variation`, `consumer_confidence`, `forward_rate`, `price_index`) and weather indicators (`high_temp`, `low_temp`) captured at the time of each contact.
-
-> **Insight.** Economic conditions at the time of contact are powerful predictors. The GLM ElasticNet coefficients confirm this dramatically — `num_employed` (**−0.558**) and `employment_variation` (**−0.158**) are the **two strongest negative predictors in the entire model**. Campaigns launched during periods of high employment and positive employment growth perform significantly worse — customers with stable jobs and rising wages are simply less interested in a classic savings account.
+The dataset includes macroeconomic indicators (`num_employed`, `employment_variation`, `consumer_confidence`, `forward_rate`, `price_index`) and weather indicators (`high_temp`, `low_temp`) captured at the time of each contact. The analysis ot these factor doesn't provide us with informative insights about the campain. They aren't very helpful for Task 1. However, the ML models use them as one of the most important features that could predict the success of the call. 
 
 ---
 
 #### 3. Day and Month Influence
+This is the most important analysis. It should be done first. The analysis shows the failure of the marketing campaign.
 
 ```python
 # Success rate by month
-success_rate = (
-    df[df["outcome"] == "TRUE"].groupby("month").size()
-    / df.groupby("month").size()
-)
-success_rate.sort_values(ascending=False)
+df_outcome_pivot = df_tr.pivot_table(index = "month",
+                                     columns = "outcome",
+                                     aggfunc = "size",
+                                     sort = False)
+df_outcome_pivot["Total"] = df_outcome_pivot.iloc[:, 0] + df_outcome_pivot.iloc[:, 1]
+df_outcome_pivot["Success_Rate"] = (df_outcome_pivot.iloc[:, 0] / df_outcome_pivot.iloc[:, 2]) * 100
+
+df_outcome_pivot
 ```
+
+```python
+df_outcome_pivot.iloc[:, 0:3].plot(kind = "bar", figsize = (10, 8), rot = 45)
+
+plt.xlabel("Month")
+plt.ylabel("Number of Subscriptions")
+plt.title("Success of the Marketing Campaign by Months")
+plt.show()
+```
+
 
 <p align="center">
   <img src="images/task_1_figures/success_of_the_marketing_campaign_by_months.png" width="680" alt="Success rate by month"/>
 </p>
 
-> **Insight.** **March, September, October and December** show the highest subscription rates. **May** is by far the worst month — the GLM confirms this with a coefficient of **−0.285**, the second-strongest negative in the model. Campaigns should be concentrated in high-performing months and scaled back in May and November. Monday is consistently the weakest day of the week (GLM: `day_of_week.mon` = −0.044).
+> **Insight.** The **number of subscriptions** for each month is **super low**. Most of the people do not subscribe for the saving account, despite the large number of calls made in May, June, July and August.
 
 ---
 
@@ -357,12 +368,11 @@ success_rate.sort_values(ascending=False)
   <img src="images/task_1_figures/the_outcome_of_the_advertisement_campaign.png" width="640" alt="Advertisement campaign outcome"/>
 </p>
 
-**Strategic levers uncovered by the campaign analysis:**
+**A Masterclass in Failure: When Marketing Goes Horribly Wrong**
 
-- **Mobile beats landline.** `contact.mobile` = +0.037 versus `contact.landline` = −0.038. The channel choice alone moves the needle.
-- **Over-contacting hurts.** `num_contacts` = −0.026. Each additional call within the same campaign *reduces* the probability of subscription — a clear case of diminishing returns.
-- **Previous success is the strongest positive signal.** `outcome_previous.success` = **+0.210** — the single largest positive coefficient. Customers who have subscribed before are the highest-value targets.
-- **Recovery time matters.** `days_since_previous` = +0.045 — customers need breathing room between touchpoints.
+- The marketing campaign was a total failure. Both figures show that the subscriptions do not increase, even though thousands of contacts were made. For May, the savings account product was advertised to 11721 people. Only 749 of them have subscribed. This is exactly 6.39%. That's a disaster.
+
+- When we compare the results of the campaign by days of each month, the conclusion is the same - the marketing crashed and burnt. There are days when the success rate is above 50%, but a small number of people subscribed in absolute terms. The hypothesis that there is a day in the month when the subscription rate is relatively high could not be accepted.
 
 ---
 
@@ -376,7 +386,7 @@ success_rate.sort_values(ascending=False)
   <img src="images/task_1_figures/subscriptions_by_proffesion_of_the_customers.png" width="700" alt="Subscriptions by profession"/>
 </p>
 
-> **Insight.** **Retired customers and students (full-time education) are the most receptive segments**, confirmed by positive GLM coefficients (`job.retired` = +0.034, `job.full_time_education` = +0.020). **Industrial workers** are the least likely to subscribe (`job.industrial` = −0.020). Customer segmentation should favour demographics with a higher propensity to save and deprioritise segments with structurally low conversion.
+> **Insight.** **The most customers that subscribed** for the savings account after the marketing campaign have age between 25 and 40. However, this is due to the fact that most of the calls were made to people in that age span. The plot of the success rate based on the customers job shows that those who are in full time education or retired are very likely to subscribe for the savings account product. The success rate of the calls respectively is approx. 45% and 35%. Above 15% success rate of the advertisment can be observed for administrative jobs and unemployed. 
 
 ---
 
@@ -513,6 +523,10 @@ plt.show()
 </p>
 
 > **Insight.** The month-vs-outcome and day-vs-outcome plots reinforce the EDA findings. Thursday and Friday slightly outperform Monday and the monthly pattern matches Task 1 exactly — a reassuring cross-check.
+
+---
+
+### Task 3 — Business Strategy / Recommendations
 
 ---
 
