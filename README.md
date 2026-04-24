@@ -209,8 +209,6 @@ Data-Science-Case-Study/
 
 This repository provides **two solution tiers** for each task. They exist for very different purposes.
 
-### Why Two Solutions?
-
 | | Detailed Solution | Concise (Brief) Solution |
 |-|-------------------|--------------------------|
 | **Purpose** | Deep learning and portfolio showcase | Interview time-pressure practice |
@@ -231,10 +229,10 @@ This repository provides **two solution tiers** for each task. They exist for ve
 |---------|---------|
 | **0.** Load and Overview | Load CSV, inspect dtypes, value counts, class distribution |
 | **1.** Data Cleaning | Remove duplicates, audit missing data, handle `"unknown"` categories |
-| **2.** Macroeconomic & Environmental | Forward rate, consumer confidence, employment, price index, temperature |
+| **2.** Macroeconomic & Environmental | Forward rate, consumer confidence, employment, price index |
 | **3.** Day & Month Influence | Success rate by month and day-of-week |
-| **4.** Marketing Campaign Analysis | Contact type, number of contacts, previous-campaign outcomes |
-| **5.** Customer Profile | Age, marital status, job, education |
+| **4.** Marketing Campaign Analysis | Contact type, number of contacts, campaign outcomes |
+| **5.** Customer Profile | Age, job, education, marital status, mortgage, loans |
 | **6.** Job Category Deep Dive | Subscription rates broken down by profession |
 
 ### Task 2 — ML Notebook (`LittleBank_Case_Study_ML.ipynb`)
@@ -242,13 +240,15 @@ This repository provides **two solution tiers** for each task. They exist for ve
 | Section | Content |
 |---------|---------|
 | **0.** Load and Overview | Same as Task 1 |
-| **1.** Data Cleaning | Encode months/days, drop `"unknown"`, remove outliers |
+| **1.** Data Cleaning | Encode months/days, drop `"unknown"` and insignificant columns, remove outliers |
 | **2.** Distribution & Correlation | Histograms and correlation heatmap |
-| **3.** Class Imbalance (SMOTE) | Apply Synthetic Minority Oversampling Technique |
+| **3.** Class Imbalance & Train/Test Split | Tackle class Imbalance and split the data |
+| **3.1** Class Imbalance (SMOTE) | Apply Synthetic Minority Oversampling Technique |
 | **3.2.** Train–Test Split | 80 / 20 split |
-| **4.** Preprocessing | MinMax scaling + One-Hot Encoding |
+| **4.** Pre-processing | MinMax scaling + One-Hot Encoding |
 | **5.** Save | Export preprocessed data to parquet |
-| **6.** Baseline Models | Random-guess and all-negative baselines |
+| **6.** Baseline Models | Implement baseline models |
+| **6.1** Naive Baseline | Random-guess and all-negative baselines |
 | **6.2.** Logistic Regression | GridSearchCV hyper-parameter tuning |
 | **7.** Lasso & ElasticNet | L1 and L1+L2 regularisation |
 | **8.** Decision Tree & Random Forest | Tree-based models with hyper-parameter tuning |
