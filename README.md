@@ -112,14 +112,18 @@ The third task provides a ready-made GLM ElasticNet (binomial) coefficient table
 
 ## Dataset
 
+### Overview 
+
 | Attribute | Value |
 |-----------|-------|
 | **File** | `data/LittleBank_Case_Study.csv` |
+| **Shape** | (35000, 24) |
 | **Rows** | 35,000 |
-| **Columns** | 24 (12 numerical, 11 categorical, 1 target) |
+| **Columns** | 24 (13 numerical, 10 categorical, 1 target) |
 | **Target** | `outcome` — TRUE / FALSE |
 | **Positive class rate** | **11.29 %** (3,952 subscribers vs. 31,048 non-subscribers) |
 | **Imbalance** | Severe — requires resampling or cost-sensitive training |
+| **Potential leakage** | `outcome_previous`, `num_contacts_previous` |
 
 ### Feature Descriptions
 
