@@ -595,18 +595,20 @@ To improve the conversion rates it is recommended to:
 
 ## Models and Accuracy
 
-Six model families were trained and evaluated on the held-out test set. All numbers below come directly from the model-comparison notebook.
+Six model families were trained and evaluated on the data. The results are taken directly from the ML notebook and are shown below.
 
-| Model | Train Accuracy | Test Accuracy | Precision | **Recall** |
-|-------|:--------------:|:-------------:|:---------:|:----------:|
-| Logistic Regression | 0.7512 | 0.7604 | 0.7758 | 0.7239 |
-| Lasso Regression | 0.7512 | 0.7603 | 0.7223 | 0.7766 |
-| ElasticNet | 0.7512 | 0.7602 | 0.7232 | 0.7759 |
-| Decision Tree | 0.8942 | 0.8346 | 0.8482 | 0.8224 |
-| **Random Forest** 🏆 | **1.0000** | **0.8959** | **0.9032** | **0.8879** |
-| Extreme Gradient Boosting | 0.9998 | 0.8954 | 0.9097 | 0.8821 |
+| Model                     | Train Accuracy | Test Accuracy | Recall    |  Precision  |
+| ------------------------- |:--------------:|:-------------:|:---------:|:-----------:|
+| Logistic Regression       | 0,7512         | 0,7604        | 0,7239    | 0,7758      |
+| Lasso Regression          | 0,7519         | 0,7603        | 0,7223    | 0,7766      |
+| ElasticNet                | 0,7515         | 0,7602        | 0,7232    | 0,7759      |
+| Decision Tree             | 0,8942         | 0,8346        | 0,8482    | 0,8224      |
+| **Random Forest** 🏆🏆🏆 | **1.00000**    | **0,8959**  | **0,9032**  | **0,8879**  |
+| Extreme Gradient Boosting | 0,9998         | 0,8954        | 0,9097    | 0,8821      |
 
-> **Primary metric: Recall.** In this business context, missing a genuine subscriber (false negative) is costlier than contacting a non-subscriber (false positive). Recall measures the proportion of true subscribers that the model successfully identifies.
+> **Top performing model.**: Withouth a doubt, the best results are achieved with the Random Forest model. It has the highest `test accuracy` and the second highest recall.
+
+> **Primary metric: Recall.** In the business context, missing a genuine subscriber (false negative) is costlier than contacting a non-subscriber (false positive). The `Recall` metric measures this. It is the proportion of true subscribers that the model successfully identifies.
 
 **Model selection takeaways:**
 
