@@ -394,125 +394,41 @@ plt.show()
 
 #### 0–1. Data Loading and Cleaning
 
-For the ML pipeline, categorical months and days are encoded as integers, `"unknown"` rows are dropped and IQR-based outlier removal is applied to the numerical columns.
+For the ML pipeline, categorical months and days are encoded as integers and `"unknown"` rows are dropped. In addition, the outlier are removed and is the outcome target column is transformed into numerical column.
 
 ```python
-month_map = {"jan":1,"feb":2,"mar":3,"apr":4,"may":5,"jun":6,
-             "jul":7,"aug":8,"sep":9,"oct":10,"nov":11,"dec":12}
-day_map   = {"mon":1,"tue":2,"wed":3,"thu":4,"fri":5}
+days_of_the_week = ["mon", "tue", "wed", "thu", "fri", "sat", "sun"]
+months_in_the_year = ["jan", "feb", "mar", "apr", "may", "jun",
+                      "jul", "aug","sep", "oct", "nov", "dec"]
 
-df["month"]       = df["month"].map(month_map)
-df["day_of_week"] = df["day_of_week"].map(day_map)
+# A dictionary that maps the day with the corresponding number of the day in a week
+days_of_the_week_dict = {day:i for i, day in enumerate(days_of_the_week, start = 1)}
 
-# Drop rows containing "unknown"
-df = df[~df.isin(["unknown"]).any(axis=1)]
+# A dictionary that maps the month with the corresponding number of the month in the year
+months_in_the_year_dict = {month_str:i for i, month_str in enumerate(months_in_the_year, start = 1)}
+
+# Remove unknown rows for marital feature
+df_tr.drop(index = (df_tr[df_tr["marital"] == "unknown"]).index, inplace = True)
+```
+
+```python
+# Encoding the target column - Outcome
+
+from sklearn.preprocessing import LabelEncoder
+
+target = df_tr["outcome"]
+
+enc_labels = LabelEncoder()
+df_tr["outcome_encoded"] = enc_labels.fit_transform(target)
 ```
 
 ---
 
 #### 2. Distribution and Correlation
 
-Histograms of the numerical features and a correlation heatmap are drawn to detect skew, multicollinearity and obvious outliers. Several macroeconomic variables (`num_employed`, `employment_variation`, `forward_rate`) are highly correlated — an important consideration when choosing a model class (linear models penalise this; tree models are immune).
+Histograms of the numerical features and a correlation heatmap are drawn. The goal is to detect skew, multicollinearity and obvious outliers. It worth mentioning that several macroeconomic variables (`num_employed`, `employment_variation`, `forward_rate`) are highly correlated.
 
----
-
-#### 3. Handling Class Imbalance — SMOTE
-
-The 11 % positive rate makes raw accuracy a misleading metric. SMOTE (Synthetic Minority Oversampling Technique) is applied to the **training set only** to create balanced classes during fitting.
-
-```python
-from collections import Counter
-from imblearn.over_sampling import SMOTE
-
-smote = SMOTE(random_state=42)
-X_train_res, y_train_res = smote.fit_resample(X_train, y_train)
-
-print(f"Before SMOTE: {Counter(y_train)}")
-print(f"After  SMOTE: {Counter(y_train_res)}")
-```
-
-> **Why SMOTE?** A naive classifier that always predicts *"no subscription"* achieves ~88.7 % accuracy — but **0 % recall**. Since the business goal is to **find potential subscribers**, recall is the primary evaluation metric.
-
----
-
-#### 4. Preprocessing
-
-```python
-from sklearn.compose import ColumnTransformer
-from sklearn.preprocessing import MinMaxScaler, OneHotEncoder
-
-numerical_features = [
-    "num_contacts", "days_since_previous", "num_contacts_previous", "age",
-    "call_centre_volume", "high_temp", "low_temp", "forward_rate",
-    "num_employed", "consumer_confidence", "price_index", "employment_variation"
-]
-
-categorical_features = [
-    "month", "day_of_week", "contact", "outcome_previous", "marital",
-    "job", "education", "default", "mortgage", "personal_loan"
-]
-
-preprocessor = ColumnTransformer([
-    ("num", MinMaxScaler(), numerical_features),
-    ("cat", OneHotEncoder(handle_unknown="ignore"), categorical_features),
-])
-```
-
-> **Task 2 constraint.** The client specifically requires **only the numerical columns** to be used for the feature-importance model. The importance analysis below is therefore restricted to the 12 numerical features listed above.
-
----
-
-#### 5. Model Training
-
-The notebook trains six model families in ascending complexity:
-
-1. **Baselines** (random-guess and all-negative) — to anchor expectations.
-2. **Logistic Regression** with `GridSearchCV`.
-3. **Lasso** (L1) and **ElasticNet** (L1 + L2) regularised logistic models.
-4. **Decision Tree** — interpretable, prone to over-fitting.
-5. **Random Forest** — the winner on recall.
-6. **XGBoost** — close second, slightly higher precision.
-
-```python
-from sklearn.ensemble import RandomForestClassifier
-from sklearn.metrics import accuracy_score, recall_score, precision_score
-
-rf = RandomForestClassifier(n_estimators=500, random_state=42, n_jobs=-1)
-rf.fit(X_train_res, y_train_res)
-
-y_pred = rf.predict(X_test)
-print(f"Test Accuracy: {accuracy_score(y_test, y_pred):.4f}")
-print(f"Recall       : {recall_score(y_test, y_pred):.4f}")
-print(f"Precision    : {precision_score(y_test, y_pred):.4f}")
-```
-
----
-
-#### 6. Feature Importance
-
-Feature importance reveals which **numerical** variables drive subscription predictions the most.
-
-```python
-importances = pd.Series(rf.feature_importances_, index=numerical_features)
-importances.nlargest(12).sort_values().plot(kind="barh", figsize=(10, 6))
-plt.title("Feature Importance — Random Forest")
-plt.xlabel("Importance score")
-plt.tight_layout()
-plt.show()
-```
-
-<p align="center">
-  <img src="images/task_2_figures/feature_importance_random_forest.png" width="680" alt="Random Forest feature importance"/>
-</p>
-
-> **Insight.** The **macroeconomic indicators** dominate — `forward_rate`, `num_employed`, `consumer_confidence` and `employment_variation` are the top drivers. This strongly supports the recommendation to **time campaigns around economic conditions**. `age` and `num_contacts` contribute meaningfully but are secondary.
-
-**How to explain Random Forest to a non-technical stakeholder:**
-> *"We build hundreds of small decision trees on random subsets of customers and features. Each tree 'votes' on whether a customer will subscribe and the forest's final answer is the majority vote. A feature's importance is how often and how decisively it is used across all trees to separate subscribers from non-subscribers."*
-
----
-
-#### 7. Month and Day-of-Week Patterns (ML view)
+The figure bellow depict the distribution of the target value over the months and the days.
 
 <p align="center">
   <img src="images/task_2_figures/month_vs_outcome.png" width="640" alt="Month vs outcome"/>
@@ -522,11 +438,142 @@ plt.show()
   <img src="images/task_2_figures/days_of_week_vs_outcome.png" width="640" alt="Day of week vs outcome"/>
 </p>
 
-> **Insight.** The month-vs-outcome and day-vs-outcome plots reinforce the EDA findings. Thursday and Friday slightly outperform Monday and the monthly pattern matches Task 1 exactly — a reassuring cross-check.
+> **Insight.** The month-vs-outcome and day-vs-outcome figures outline the data imballance problem that should be taken into account. 
+
+---
+
+#### 3. Handling Class Imbalance and Creating Train/Test Split
+
+The target column `outcome` consist only 11% of people that subscribed for the savings. This means that the data for the LittleBank campaign is imbalanced. The smaller class with customers that didn't subscribe will be often misclassified. The models will have poor performance and won't classify the potential subscribers. SMOTENC (Synthetic Minority Oversampling Technique for Nominal and Continuous data) is applied to address the problem.
+
+```python
+from imblearn.over_sampling import SMOTENC
+
+smote = SMOTENC(categorical_features = categorical_cols_df, sampling_strategy = "auto", random_state = 42)
+X_resampled, y_resampled = smote.fit_resample(X, y)
+
+X_resampled.shape, y_resampled.shape
+```
+
+```
+((56050, 20), (56050,))
+```
+
+> **Why SMOTENC?** It improves the classification of the minority class. Another benefit of SMOTENC is the improvement of the ML model's variance. A disadvantage of the approach is the computational cost of the technique. However, in our case, it could be omitted because the data is relatively small.
+
+The data is splitted into 80% train data and 20% test data.
+
+```python
+train_df, test_df = train_test_split(df_tr_resampled, test_size = 0.2, random_state = 42)
+
+train_df.shape, test_df.shape
+```
+```
+((44840, 21), (11210, 21))
+```
+
+---
+
+#### 4, 5. Pre-processing
+
+Two main pre-processing techniques are applied - scaling (MinMaxScaller) and Encoding (OneHotEncoding)
+
+```python
+from sklearn.preprocessing import MinMaxScaler
+
+scaler = MinMaxScaler()
+scaler.fit(df_tr[numeric_cols])
+
+train_inputs[numeric_cols] = scaler.transform(train_inputs[numeric_cols])
+test_inputs[numeric_cols] = scaler.transform(test_inputs[numeric_cols])
+```
+
+```python
+from sklearn.preprocessing import OneHotEncoder
+
+encoder = OneHotEncoder(sparse_output = False, handle_unknown = "ignore")
+encoder.fit(df_tr[categorical_cols])
+```
+
+> **Task 2 constraint.** The client specifically requires **only the numerical columns** to be used for the feature-importance model. The importance analysis below is therefore restricted to the 12 numerical features listed above.
+
+---
+
+#### 6-10. Model Training and Evaluation
+
+Six models are train to solve Task 2 in ascending complexity. Each model has its own strengths and limitations. They are listed below:
+
+1. **Baselines** (random-guess and all-negative) — create expectations and set thresholds.
+2. **Logistic Regression** with `GridSearchCV`.
+3. **Lasso** (L1) and **ElasticNet** (L1 + L2) regularised logistic models.
+4. **Decision Tree** — with and without pruning.
+5. **Random Forest** — the best results - top accuracy and highest recall.
+6. **XGBoost** — close second, but highly complex and task unefficient.
+
+The Random Forest model implementation with fine-tuned parameters is given below:
+
+
+```python
+from sklearn.ensemble import RandomForestClassifier
+
+model_random_forest = RandomForestClassifier(n_jobs = -1,
+                                             n_estimators = 500,       
+                                             max_features = 9,          
+                                             max_depth = 35,            
+                                             min_samples_split = 2,
+                                             random_state = 42)
+
+model_random_forest.fit(train_inputs, train_targets)
+
+train_preds_rforest = model_random_forest.predict(train_inputs)
+test_preds_rforest = model_random_forest.predict(test_inputs)
+
+train_acc = accuracy_score(train_targets, train_preds_rforest)
+
+test_acc, recall_test, precision_test = calculate_basic_metrics(test_targets, test_preds_rforest)
+
+print(f"Train Accuracy = {train_acc:.5f}, Test Accuracy = {test_acc:.5f}")
+print(f"Recall = {recall_test:.5f}, Precision = {precision_test:.5f}")
+```
+
+```
+Train Accuracy = 1.00000, Test Accuracy = 0.89590
+Recall = 0.90316, Precision = 0.88792
+```
+---
+
+#### 11. Feature Importance
+
+The essence of the second task is to **produce estimates of feature importance from a trained predictive model**. In other words, we have to train the model and find out how it makes decision to classify customers aa potential subscriber. Not just that, but we also have to figure out the factors that influence person's decision and give insights to the head of loan's sale. After all, the bank invested thousands of dollars to advertise and increase the subscribtions to the classic savings account.
+
+Plots of the feature importance were generated for all of the models. However, the empasis will be put on the best performing model.
+
+```python
+importance_df = pd.DataFrame({
+    "feature": train_inputs.columns,
+    "importance": model_random_forest.feature_importances_
+}).sort_values("importance", ascending = False)
+
+sns.barplot(data = importance_df.head(15), x = "importance", y = "feature",
+            hue = "feature", legend = False, palette = "tab10")
+
+plt.title("Feature Importance of the Random Forest Model");
+```
+
+**How to explain Random Forest to a non-technical stakeholder:**
+> *"We train hundreds of small decision trees using a random slice of customers and features. Every tree makes its own prediction as to whether a customer will subscribe. The final decision comes from a majority vote across all trees. Feature importance reflects how frequently and how effectively trees distinguish between subscribers and non-subscribers."*
+
+<p align="center">
+  <img src="images/task_2_figures/feature_importance_random_forest.png" width="680" alt="Random Forest feature importance"/>
+</p>
+
+> **Insight.** The decision tree distinguish the `forward_rate`, `num_employed` and `employment_variation` as one of the most important features. The macroeconomic features dominate top 10 ranking. Alternatively, the model considers environmental factors like `low_temperature` and `high_temperature` connected to the decision of a customer to subscribe for the product. The `age` of the clients also influence the success of the telemarketing. It is significant to point out - the `call_centre_volume` impact significantly the decision of the model. However, based on the analysis for task 1, the load of the call centre is very low to have such a big impact. It is crucial to highlight that the factors for the unsuccessful campaign should be found in a different place.
 
 ---
 
 ### Task 3 — Business Strategy / Recommendations
+
+
 
 ---
 
