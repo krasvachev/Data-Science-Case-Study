@@ -573,7 +573,23 @@ plt.title("Feature Importance of the Random Forest Model");
 
 ### Task 3 — Business Strategy / Recommendations
 
+Based on the table that Little bank provided, the data shows:
 
+1. If the previously campaign was successful, there is a high probability that the client would subscribe again for the product.
+
+2. If the contact was made in March the are high chances for successful subscription. For July, there is some chances of a positive outcome, in November – low chance of a positive outcome. Nevertheless, in May we could say that most certainly the customer won’t subscribe to the product.
+
+3. People who are retired or in full-time education are more likely to purchase the product than people working in the industry. 
+
+To improve the conversion rates it is recommended to:
+
+1. Make a campaign focused on the right customer segment, with an accurate message via the most appropriate medium (Social media, Website, not via Mobile or Landline).
+
+2. Find the true needs of the customers and personalise the product for them. An improvement of the product will be needed in order to increase the conversion rates. 
+
+3. To get feedback from the bank clients, do they like the products of the bank and what makes them eager to purchase a product. Having a satisfied client is more likely to purchase a product or recommend it to a friend.
+
+> For the presentation's bullets or more insights/recommendation check the **add a link to the folder** (the link..)[linking_park]
 
 ---
 
