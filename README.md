@@ -616,38 +616,7 @@ Six model families were trained and evaluated on the data. The results are taken
 
 ### Root Cause Analysis
 
-The recent drop in classic-savings subscriptions has **three interconnected root causes**, each supported by the data:
-
-| Root Cause | Data Evidence |
-|------------|---------------|
-| **Poor Marketing Execution** | Wrong channel mix (landline over mobile), over-contacting (negative `num_contacts` coefficient), wrong timing (heavy campaigning in May). |
-| **Wrong Customer Targeting** | Industrial workers and customers with unknown credit status are structurally low-propensity segments — yet they make up a large share of contacts. |
-| **Adverse Macroeconomic Conditions** | `num_employed` (−0.558) and `employment_variation` (−0.158) are the two strongest negative predictors. Campaigning in boom conditions depresses savings-product uptake. |
-
-### Three Strategic Recommendations (for Task 3 PowerPoint slides)
-
-#### 🎯 Recommendation 1 — Target the Right Customer Segments
-
-- **Prioritise** retired customers (GLM: +0.034) and full-time students (+0.020) — both show significantly higher subscription propensity.
-- **Deprioritise** industrial workers (−0.020) and customers with unknown credit history (−0.018).
-- **Focus** on customers with no history of credit default (`default.no` = +0.019).
-- **Highest-value segment:** customers who **previously subscribed** (`outcome_previous.success` = **+0.210**) — the single strongest positive coefficient. Conversely, previous-failure customers (−0.065) should be cooled off.
-
-#### 📅 Recommendation 2 — Optimise Campaign Timing
-
-- **Run campaigns in March** (+0.083 — strongest monthly coefficient) and **July** (+0.011).
-- **Avoid May** (**−0.285** — the worst month) and **November** (−0.028).
-- **Avoid Monday calls** (−0.044) — mid-to-late-week performs significantly better.
-- **Monitor macroeconomic indicators:** launch campaigns when `num_employed` and `employment_variation` are low — these are the two strongest predictors in the entire model.
-
-#### 📱 Recommendation 3 — Refine Channel Strategy and Contact Discipline
-
-- **Switch to mobile-first outreach** (mobile +0.037 vs. landline −0.038).
-- **Cap the number of contacts per campaign** — each additional call reduces conversion (`num_contacts` = −0.026). Quality beats quantity.
-- **Allow adequate recovery time** between contacts (`days_since_previous` = +0.045).
-- **Deploy a predictive scoring model** (Random Forest / XGBoost) to rank customers by subscription probability *before* each campaign — call the top decile first.
-
-> **Estimated commercial impact:** realistically, applying all three recommendations (mobile-only, March/July timing, retired + student segments, capped contacts, top-decile scoring) can roughly **double the campaign conversion rate** from its current 11 % — without increasing call-centre volume.
+**To Do**
 
 ---
 
