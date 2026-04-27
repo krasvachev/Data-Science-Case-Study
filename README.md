@@ -392,9 +392,9 @@ plt.show()
 
 ### Task 2 — Machine Learning
 
-#### 0–1. Data Loading and Cleaning
+#### 1. Data Loading and Cleaning
 
-For the ML pipeline, categorical months and days are encoded as integers and `"unknown"` rows are dropped. In addition, the outlier are removed and is the outcome target column is transformed into numerical column.
+For the ML pipeline, categorical months and days are encoded as integers and `"unknown"` rows are dropped. In addition, the outlier are removed and the outcome target column is transformed into numerical column.
 
 ```python
 days_of_the_week = ["mon", "tue", "wed", "thu", "fri", "sat", "sun"]
@@ -444,7 +444,7 @@ The figure bellow depict the distribution of the target value over the months an
 
 #### 3. Handling Class Imbalance and Creating Train/Test Split
 
-The target column `outcome` consist only 11% of people that subscribed for the savings. This means that the data for the LittleBank campaign is imbalanced. The smaller class with customers that didn't subscribe will be often misclassified. The models will have poor performance and won't classify the potential subscribers. SMOTENC (Synthetic Minority Oversampling Technique for Nominal and Continuous data) is applied to address the problem.
+The target column `outcome` consist only 11% of people that subscribed for the savings. This means that the data for the LittleBank campaign is imbalanced. The smaller class with customers that didn't subscribe will be often misclassified. The models will have poor performance and won't classify the potential subscribers. The SMOTENC (Synthetic Minority Oversampling Technique for Nominal and Continuous data) is applied to address the problem.
 
 ```python
 from imblearn.over_sampling import SMOTENC
@@ -461,7 +461,7 @@ X_resampled.shape, y_resampled.shape
 
 > **Why SMOTENC?** It improves the classification of the minority class. Another benefit of SMOTENC is the improvement of the ML model's variance. A disadvantage of the approach is the computational cost of the technique. However, in our case, it could be omitted because the data is relatively small.
 
-The data is splitted into 80% train data and 20% test data.
+Next, the data is splitted into 80% train data and 20% test data.
 
 ```python
 train_df, test_df = train_test_split(df_tr_resampled, test_size = 0.2, random_state = 42)
@@ -474,9 +474,9 @@ train_df.shape, test_df.shape
 
 ---
 
-#### 4, 5. Pre-processing
+#### 4. Pre-processing
 
-Two main pre-processing techniques are applied - scaling (MinMaxScaller) and Encoding (OneHotEncoding)
+Two main pre-processing techniques are applied - scaling (`MinMaxScaller`) and Encoding (`OneHotEncoding`)
 
 ```python
 from sklearn.preprocessing import MinMaxScaler
@@ -495,11 +495,11 @@ encoder = OneHotEncoder(sparse_output = False, handle_unknown = "ignore")
 encoder.fit(df_tr[categorical_cols])
 ```
 
-> **Task 2 constraint.** The client specifically requires **only the numerical columns** to be used for the feature-importance model. The importance analysis below is therefore restricted to the 12 numerical features listed above.
+> **Task 2 constraint.** The client specifically requires **only the numerical columns** to be used for the feature importance model. On the other hand, the solution applies most of the features. This is due to the fact that one of the goals of the project is to solve the task comprehensively. However, in an interview situation, the instructions of the interviewers should be followel.
 
 ---
 
-#### 6-10. Model Training and Evaluation
+#### 5. Model Training and Evaluation
 
 Six models are train to solve Task 2 in ascending complexity. Each model has its own strengths and limitations. They are listed below:
 
@@ -507,7 +507,7 @@ Six models are train to solve Task 2 in ascending complexity. Each model has its
 2. **Logistic Regression** with `GridSearchCV`.
 3. **Lasso** (L1) and **ElasticNet** (L1 + L2) regularised logistic models.
 4. **Decision Tree** — with and without pruning.
-5. **Random Forest** — the best results - top accuracy and highest recall.
+5. **Random Forest** — the best results, with top accuracy and highest precision.
 6. **XGBoost** — close second, but highly complex and task unefficient.
 
 The Random Forest model implementation with fine-tuned parameters is given below:
@@ -542,11 +542,9 @@ Recall = 0.90316, Precision = 0.88792
 ```
 ---
 
-#### 11. Feature Importance
+#### 6. Feature Importance
 
-The essence of the second task is to **produce estimates of feature importance from a trained predictive model**. In other words, we have to train the model and find out how it makes decision to classify customers aa potential subscriber. Not just that, but we also have to figure out the factors that influence person's decision and give insights to the head of loan's sale. After all, the bank invested thousands of dollars to advertise and increase the subscribtions to the classic savings account.
-
-Plots of the feature importance were generated for all of the models. However, the empasis will be put on the best performing model.
+The essence of the second task is to **produce estimates of feature importance from a trained predictive model**. In other words, we have to train the model and find out how it makes decision to classify customers aa potential subscriber. Not just that, but we also have to figure out the factors that influence person's decision and give insights to the head of loan's sale, based on the results. After all, the bank invested thousands of dollars to advertise and increase the subscribtions to the classic savings account.
 
 ```python
 importance_df = pd.DataFrame({
@@ -560,36 +558,38 @@ sns.barplot(data = importance_df.head(15), x = "importance", y = "feature",
 plt.title("Feature Importance of the Random Forest Model");
 ```
 
-**How to explain Random Forest to a non-technical stakeholder:**
-> *"We train hundreds of small decision trees using a random slice of customers and features. Every tree makes its own prediction as to whether a customer will subscribe. The final decision comes from a majority vote across all trees. Feature importance reflects how frequently and how effectively trees distinguish between subscribers and non-subscribers."*
+Plots of the feature importance were generated for all of the models. However, the empasis will be put on the best performing model.
 
 <p align="center">
   <img src="images/task_2_figures/feature_importance_random_forest.png" width="680" alt="Random Forest feature importance"/>
 </p>
 
-> **Insight.** The decision tree distinguish the `forward_rate`, `num_employed` and `employment_variation` as one of the most important features. The macroeconomic features dominate top 10 ranking. Alternatively, the model considers environmental factors like `low_temperature` and `high_temperature` connected to the decision of a customer to subscribe for the product. The `age` of the clients also influence the success of the telemarketing. It is significant to point out - the `call_centre_volume` impact significantly the decision of the model. However, based on the analysis for task 1, the load of the call centre is very low to have such a big impact. It is crucial to highlight that the factors for the unsuccessful campaign should be found in a different place.
+> **Insight.** The decision tree distinguish the `forward_rate`, `num_employed` and `employment_variation` as one of the most important features. The macroeconomic features dominate top 10 ranking. Alternatively, the model considers environmental factors like `low_temperature` and `high_temperature` connected to the decision of a customer to subscribe for the product. The `age` of the clients also influence the success of the telemarketing. It is significant to point out - the `call_centre_volume` also impact significantly the decision of the model. However, based on the analysis for Task 1, the load of the call centre is very low to have any a big impact. It is crucial to highlight that the factors for the unsuccessful campaign should be found in a different place.
+
+**How to explain Random Forest to a non-technical stakeholder:**
+> *"We train hundreds of small decision trees using a random slice of customers and features. Every tree makes its own prediction as to whether a customer will subscribe. The final decision comes from a majority vote across all trees. Feature importance reflects how frequently and how effectively trees distinguish between subscribers and non-subscribers."*
 
 ---
 
 ### Task 3 — Business Strategy / Recommendations
 
-Based on the table that Little bank provided, the data shows:
+Based on the [table](#glm-elasticnet-coefficients-provided-by-the-client) that Little bank provided, the data shows:
 
 1. If the previously campaign was successful, there is a high probability that the client would subscribe again for the product.
 
-2. If the contact was made in March the are high chances for successful subscription. For July, there is some chances of a positive outcome, in November – low chance of a positive outcome. Nevertheless, in May we could say that most certainly the customer won’t subscribe to the product.
+2. If the contact was made in March the chances for subscription are high. For July, there is a little chance of a positive outcome, in November – low chance of a positive outcome. Nevertheless, in May we could say that most certainly the customer won’t subscribe to the product.
 
 3. People who are retired or in full-time education are more likely to purchase the product than people working in the industry. 
 
 To improve the conversion rates it is recommended to:
 
-1. Make a campaign focused on the right customer segment, with an accurate message via the most appropriate medium (Social media, Website, not via Mobile or Landline).
+1. Make a campaign focused on the right customer segment, with an accurate message, via the most appropriate medium (Social media, Website, not via Mobile or Landline).
 
 2. Find the true needs of the customers and personalise the product for them. An improvement of the product will be needed in order to increase the conversion rates. 
 
-3. To get feedback from the bank clients, do they like the products of the bank and what makes them eager to purchase a product. Having a satisfied client is more likely to purchase a product or recommend it to a friend.
+3. To get feedback from the bank clients, do they like the products of the bank and what makes them eager to purchase a product. Satisfied client is more likely to purchase a product or recommend it to a friend.
 
-> For the presentation's bullets or more insights/recommendation check the **add a link to the folder** (the link..)[linking_park]
+> For the presentation's bullets or more insights/recommendation, check the **add a link to the folder** (the link..)[linking_park]
 
 ---
 
@@ -606,17 +606,9 @@ Six model families were trained and evaluated on the data. The results are taken
 | **Random Forest** 🏆🏆🏆 | **1.00000**    | **0,8959**  | **0,9032**  | **0,8879**  |
 | Extreme Gradient Boosting | 0,9998         | 0,8954        | 0,9097    | 0,8821      |
 
-> **Top performing model.**: Withouth a doubt, the best results are achieved with the Random Forest model. It has the highest `test accuracy` and the second highest recall.
+> **Top performing model.** Withouth a doubt, the best results are achieved with the Random Forest model. It has the highest `test accuracy` and the second highest `recall`.
 
-> **Primary metric: Recall.** In the business context, missing a genuine subscriber (false negative) is costlier than contacting a non-subscriber (false positive). The `Recall` metric measures this. It is the proportion of true subscribers that the model successfully identifies.
-
-**Model selection takeaways:**
-
-- **Random Forest wins on recall (88.79 %)** — the single most important metric for this problem.
-- **XGBoost is a close second** with marginally higher precision but lower recall. In production, an ensemble of the two could be considered.
-- **The Train = 1.0000** on Random Forest indicates over-fitting on the training set — but it still generalises well to the test set (89.59 % accuracy), suggesting the signal is strong and the 500-tree ensemble is self-regularising.
-- **Linear models (LR, Lasso, ElasticNet)** plateau around 76 % accuracy — the target surface is non-linear, which tree-based methods exploit effectively.
-- **Decision Tree (83.46 %)** is a useful interpretability bridge between linear and forest models — easy to draw in a presentation.
+> **Primary metric: `Recall`.** In the business context, missing a genuine subscriber (false negative) is costlier than contacting a non-subscriber (false positive). The `Recall` metric measures this. It is the proportion of true subscribers that the model successfully identifies.
 
 ---
 
