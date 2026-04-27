@@ -614,9 +614,42 @@ Six model families were trained and evaluated on the data. The results are taken
 
 ## Conclusion and Key Insights
 
-### Root Cause Analysis
+### Marketing Campaign Performance
 
-**To Do**
+-  **Failure of the Marketing Campaign.** The failure of the Marketing Campaign is very clear. There isn't any impactful improvement of the classic savings account despite of the advertising. As an example 11,721 contacts were made in May. Only 749 customers subscribed. 6.39% were achieved → extremely low conversion.
+
+- **High activity ≠ High impact.** Large number of calls did not translate into increased subscriptions, indicating poor targeting or messaging. Some months show ~50% success rates, but on very small number of subscribers → statistically insignificant.
+High conversion months lack scale
+
+- **Business Implications.** Current strategy is not scalable and increasing calls won't lead to higher conversion rate.
+
+### Contact Strategy & Call Behavior
+
+- **Mobile dominates outreach.** The Majority of contacts were made via mobile (22,215 calls) vs landline (12,785 calls). → not a modern approach.
+
+- **Severe contact inefficiency.** There are extreme outliers in the data (e.g., 40+ calls to a single customer) that suggest poor contact strategy → spam-like patterns harming the brand
+
+- **Successful Contact Strategy** The average number of contacts for a successful conversion is ~2 calls. The successful second calls occur ~6 days after the first contact → the optimal contact strategy
+
+- **Business Implications.** Optimise call strategy increase the conversion rates. However, the it is heavily outdated. The strategy should expand into digital channels
+
+### Customer's Profile 
+
+- **High-performing Customer Segments** - Most conversions are achieved amongst the Administrative professionals, Retired individuals, Unemployed customers and Students (full-time education) → more focused campaing towards the right segment.
+
+- **Education Level** Majority of customers (both overall and converted) have secondary or higher education → Difference in education do not influence results.
+
+- **Age** The campaign focuses on 20–60 age range. The retired individuals are part of high-performing segment, but are neglected. → missed oportinities with retired individuals.
+
+- **Mortage** Mortgage holders are more likely to convert. Over 50% of subscribers (2133 / 3952) have a mortgage → mortage is strong indicator for conversions.
+
+- **Personal Loans and Marital Status** Personal loans negatively correlate with conversion. Only 573 / 3952 subscribers have personal loans. Marital status has no impact over the subscription → weal indicators for conversions.
+
+- **Business Implications.** More focus on higher performing customer segments. A targeted survey is mandatory. It could uncover why one segments are converting high and other don't.
+
+### Model Performance Overview Summary
+
+
 
 ---
 
