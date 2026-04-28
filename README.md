@@ -618,15 +618,15 @@ Six model families were trained and evaluated on the data. The results are taken
 
 - 🚨 **Failure of the Marketing Campaign.** The failure of the Marketing Campaign is very clear. There isn't any impactful improvement of the subscriptions for classic savings account. Despite of the advertising. As an example 11,721 contacts were made in May. Only 749 customers subscribed. 6.39% conversion rate. → extremely low conversion
 
-- ↑↓ **High activity ≠ High impact.** Large number of calls did not translate into increase of subscriptions, indicating poor targeting or messaging. Some months show ~50% success rates, but on very small number of subscribers. → High conversion months lack scale
+- ↑↓ **High activity ≠ High impact.** Large number of calls did not translate into increase of subscriptions, indicating poor targeting or messaging. Some months show ~50% success rates, but on very small number of subscribers. → high conversion months lack scale
 
 - 🚀 **Business Implications.** Current strategy is not scalable and increasing calls won't lead to higher conversion rate.
 
 ### ☎️📲 Contact Strategy & Call Behavior
 
-- 📲 **Mobile dominates outreach.** The majority of contacts were made via mobile - 22,215 mobile calls vs 12,785 landline calls. → both are outdated and ineffective approaches.
+- 📲 **Mobile Dominates oOutreach.** The majority of contacts were made via mobile - 22,215 mobile calls vs 12,785 landline calls. → both are outdated and ineffective approaches.
 
-- ❌ **Severe contact inefficiency.** There are extreme outliers in the data (e.g., 40+ calls to a single customer). That suggests poor contact strategy. → spam-like patterns harming the brand
+- ❌ **Severe Contact Inefficiency.** There are extreme outliers in the data (e.g., 40+ calls to a single customer). That suggests poor contact strategy. → spam-like patterns harming the brand
 
 - ✅ **Successful Contact Strategy** The average number of contacts for a successful conversion is ~2 calls. The successful second calls occur ~6 days after the first contact. → the optimal contact strategy
 
