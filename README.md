@@ -616,47 +616,45 @@ Six model families were trained and evaluated on the data. The results are taken
 
 ### 📢🎯 Marketing Campaign Performance 
 
-- 🚨 **Failure of the Marketing Campaign.** The failure of the Marketing Campaign is very clear. There isn't any impactful improvement of the classic savings account despite of the advertising. As an example 11,721 contacts were made in May. Only 749 customers subscribed. 6.39% were achieved → extremely low conversion.
+- 🚨 **Failure of the Marketing Campaign.** The failure of the Marketing Campaign is very clear. There isn't any impactful improvement of the subscriptions for classic savings account. Despite of the advertising. As an example 11,721 contacts were made in May. Only 749 customers subscribed. 6.39% conversion rate. → extremely low conversion
 
-- ↑↓ **High activity ≠ High impact.** Large number of calls did not translate into increased subscriptions, indicating poor targeting or messaging. Some months show ~50% success rates, but on very small number of subscribers → statistically insignificant.
-High conversion months lack scale
+- ↑↓ **High activity ≠ High impact.** Large number of calls did not translate into increase of subscriptions, indicating poor targeting or messaging. Some months show ~50% success rates, but on very small number of subscribers. → High conversion months lack scale
 
 - 🚀 **Business Implications.** Current strategy is not scalable and increasing calls won't lead to higher conversion rate.
 
 ### ☎️📲 Contact Strategy & Call Behavior
 
-- 📲 **Mobile dominates outreach.** The Majority of contacts were made via mobile (22,215 calls) vs landline (12,785 calls). → not a modern approach.
+- 📲 **Mobile dominates outreach.** The majority of contacts were made via mobile - 22,215 mobile calls vs 12,785 landline calls. → both are outdated and ineffective approaches.
 
-- ❌ **Severe contact inefficiency.** There are extreme outliers in the data (e.g., 40+ calls to a single customer) that suggest poor contact strategy → spam-like patterns harming the brand
+- ❌ **Severe contact inefficiency.** There are extreme outliers in the data (e.g., 40+ calls to a single customer). That suggests poor contact strategy. → spam-like patterns harming the brand
 
-- ✅ **Successful Contact Strategy** The average number of contacts for a successful conversion is ~2 calls. The successful second calls occur ~6 days after the first contact → the optimal contact strategy
+- ✅ **Successful Contact Strategy** The average number of contacts for a successful conversion is ~2 calls. The successful second calls occur ~6 days after the first contact. → the optimal contact strategy
 
-- 🚀 **Business Implications.** Optimise call strategy increase the conversion rates. However, the it is heavily outdated. The strategy should expand into digital channels
+- 🚀 **Business Implications.** Optimise call strategy increases the conversion rates. However, the marketing strategy is heavily outdated. The strategy should expand into digital channels.
 
 ### 👦👧 Customer's Profile 
 
-- 💪 **High-performing Customer Segments** - Most conversions are achieved amongst the Administrative professionals, Retired individuals, Unemployed customers and Students (full-time education) → more focused campaing towards the right segment.
+- 💪 **High-performing Customer Segments.** - Most conversions are achieved amongst the Administrative professionals, Retired individuals, Unemployed customers and Students (full-time education). → more focused campaing towards the right segment
 
-- 🎓 **Education Level** Majority of customers (both overall and converted) have secondary or higher education → Difference in education do not influence results.
+- 🎓 **Education Level.** Majority of customers (both overall and subscribers) have secondary or higher education. → difference in education do not influence results
 
-- 📅 **Age** The campaign focuses on 20–60 age range. The retired individuals are part of high-performing segment, but are neglected. → missed oportinities with retired individuals.
+- 📅 **Age.** The campaign focuses on 20–60 age range. The retired individuals are part of the high-performing segments, but are neglected. → missed oportinities with retired individuals
 
-- 🏡 **Mortgage** Mortgage holders are more likely to convert. Over 50% of subscribers (2133 / 3952) have a mortgage → mortage is strong indicator for conversions.
+- 🏡 **Mortgage.** Mortgage holders are more likely to convert. Over 50% of subscribers (2133 / 3952) have a mortgage → mortage is strong indicator for conversions
 
-- 💍 **Personal Loans and Marital Status** Personal loans negatively correlate with conversion. Only 573 / 3952 subscribers have personal loans. Marital status has no impact over the subscription → weal indicators for conversions.
+- 💍 **Personal Loans and Marital Status.** Personal loans negatively correlate with conversion. Only 573 / 3952 subscribers have personal loans. Marital status has no impact over the subscription → weal indicators for conversions
 
-- 🚀 **Business Implications.** More focus on higher performing customer segments. A targeted survey is mandatory. It could uncover why one segments are converting high and other don't.
+- 🚀 **Business Implications.** More focus on the higher performing customer segments. A targeted survey is mandatory. It could uncover why one segments are converting high and other don't.
 
 ### 📊📈 Model Performance Summary 
 
-- 📈 **Linear Models Plateau** Logistic Regression, Lasso, and ElasticNet reach ~76% test accuracy → Non-linear patterns in data.
-→ Indicates non-linear patterns dominate the problem space.
+- 📈 **Linear Models Plateau.** Logistic Regression, Lasso, and ElasticNet reach ~76% test accuracy. → Non-linear patterns in data.
 
-- 🖧 **Decision Trees - Better Option** Decision Tree improves the accuracy but overfits. It achieves 83.46% test accuracy, but with a clear train–test gap (89.42% vs 83.46%). → limited generalization.
+- 🖧 **Decision Trees - Better Option.** Decision Tree improves the accuracy but overfits. The model achieves 83.46% test accuracy, but with a clear train–test gap (89.42% vs 83.46%). → limited generalization
 
-- 🌲🌳🌿 **Tree-based Ensembles Dominance** Random Forest and XGBoost outperform all other models by far. Random Forest hits the best precision (88.79%) and accuracy (89.59%). XGBoost has the highest recall 90.97% and near-best accuracy 89.54%. → ensemble models are the best for the problem
+- 🌲🌳🌿 **Tree-based Ensembles Dominance.** Random Forest and XGBoost outperform by far all other models . Random Forest hits the best precision (88.79%) and accuracy (89.59%). XGBoost has the highest recall 90.97% and near-best accuracy 89.54%. → ensemble models are the best solution for the problem
 
-- 🚀 **Business Implications** Random Forest and XGBoost are the best when the goal is to reduce the wasted outreach and maximise the subscriber detection. Note, overfitting and computation eficiency should be taken into consideration. Less complex models could be used for better understanding of the data and classification decision.
+- 🚀 **Business Implications.** Random Forest and XGBoost are the best choice when the goal is to reduce the wasted outreach and maximise the subscriber detection. Note, overfitting and computation eficiency should be taken into consideration. Less complex models could be used for better understanding of the data and classification decision.
 
 ---
 
