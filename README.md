@@ -642,7 +642,7 @@ Six model families were trained and evaluated on the data. The results are taken
 
 - 🏡 **Mortgage.** Mortgage holders are more likely to convert. Over 50% of subscribers (2133 / 3952) have a mortgage → mortage is strong indicator for conversions
 
-- 💍 **Personal Loans and Marital Status.** Personal loans negatively correlate with conversion. Only 573 / 3952 subscribers have personal loans. Marital status has no impact over the subscription → weal indicators for conversions
+- 💍 **Personal Loans and Marital Status.** Personal loans negatively correlate with conversion. Only 573 / 3952 subscribers have personal loans. Marital status has no impact over the subscription → weak indicators for conversions
 
 - 🚀 **Business Implications.** More focus on the higher performing customer segments. A targeted survey is mandatory. It could uncover why one segments are converting high and other don't.
 
@@ -800,7 +800,7 @@ State clearly: *"Because the positive rate is only 11 %, I'll apply SMOTE **only
 
 ## Python Scripts
 
-The `.py` files are auto-generated script equivalents of the Jupyter notebooks, suitable for batch execution, CI pipelines, or quick command-line re-runs.
+The `.py` files are auto-generated script that are equivalents of the Jupyter notebooks. The scripts are suitable for batch execution, CI pipelines, or quick re-runs via command-line.
 
 | Script | Notebook Equivalent | Description |
 |--------|---------------------|-------------|
@@ -823,7 +823,7 @@ Install all dependencies in a fresh virtual environment:
 
 ```bash
 python -m venv .venv
-source .venv/bin/activate          # on Windows: .venv\Scripts\activate
+.venv\Scripts\activate          # on macOS/Linux: source .venv/bin/activate 
 pip install -r requirements.txt
 ```
 
@@ -846,7 +846,7 @@ pip install -r requirements.txt
 
 ## Contributing
 
-Contributions, suggestions and improvements are very welcome — the repository is updated regularly.
+Contributions, suggestions and improvements are very welcome. The repository is updated regularly.
 
 **To contribute:**
 
@@ -861,9 +861,8 @@ For major changes, please open an issue first to discuss what you would like to 
 **Good first contributions:**
 
 - Additional interview tips and "gotcha" questions from your own Big Four experience.
-- Alternative modelling approaches (CatBoost, LightGBM, neural models).
+- Alternative modelling approaches (CatBoost, LightGBM, other models).
 - More visualisations for the EDA notebook.
-- Translations of the README into other languages.
 
 **Maintainer:** [@krasvachev](https://github.com/krasvachev) — feel free to open an issue or reach out directly.
 
@@ -878,7 +877,7 @@ You are free to use, copy, modify, merge, publish, distribute and adapt this wor
 ---
 
 <p align="center">
-  <em>Good luck with your interview. You've got this. 🎯🎯🎯</em>
+  <em>Good luck with your interview. You've got this.</em> 🎯🎯🎯
   <br><br>
   <strong>If this repository helped you, please consider giving it a ⭐ — it helps other candidates find it.</strong>
 </p>
