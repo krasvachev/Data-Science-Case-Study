@@ -665,6 +665,8 @@ This is the section you came here for. It is split into three parts:
 1. **Basic advice** for a Data Science / ML interview at a Big Four firm.
 2. **Task-1 specific advice** — how to approach the EDA task.
 3. **Task-2 specific advice** — how to approach the ML task.
+4. **Task-3 specific advice** — how to approach the Business Strategy task.
+5. **Overview** of the guidelines
 
 > This section will continue to be expanded with additional tips, failure modes to avoid and LLM-assisted workflows. The core framework is below.
 
