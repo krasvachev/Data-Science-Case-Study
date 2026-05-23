@@ -800,7 +800,7 @@ df["outcome"].value_counts()
 
 -	Analyze the model results and **extract business insights**. Accuracy alone is never enough. Missing a subscriber (false negative) costs more than contacting a non-subscriber (false positive). Therefore, recall is the primary metric.
 
-- **Be prepared to defend your results** with a simple cost sketch. As an example: "A missed subscriber is a lost lifetime-value of ~ €X; an unwanted call costs a few pence of call-centre time."
+- **Be prepared to defend your results** with a simple cost sketch. As an example: "A missed subscriber is a lost lifetime-value of ~ X ollars; an unwanted call costs a few pence of call-centre time."
 
 ---
 
@@ -816,29 +816,29 @@ df["outcome"].value_counts()
 
 ---
 
-### Summary of the directions
+### Summary of the Directions
 
-- Prepare beforehand. Install the necessary libraries, have an open notebook and ready-to-use code snipets
+- Prepare beforehand. Install the necessary libraries, have an open notebook and ready-to-use code snipets.
 
-- Start imediately. Use effective time strategy or yoi will ran out of time, without finishing the three tasks.
+- Start imediately. Use effective time strategy or you will ran out of time without finishing the three tasks.
 
 - State 3-5 hypotheses and develop analysis that prooves/rejects them.
 
-- Clean the data early if you want to succeed with the task. Handle duplicates, missing values, incorrect types, suspicious values and outliers
+- Clean the data early if you want to succeed with the task. Handle duplicates, missing values, incorrect types, suspicious values and outliers.
 
-- Extract insights continuously and be flexible. Use clear plots to enhance your analysis
+- Extract insights continuously and be flexible. Use clear plots to enhance your analysis.
 
 - Start clean Task 2. Just copy the first Sections from the Task 1 notebook.
 
 - Divide the data into train and test sets. Apply pre-processing - scale, impute, encode.
 
-- Start simple. Then use more advanced models. Baseline models --> Linear/Logistic Regression --> Random Forest/XGBoost.
+- Start simple. Then use more advanced models. Baseline models → Linear / Logistic Regression → Random Forest/XGBoost.
 
 - Plot feature importance figures. Extract business insights. Be prepared to explain and defend them.
 
 - Review Task 3 table carefully. Build few assumptions, but connect them with the EDA findings and the ML results.
 
-- Quality beats quantity => Focus on the three strongest interpretations and recommendations.
+- Quality beats quantity → Focus on the three strongest interpretations and recommendations for Task 3.
 
 ---
 
