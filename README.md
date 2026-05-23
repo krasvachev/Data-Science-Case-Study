@@ -804,6 +804,34 @@ Good Insight: *"May is the worst month for conversion — we should cut campaign
 
 - Be prepared to defend your results with a simple cost sketch. As an example: "A missed subscriber is a lost lifetime-value of ~ €X; an unwanted call costs a few pence of call-centre time."
 
+---
+
+### Advice for Task 3 — Recommendations
+
+-	Review the coefficient table carefully. Look for similarities, extreme values and unusual patterns. 
+
+-	Build a few simple assumptions first. Strong business recommendations usually start from straightforward observations. 
+
+-	Combine the insights from Task 1 and Task 2. Your recommendations should connect the EDA findings with the ML results. 
+
+-	Focus on the three strongest interpretations and the three strongest recommendations. Quality beats quantity in presentations
+
+
+---
+
+### Overview of the guidelines
+
+
+**Know the environment.**
+
+- Big Four interview panels frequently include **non-technical stakeholders** (engagement managers, partners). Every explanation must land for a smart business audience, not just a machine-learning peer.
+- There are usually **3–5 interviews** in total: HR screen, technical case study (this one), business-case presentation, a partner / fit interview and sometimes a modelling deep-dive.
+- The **technical case study** is typically **3 hours** for all questions combined and is done on your own machine.
+
+**Prepare your environment.**
+
+- Have a clean Jupyter/VS Code setup ready with `pandas`,
+
 
 ---
 
