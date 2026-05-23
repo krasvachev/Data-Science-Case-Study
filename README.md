@@ -814,21 +814,31 @@ df["outcome"].value_counts()
 
 -	Focus on **the three strongest interpretations** and **the three strongest recommendations**. **Quality beats quantity** in presentations.
 
-
 ---
 
 ### Summary of the directions
 
+- Prepare beforehand. Install the necessary libraries, have an open notebook and ready-to-use code snipets
 
-**Know the environment.**
+- Start imediately. Use effective time strategy or yoi will ran out of time, without finishing the three tasks.
 
-- 
-- 
+- State 3-5 hypotheses and develop analysis that prooves/rejects them.
 
-**Prepare your environment.**
+- Clean the data early if you want to succeed with the task. Handle duplicates, missing values, incorrect types, suspicious values and outliers
 
-- 
+- Extract insights continuously and be flexible. Use clear plots to enhance your analysis
 
+- Start clean Task 2. Just copy the first Sections from the Task 1 notebook.
+
+- Divide the data into train and test sets. Apply pre-processing - scale, impute, encode.
+
+- Start simple. Then use more advanced models. Baseline models --> Linear/Logistic Regression --> Random Forest/XGBoost.
+
+- Plot feature importance figures. Extract business insights. Be prepared to explain and defend them.
+
+- Review Task 3 table carefully. Build few assumptions, but connect them with the EDA findings and the ML results.
+
+- Quality beats quantity => Focus on the three strongest interpretations and recommendations.
 
 ---
 
