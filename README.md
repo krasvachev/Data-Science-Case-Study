@@ -734,7 +734,7 @@ df.describe()
 df["outcome"].value_counts()
 ```
 
-These three lines reveal dtypes, scale, missing data and the class distribution — roughly **80 % of everything you need to know** about the dataset.
+> These three lines reveal dtypes, scale, missing data and the class distribution — roughly **80 % of everything you need to know** about the dataset.
 
 -	Create a few simple plots for the key columns. Basic visuals often reveal patterns faster than complex modelling. 
 
@@ -763,53 +763,47 @@ These three lines reveal dtypes, scale, missing data and the class distribution 
 **Always close each section with a few-sentences business insight.**
 
 Bad insight: *"May has the lowest count."*
+
 Good Insight: *"May is the worst month for conversion — we should cut campaign spend in May by 70 %."*
 
 ---
 
 ### Advice for Task 2 — Machine Learning
 
-**Always start with a baseline.**
+**Win some time before and at the interview.**
 
-```python
-# All-negative baseline: predict FALSE for everyone.
-y_pred_baseline = np.zeros_like(y_test)
-print("Baseline accuracy:", (y_pred_baseline == y_test).mean())   # ~88.7 %
-print("Baseline recall  :", 0.0)                                  # zero subscribers found
-```
+- Prepare your models and reusable code before the interview. Speed matters under time pressure. 
 
-This single block disarms the "why not just predict majority class?" trap and shows rigour.
+- Create a new notebook for task 2. Just copy and paste some of the code from task 1. Loading and cleaning the data, some important plots that analyse the columns of the data frame are good candidates. Remember, strong pipeline starts with reliable data. 
 
-**Explain class imbalance and your solution before training.**
+- Use some of the analysis of the data distribution from task 1. This helps you spot imbalance, skewness and scaling issues early. 
 
-State clearly: *"Because the positive rate is only 11 %, I'll apply SMOTE **only inside the training fold** to avoid data leakage and I'll evaluate using recall and precision — not raw accuracy."*
 
-**Match the metric to the business.**
+**Pre-processing that opens the doors of success.**
 
-- **Missing a subscriber (false negative) costs more than contacting a non-subscriber (false positive)** — recall is therefore the primary metric.
-- Be prepared to defend this with a simple cost sketch: *"A missed subscriber is a lost lifetime-value of ~£X; an unwanted call costs a few pence of call-centre time."*
+-	Split the dataset into train and test sets correctly. Avoid leakage at all costs. 
+
+-	Pre-process the data carefully. Scale numerical features, impute missing values and encode categorical variables where needed. 
+
+- Put into consideration the class imbalance. Be ready to state clearly your solution with the pros and cons that follows after the implementation.**
+
 
 **Climb the model-complexity ladder.**
 
-1. Logistic Regression — fast, interpretable, benchmark.
-2. Lasso / ElasticNet — regularisation + automatic feature selection.
-3. Decision Tree — the interpretability sweet-spot.
-4. Random Forest — the workhorse.
-5. XGBoost — the state-of-the-art finisher.
+- Train baseline models first. Simple baselines help you prove that your final model actually improves performance. 
 
-**Prepare plain-English one-liners for every model.**
+-	Include simple models such as Linear Regression or Logistic Regression. Interviewers often care more about reasoning than complexity. Plus they are easy to interpret and give you good directions afterwards.
 
-- *Logistic Regression*: "A weighted vote over the features — weights tell us direction and strength of influence."
-- *Random Forest*: "A committee of decision trees, each trained on a random subset of the data — we take the majority vote."
-- *XGBoost*: "Many shallow trees built sequentially, each correcting the mistakes of the previous one."
+-	Then move to heavier models. Random Forest, XGBoost or other advanced methods can improve performance after the fundamentals are covered. 
 
-**Feature importance is a storytelling tool.**
+**Match the metrics to the business.**
 
-- Sort the bars from largest to smallest and read them as a business narrative: *"The model tells us timing and economic context matter most; the customer's profession and recent contact history matter second; demographics matter least."*
+-	Plot feature importance. Show which variables drive the predictions and connect them back to the business problem. 
 
-**Use the task constraint ("only numerical columns") as a strength.**
+-	Analyze the model results and extract business insights. Accuracy alone is never enough. Missing a subscriber (false negative) costs more than contacting a non-subscriber (false positive). Therefore, recall is the primary metric.
 
-- Do not argue with the constraint — comply, but **mention** that in production you would retrain on all features and expect a meaningful lift. This shows judgement without defying the brief.
+- Be prepared to defend your results with a simple cost sketch. As an example: "A missed subscriber is a lost lifetime-value of ~ €X; an unwanted call costs a few pence of call-centre time."
+
 
 ---
 
