@@ -662,17 +662,15 @@ Six model families were trained and evaluated on the data. The results are taken
 
 This is the section you came here for. It is split into five parts:
 
-1. **Basic advice** for a Data Science / ML interview at a Big Four firm.
-2. **Task-1 specific advice** — how to approach the EDA task.
-3. **Task-2 specific advice** — how to approach the ML task.
-4. **Task-3 specific advice** — how to approach the Business Strategy task.
+1. **Basic directions** for a Data Science / ML interview at a Big Four firm.
+2. **Task-1 specific directions** — how to approach the EDA task.
+3. **Task-2 specific directions** — how to approach the ML task.
+4. **Task-3 specific directions** — how to approach the Business Strategy task.
 5. **Overview** of the guidelines
-
-> This section will continue to be expanded with additional tips, failure modes to avoid and LLM-assisted workflows. The core framework is below.
 
 ---
 
-### Basic Advice for a Big Four Data Science / ML Interview
+### Basic Directions for a Big Four Data Science / ML Interview
 
 **Know the environment.**
 
@@ -684,13 +682,13 @@ This is the section you came here for. It is split into five parts:
 
 - Have a clean Jupyter/VS Code setup ready with `pandas`, `numpy`, `matplotlib`, `seaborn`, `scikit-learn`, `imbalanced-learn` and `xgboost` pre-installed.
 - Keep a **personal snippets file** with your favourite EDA boilerplate (`df.info()`, `df.describe()`, missing-value audit, class-imbalance check).
-- Have the concise notebook template open before the clock starts. Most of the times the dataset will be sent when the interview starts.
+- Have the concise notebook template open before the clock starts. If you have the data before the interview, perform the basic anlysis. However, most of the time the dataset will be sent when the case study interview starts.
 
 **Use a repeatable answer structure.**
 
 - For every question, use **Problem → Approach → Result → Recommendation**. Big Four reviewers score you on structured thinking as much as on code quality.
 
-- In case interviews, the final result is less important than the logic you use to get there. Hence, prioritize the analytical process over the "right" answer.
+- In case interviews, the final result is less important than the logic you use to get there. Hence, **prioritize the analytical process over the "right" answer**.
 
 **Start immediately.**
 
@@ -722,7 +720,7 @@ This is the section you came here for. It is split into five parts:
 
 ---
 
-### Advice for Task 1 — Exploratory Data Analysis
+### Directions for Task 1 — The Exploratory Data Analysis
 
 **The fast and effective overview.**
 
@@ -740,97 +738,96 @@ df["outcome"].value_counts()
 
 **In a look for hypotheses.**
 
-- Start forming early hypotheses about which columns may matter the most. Think like both a data scientist and a business stakeholder. 
+- **Start forming early hypotheses** about which columns may matter the most. Think like both a data scientist and a business stakeholder. 
 
-- At the end of the overview, you should 3–5 clear hypotheses about the data. These hypotheses will guide your analysis and make your notebook look structured and intentional. A good hypothesis is that the outcome should be influenced by the day or month of the year.
+- At the end of the overview, **you should have 3–5 clear hypotheses about the data**. These hypotheses will guide your analysis and make your notebook look structured and intentional. One good hypothesis is connected to the outcome: the outcome of the call should be influenced by the day or month of the year.
 
 **Clear the data.**
 
--	Clean the data early. Handle duplicates, missing values, incorrect types and suspicious values before going deeper. 
+-	**Clean the data early**. Handle duplicates, missing values, incorrect types and suspicious values before going deeper. 
 
-- Check for outliers and study the distributions of the variables. Extreme values and skewed distributions can heavily affect your conclusions and models. 
+- Check for **outliers** and study the **distributions** of the variables. Extreme values and skewed distributions can heavily affect your conclusions and models. 
 
 
 **Perform focused EDA.**
 -	Perform EDA around your hypotheses. Every plot and analysis should help confirm or reject an assumption. 
 
--	Extract insights and conclusions continuously. Don’t just generate charts — explain what they mean for the business. 
+-	**Extract insights and conclusions continuously**. Don’t just generate charts — explain what they mean for the business. 
 
--	Be flexible. If the data reveals something unexpected, adapt your strategy instead of forcing your original assumptions. 
+-	**Be flexible**. If the data reveals something unexpected, adapt your strategy instead of forcing your original assumptions. 
 
--	Be careful with plots. Use clean, readable visuals with proper labels and titles. Bad plots make strong analysis look weak. 
+-	Be careful with plots. Use **clean, readable visuals** with proper labels and titles. Bad plots make strong analysis look weak. 
 
 **Always close each section with a few-sentences business insight.**
 
-Bad insight: *"May has the lowest count."*
+- **Bad insight**: *"May has the lowest count."*
 
-Good Insight: *"May is the worst month for conversion — we should cut campaign spend in May by 70 %."*
+- **Good Insight**: *"May is the worst month for conversion — we should cut campaign spend in May by 70%."*
 
 ---
 
-### Advice for Task 2 — Machine Learning
+### Directions for Task 2 — The Machine Learning Task
 
 **Win some time before and at the interview.**
 
 - Prepare your models and reusable code before the interview. Speed matters under time pressure. 
 
-- Create a new notebook for task 2. Just copy and paste some of the code from task 1. Loading and cleaning the data, some important plots that analyse the columns of the data frame are good candidates. Remember, strong pipeline starts with reliable data. 
+- Create a **new notebook for task 2**. Just copy and paste some of the code from task 1. Loading and cleaning the data or important plots that analyse the columns are good candidates. Remember, strong pipeline starts with reliable data. 
 
 - Use some of the analysis of the data distribution from task 1. This helps you spot imbalance, skewness and scaling issues early. 
 
 
 **Pre-processing that opens the doors of success.**
 
--	Split the dataset into train and test sets correctly. Avoid leakage at all costs. 
+-	Split the dataset into **train and test sets** correctly. **Avoid leakage** at all costs. 
 
--	Pre-process the data carefully. Scale numerical features, impute missing values and encode categorical variables where needed. 
+-	**Pre-process** the data carefully. **Scale** numerical features, **impute** missing values and **encode** categorical variables where needed. 
 
-- Put into consideration the class imbalance. Be ready to state clearly your solution with the pros and cons that follows after the implementation.**
+- Put into consideration the **class-imbalance**. Be ready to state clearly your solution with the pros and cons that follows after the implementation.
 
 
 **Climb the model-complexity ladder.**
 
-- Train baseline models first. Simple baselines help you prove that your final model actually improves performance. 
+- Train **baseline models** first. Simple baselines help you prove that your final model actually improves performance. 
 
--	Include simple models such as Linear Regression or Logistic Regression. Interviewers often care more about reasoning than complexity. Plus they are easy to interpret and give you good directions afterwards.
+-	Include **simple models such as Linear Regression or Logistic Regression**. Interviewers often care more about reasoning than complexity. Plus they are easy to interpret and give you good directions afterwards.
 
--	Then move to heavier models. Random Forest, XGBoost or other advanced methods can improve performance after the fundamentals are covered. 
+-	Then move to **heavier models**. **Random Forest, XGBoost or other advanced methods** can improve performance after the fundamentals are covered. 
 
 **Match the metrics to the business.**
 
--	Plot feature importance. Show which variables drive the predictions and connect them back to the business problem. 
+-	**Plot feature importance**. Show which variables drive the predictions and connect them back to the business problem. 
 
--	Analyze the model results and extract business insights. Accuracy alone is never enough. Missing a subscriber (false negative) costs more than contacting a non-subscriber (false positive). Therefore, recall is the primary metric.
+-	Analyze the model results and **extract business insights**. Accuracy alone is never enough. Missing a subscriber (false negative) costs more than contacting a non-subscriber (false positive). Therefore, recall is the primary metric.
 
-- Be prepared to defend your results with a simple cost sketch. As an example: "A missed subscriber is a lost lifetime-value of ~ €X; an unwanted call costs a few pence of call-centre time."
-
----
-
-### Advice for Task 3 — Recommendations
-
--	Review the coefficient table carefully. Look for similarities, extreme values and unusual patterns. 
-
--	Build a few simple assumptions first. Strong business recommendations usually start from straightforward observations. 
-
--	Combine the insights from Task 1 and Task 2. Your recommendations should connect the EDA findings with the ML results. 
-
--	Focus on the three strongest interpretations and the three strongest recommendations. Quality beats quantity in presentations
-
+- **Be prepared to defend your results** with a simple cost sketch. As an example: "A missed subscriber is a lost lifetime-value of ~ €X; an unwanted call costs a few pence of call-centre time."
 
 ---
 
-### Overview of the guidelines
+### Directions for Task 3 — The Recommendations
+
+-	**Review the coefficient table carefully**. Look for similarities, extreme values and unusual patterns. 
+
+-	Build a few **simple assumptions first**. Strong business recommendations usually start from straightforward observations. 
+
+-	Combine the insights from Task 1 and Task 2. **Your recommendations should connect the EDA findings with the ML results**. 
+
+-	Focus on **the three strongest interpretations** and **the three strongest recommendations**. **Quality beats quantity** in presentations.
+
+
+---
+
+### Summary of the directions
 
 
 **Know the environment.**
 
-- Big Four interview panels frequently include **non-technical stakeholders** (engagement managers, partners). Every explanation must land for a smart business audience, not just a machine-learning peer.
-- There are usually **3–5 interviews** in total: HR screen, technical case study (this one), business-case presentation, a partner / fit interview and sometimes a modelling deep-dive.
-- The **technical case study** is typically **3 hours** for all questions combined and is done on your own machine.
+- 
+- 
 
 **Prepare your environment.**
 
-- Have a clean Jupyter/VS Code setup ready with `pandas`,
+- 
 
 
 ---
