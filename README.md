@@ -724,40 +724,46 @@ This is the section you came here for. It is split into five parts:
 
 ### Advice for Task 1 — Exploratory Data Analysis
 
-**Start with the three-command overview.**
+**The fast and effective overview.**
+
+- Check the rows, columns, data types and target variable. Your first goal is simple - understand what each feature represents and how is the dataset structured. These three commands always get the job done:
 
 ```python
 df.info()
-df.describe(include="all")
-df["outcome"].value_counts(normalize=True)
+df.describe()
+df["outcome"].value_counts()
 ```
 
 These three lines reveal dtypes, scale, missing data and the class distribution — roughly **80 % of everything you need to know** about the dataset.
 
-**Flag class imbalance immediately.**
+-	Create a few simple plots for the key columns. Basic visuals often reveal patterns faster than complex modelling. 
 
-- Say it out loud: *"The positive class is only 11.3 %. This has three consequences: (i) I'll use recall as the headline metric, (ii) I'll apply SMOTE inside the training fold and (iii) I'll include a naive all-negative baseline to anchor expectations."*
+**In a look for hypotheses.**
 
-**Choose 5–7 impactful visualisations — not 15 mediocre ones.**
+- Start forming early hypotheses about which columns may matter the most. Think like both a data scientist and a business stakeholder. 
 
-For this dataset, the must-have plots are:
+- At the end of the overview, you should 3–5 clear hypotheses about the data. These hypotheses will guide your analysis and make your notebook look structured and intentional. A good hypothesis is that the outcome should be influenced by the day or month of the year.
 
-1. Target class distribution (pie or bar).
-2. Success rate by month.
-3. Success rate by day-of-week.
-4. Success rate by profession.
-5. Correlation heatmap of numerical features.
-6. Histogram of `num_contacts` split by outcome.
-7. (Bonus) Economic indicator trend vs. outcome.
+**Clear the data.**
 
-**Always close each section with a one-sentence business insight.**
+-	Clean the data early. Handle duplicates, missing values, incorrect types and suspicious values before going deeper. 
 
-Not: *"May has the lowest count."*
-Yes: *"May is the worst month for conversion — we should cut campaign spend in May by 70 %."*
+- Check for outliers and study the distributions of the variables. Extreme values and skewed distributions can heavily affect your conclusions and models. 
 
-**Handle missing data transparently.**
 
-- `"unknown"` is **not** a missing value in a strict sense — it is a category. Treat it as such in EDA. In the ML pipeline, drop it or one-hot encode it explicitly.
+**Perform focused EDA.**
+-	Perform EDA around your hypotheses. Every plot and analysis should help confirm or reject an assumption. 
+
+-	Extract insights and conclusions continuously. Don’t just generate charts — explain what they mean for the business. 
+
+-	Be flexible. If the data reveals something unexpected, adapt your strategy instead of forcing your original assumptions. 
+
+-	Be careful with plots. Use clean, readable visuals with proper labels and titles. Bad plots make strong analysis look weak. 
+
+**Always close each section with a few-sentences business insight.**
+
+Bad insight: *"May has the lowest count."*
+Good Insight: *"May is the worst month for conversion — we should cut campaign spend in May by 70 %."*
 
 ---
 
