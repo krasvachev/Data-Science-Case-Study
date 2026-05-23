@@ -660,7 +660,7 @@ Six model families were trained and evaluated on the data. The results are taken
 
 ## How to Tackle the Interview
 
-This is the section you came here for. It is split into three parts:
+This is the section you came here for. It is split into five parts:
 
 1. **Basic advice** for a Data Science / ML interview at a Big Four firm.
 2. **Task-1 specific advice** — how to approach the EDA task.
@@ -684,32 +684,39 @@ This is the section you came here for. It is split into three parts:
 
 - Have a clean Jupyter/VS Code setup ready with `pandas`, `numpy`, `matplotlib`, `seaborn`, `scikit-learn`, `imbalanced-learn` and `xgboost` pre-installed.
 - Keep a **personal snippets file** with your favourite EDA boilerplate (`df.info()`, `df.describe()`, missing-value audit, class-imbalance check).
-- Have the dataset loaded and the concise notebook template open before the clock starts.
+- Have the concise notebook template open before the clock starts. Most of the times the dataset will be sent when the interview starts.
 
 **Use a repeatable answer structure.**
 
 - For every question, use **Problem → Approach → Result → Recommendation**. Big Four reviewers score you on structured thinking as much as on code quality.
 
-**Time-box aggressively.**
+- In case interviews, the final result is less important than the logic you use to get there. Hence, prioritize the analytical process over the "right" answer.
+
+**Start immediately.**
+
+-	Read the task carefully before writing any code. Understand what the company is actually asking for and what business problem you need to solve. 
+-	Open the dataset immediately. Don’t waste time planning for 30 minutes without seeing the data. 
+
+
+**Time strategy.**
 
 | Phase | Suggested budget |
 |-------|:-----------------|
-| Data overview + cleaning | 20 min |
-| Core EDA with 5–7 plots | 60 min |
-| ML pipeline (baseline → RF / XGB) | 60 min |
+| Task overview + Data cleaning | 20 min |
+| Core EDA with 3-5 hypotheses | 50 min |
+| ML pipeline (baseline → RF / XGB) | 50 min |
 | Feature importance + interpretation | 20 min |
 | Business recommendations | 20 min |
+| Extra time | 20 min |
 
 > My original case-study attempt failed **specifically because I ran out of time**. The single most impactful change was switching to the concise notebook template and practising until I could finish within 3 hours reliably.
 
 **Use LLMs strategically.**
 
-- Use Claude, ChatGPT, or Copilot to generate boilerplate quickly — but **understand every line** you submit.
-- Good prompts: *"Write a function that computes subscription rate by month and plots it as a bar chart."*
-- Bad prompts: *"Solve this case study."* — you will fail when asked to explain your code.
-- Keep a prepared library of prompts for: data-overview, class-imbalance handling, SMOTE, GridSearchCV, feature-importance plotting.
+- Use Claude, ChatGPT or Gemini to generate boilerplate quickly — but **understand every line** you submit.
+- Keep a prepared library of prompts for: data-overview, figures plotting, data analysis, class-imbalance handling, model implementation, feature-importance plotting.
 
-**Rehearse the narrative.**
+**Rehearse the narrative after the interview.**
 
 - Record yourself walking through the notebook as if presenting to the head of loan sales. Focus on *why* each step exists, not *what* you typed.
 
