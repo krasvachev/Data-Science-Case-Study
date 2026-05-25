@@ -800,7 +800,7 @@ df["outcome"].value_counts()
 
 -	Analyze the model results and **extract business insights**. Accuracy alone is never enough. Missing a subscriber (false negative) costs more than contacting a non-subscriber (false positive). Therefore, recall is the primary metric.
 
-- **Be prepared to defend your results** with a simple cost sketch. As an example: "A missed subscriber is a lost lifetime-value of ~ X ollars; an unwanted call costs a few pence of call-centre time."
+- **Be prepared to defend your results** with a simple cost sketch. As an example: "A missed subscriber is a lost lifetime-value of ~ X dollars; an unwanted call costs a few pence of call-centre time."
 
 ---
 
@@ -832,7 +832,7 @@ df["outcome"].value_counts()
 
 - Divide the data into train and test sets. Apply pre-processing - scale, impute, encode.
 
-- Start simple. Then use more advanced models. Baseline models → Linear / Logistic Regression → Random Forest/XGBoost.
+- Start simple. Then use more advanced models. Baseline models → Linear/Logistic Regression → Random Forest/XGBoost.
 
 - Plot feature importance figures. Extract business insights. Be prepared to explain and defend them.
 
