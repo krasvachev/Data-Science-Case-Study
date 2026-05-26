@@ -48,7 +48,7 @@ The solutions are not limited to the Big Four accounting companies. They can be 
 
 ## Case Study Instructions
 
-### Customer Analytics Case Study — Cross-sell Opportunities for LittleBank [^1]
+### Customer Analytics Case Study — Cross-sell Opportunities for LittleBank
 
 <mark>**Client:**</mark> LittleBank — a retail bank providing deposit accounts, loans and savings products.
 
@@ -107,7 +107,7 @@ The third task provides a ready-made GLM ElasticNet (binomial) coefficient table
 
 > *Notes: all categorical variables were one-hot encoded, all variables were centred and scaled, zero-coefficient variables excluded; the GLM uses the **binomial** distribution.*
 
-[^1]: You could find a PDF file with the instructions [here](https://drive.google.com/file/d/1_VQwJuwf29FRUfQZCqiO7c3RLiOy2tra/view?usp=drive_link).
+> *You could find a PDF file with the instructions [here](https://drive.google.com/file/d/1_VQwJuwf29FRUfQZCqiO7c3RLiOy2tra/view?usp=drive_link).*
 
 ---
 
