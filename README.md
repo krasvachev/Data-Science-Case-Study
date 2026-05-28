@@ -1,4 +1,4 @@
-# LittleBank — Data Science Case Study
+# LittleBank - Data Science Case Study
 
 [![Python](https://img.shields.io/badge/Python-3.10%2B-blue?logo=python&logoColor=white)](https://www.python.org/)
 [![Jupyter](https://img.shields.io/badge/Jupyter-Notebook-orange?logo=jupyter&logoColor=white)](https://jupyter.org/)
@@ -9,17 +9,17 @@
 [![Last Commit](https://img.shields.io/github/last-commit/krasvachev/Data-Science-Case-Study)](https://github.com/krasvachev/Data-Science-Case-Study)
 [![Stars](https://img.shields.io/github/stars/krasvachev/Data-Science-Case-Study?style=social)](https://github.com/krasvachev/Data-Science-Case-Study)
 
-> **A complete, interview-ready Data Science Case Study for Big Four (Deloitte, EY, KPMG, PwC) technical interviews — featuring an exhaustive EDA, a full ML pipeline, business-focused recommendations and a detailed interview preparation guide.**
+> **A complete, interview-ready Data Science Case Study for Big Four (Deloitte, EY, KPMG, PwC) technical interviews - featuring an exhaustive EDA, a full ML pipeline, business-focused recommendations and a detailed interview preparation guide.**
 
 ---
 
 ## Introduction
 
-A Data Scientist 📊 or Machine Learning Engineer 📈 role at one of the Big Four companies (Deloitte, EY, KPMG, PwC)... That's a great opportunity that should not be missed. The Big Four companies generate  $219 billion in revenue 💵, with worldwide offices and more than 1.5 million employees 🧑‍💼. This makes them the largest professional service and accounting companies in the world 🧮. Being a part of them means you could work on a variety of projects across a wide range of fields and build broad experience across many topics — especially in the early stages of your career 🚀. However, to be a part of the Big Four, first you have to pass the interview process. And the case study task... I mean the technical case study 👨‍💻.
+A Data Scientist 📊 or Machine Learning Engineer 📈 role at one of the Big Four companies (Deloitte, EY, KPMG, PwC)... That's a great opportunity that should not be missed. The Big Four companies generate  $219 billion in revenue 💵, with worldwide offices and more than 1.5 million employees 🧑‍💼. This makes them the largest professional service and accounting companies in the world 🧮. Being a part of them means you could work on a variety of projects across a wide range of fields and build broad experience across many topics - especially in the early stages of your career 🚀. However, to be a part of the Big Four, first you have to pass the interview process. And the case study task... I mean the technical case study 👨‍💻.
 
 What is a case study 😦🤨? That is the question I asked myself when I first heard that I had to tackle such a problem. A coding task or implementing an ML algorithm, we all get that. But what a case study actually is 🤷‍♂️🤷‍♂️🤷‍♂️? Typically, there are between 3 and 5 steps when applying to a Big Four company. The case study is a business task that the candidate has to solve within a fixed time ⌛. For the tech interview, the company often provides a real-world dataset. The goal is to perform Exploratory Data Analysis (EDA) 📊, apply Machine Learning (ML) models 📈 and answer specific business questions connected to the task 📝. Usually, the time to solve all three tasks is 3 hours.
 
-When I was doing my preparation, I could not find a case study example for Data Scientists or ML Engineers. This is the first reason for creating this repository — to provide job seekers with an exercise to practise on 🔍. There is also a second reason: I failed to pass the data science case study. However, I decided to solve the task outstandingly with a solution that successfully passes the case study interview. Last but not least, the goal of the repo is not just to help me, but also to help **you** land that dream job 💪💪💪.
+When I was doing my preparation, I could not find a case study example for Data Scientists or ML Engineers. This is the first reason for creating this repository - to provide job seekers with an exercise to practise on 🔍. There is also a second reason: I failed to pass the data science case study. However, I decided to solve the task outstandingly with a solution that successfully passes the case study interview. Last but not least, the goal of the repo is not just to help me, but also to help **you** land that dream job 💪💪💪.
 
 The repo provides an exhaustive solution to a Data Science case study task given during a Big Four technical interview. It also provides guidance on how to prepare for the interviews 📋. The main focus is on how to tackle the case study. There are also hints on how to use LLM models to help you efficiently during your interview preparation 🤖.
 
@@ -35,8 +35,8 @@ The solutions are not limited to the Big Four accounting companies. They can be 
 4. [Brief and Detailed Solutions](#brief-and-detailed-solutions)
 5. [Structure of the Notebooks](#structure-of-the-notebooks)
 6. [Solutions](#solutions)
-   - [Task 1 — Exploratory Data Analysis](#task-1--exploratory-data-analysis-eda)
-   - [Task 2 — Machine Learning](#task-2--machine-learning)
+   - [Task 1 - Exploratory Data Analysis](#task-1--exploratory-data-analysis-eda)
+   - [Task 2 - Machine Learning](#task-2--machine-learning)
 7. [Models and Accuracy](#models-and-accuracy)
 8. [Conclusion and Key Insights](#conclusion-and-key-insights)
 9. [How to Tackle the Interview](#how-to-tackle-the-interview)
@@ -48,9 +48,9 @@ The solutions are not limited to the Big Four accounting companies. They can be 
 
 ## Case Study Instructions
 
-### Customer Analytics Case Study — Cross-sell Opportunities for LittleBank
+### Customer Analytics Case Study - Cross-sell Opportunities for LittleBank
 
-<mark>**Client:**</mark> LittleBank — a retail bank providing deposit accounts, loans and savings products.
+<mark>**Client:**</mark> LittleBank - a retail bank providing deposit accounts, loans and savings products.
 
 <mark>**Problem:**</mark> The head of loan sales has noticed a recent **drop in subscriptions of the "classic savings account"** product, despite consistent telemarketing efforts offering the account to customers. He has turned to our company for advice on how to improve sales of this product.
 
@@ -71,7 +71,7 @@ Since LittleBank has not yet used advanced analytics in its sales and marketing 
 | # | Task |  Type  |
 |---|------|:------:|
 | **1** | What steps would you take to **understand and clean this data**? Perform **Exploratory Data Analysis (EDA)**. | Exploratory Data Analysis |
-| **2** | Produce **feature-importance estimates** from a trained predictive model. The target column is `outcome` — use **only the numerical columns**. Describe how you would explain the technique(s) to the head of loan sales. | Machine Learning |
+| **2** | Produce **feature-importance estimates** from a trained predictive model. The target column is `outcome` - use **only the numerical columns**. Describe how you would explain the technique(s) to the head of loan sales. | Machine Learning |
 | **3** | The table below demonstrates the **coefficients produced from a GLM ElasticNet** on the dataset to predict `outcome`. **Interpret** the table and put together **three recommendations** for the client in the form of one or two PowerPoint slides. | Business Strategy |
 
 > **Time limit:** 3 hours for all three tasks combined.
@@ -121,9 +121,9 @@ The third task provides a ready-made GLM ElasticNet (binomial) coefficient table
 | **Shape** | (35000, 24) |
 | **Rows** | 35,000 |
 | **Columns** | 24 (13 numerical, 10 categorical, 1 target) |
-| **Target** | `outcome` — TRUE / FALSE |
+| **Target** | `outcome` - TRUE / FALSE |
 | **Positive class rate** | **11.29 %** (3,952 subscribers vs. 31,048 non-subscribers) |
-| **Imbalance** | Severe — requires resampling or cost-sensitive training |
+| **Imbalance** | Severe - requires resampling or cost-sensitive training |
 | **Potential leakage** | `outcome_previous`, `num_contacts_previous` |
 
 ### Feature Descriptions
@@ -152,7 +152,7 @@ The third task provides a ready-made GLM ElasticNet (binomial) coefficient table
 | `consumer_confidence` | Consumer confidence index at time of contact |
 | `price_index` | Weighted average prices of goods |
 | `employment_variation` | Relative employment variation over time |
-| `outcome` | **Target** — whether the customer subscribed |
+| `outcome` | **Target** - whether the customer subscribed |
 
 ---
 
@@ -196,8 +196,8 @@ Data-Science-Case-Study/
 
 | Folder / File | Purpose |
 |---------------|---------|
-| `LittleBank_Case_Study.ipynb` | The **detailed** EDA notebook — every section ends with a written business insight. |
-| `LittleBank_Case_Study_ML.ipynb` | The **detailed** ML notebook — baselines, regularised models, tree models, XGBoost and feature importance. |
+| `LittleBank_Case_Study.ipynb` | The **detailed** EDA notebook - every section ends with a written business insight. |
+| `LittleBank_Case_Study_ML.ipynb` | The **detailed** ML notebook - baselines, regularised models, tree models, XGBoost and feature importance. |
 | `interview_solutions/` | **Concise** versions of both notebooks, optimised for the 3-hour time limit. |
 | `data/` | The source CSV provided by the client. |
 | `models/` | Serialised model artefacts. |
@@ -214,7 +214,7 @@ This repository provides **two solution tiers** for each task. They exist for ve
 |-|-------------------|--------------------------|
 | **Purpose** | In-depth understanding and portfolio showcase | Interview time-pressure practice |
 | **Location** | `LittleBank_Case_Study.ipynb` / `LittleBank_Case_Study_ML.ipynb` | `interview_solutions/task_1_eda/` / `interview_solutions/task_2_machine_learning/` |
-| **Depth** | Exhaustive — written insight after every section | Focused on the essential steps only |
+| **Depth** | Exhaustive - written insight after every section | Focused on the essential steps only |
 | **Length** | ~140 cells per notebook | Designed to fit comfortably within a 3-hour window |
 | **Best for** | Building a complete understanding of the techniques | Timed mock interviews |
 
@@ -224,7 +224,7 @@ This repository provides **two solution tiers** for each task. They exist for ve
 
 ## Structure of the Notebooks
 
-### Task 1 — EDA Notebook (`LittleBank_Case_Study.ipynb`)
+### Task 1 - EDA Notebook (`LittleBank_Case_Study.ipynb`)
 
 | Section | Content |
 |---------|---------|
@@ -236,7 +236,7 @@ This repository provides **two solution tiers** for each task. They exist for ve
 | **5.** Customer Profile | Age, job, education, marital status, mortgage, loans |
 | **6.** Job Category Deep Dive | Subscription rates broken down by profession |
 
-### Task 2 — ML Notebook (`LittleBank_Case_Study_ML.ipynb`)
+### Task 2 - ML Notebook (`LittleBank_Case_Study_ML.ipynb`)
 
 | Section | Content |
 |---------|---------|
@@ -260,7 +260,7 @@ This repository provides **two solution tiers** for each task. They exist for ve
 
 ## Solutions
 
-### Task 1 — Exploratory Data Analysis (EDA)
+### Task 1 - Exploratory Data Analysis (EDA)
 
 #### 0. Load and Overview
 
@@ -280,7 +280,7 @@ df.info()
 df.describe()
 ```
 
-**Outcome Class distribution — the single most important finding:**
+**Outcome Class distribution - the single most important finding:**
 
 ```python
 df["outcome"].value_counts().plot(kind="pie", startangle=90, autopct="%1.2f")
@@ -293,7 +293,7 @@ plt.show()
   <img src="images/task_1_figures/outcome_of_the_customers_subscription.png" width="460" alt="Outcome pie chart"/>
 </p>
 
-> **Insight.** Only **11.29 %** of the 35,000 contacted customers subscribed. This severe class imbalance is the most important data characteristic — it dictates the evaluation metric (recall, not accuracy) and the modelling strategy (resampling) used in Task 2. It also signals that the campaign has been largely ineffective: ~31,000 contacts were made with no sale.
+> **Insight.** Only **11.29 %** of the 35,000 contacted customers subscribed. This severe class imbalance is the most important data characteristic - it dictates the evaluation metric (recall, not accuracy) and the modelling strategy (resampling) used in Task 2. It also signals that the campaign has been largely ineffective: ~31,000 contacts were made with no sale.
 
 ---
 
@@ -316,7 +316,7 @@ print(f"No previous contact: {(df['days_since_previous'] == -1).sum()}")
 **Key cleaning decisions:**
 
 - No duplicate rows found.
-- Several categorical columns contain `"unknown"` — treated as a separate category during EDA, dropped in the ML pipeline.
+- Several categorical columns contain `"unknown"` - treated as a separate category during EDA, dropped in the ML pipeline.
 
 ---
 
@@ -391,7 +391,7 @@ plt.show()
 
 ---
 
-### Task 2 — Machine Learning
+### Task 2 - Machine Learning
 
 #### 1. Data Loading and Cleaning
 
@@ -504,12 +504,12 @@ encoder.fit(df_tr[categorical_cols])
 
 Six models are trained to solve Task 2 in ascending complexity. Each model has its own strengths and limitations. They are listed below:
 
-1. **Baselines** (random-guess and all-negative) — create expectations and set thresholds.
+1. **Baselines** (random-guess and all-negative) - create expectations and set thresholds.
 2. **Logistic Regression** with `GridSearchCV`.
 3. **Lasso** (L1) and **ElasticNet** (L1 + L2) regularised logistic models.
-4. **Decision Tree** — with and without pruning.
-5. **Random Forest** — the best results, with top accuracy and highest precision.
-6. **XGBoost** — close second, but highly complex and task-inefficient.
+4. **Decision Tree** - with and without pruning.
+5. **Random Forest** - the best results, with top accuracy and highest precision.
+6. **XGBoost** - close second, but highly complex and task-inefficient.
 
 The Random Forest model implementation with fine-tuned parameters is given below:
 
@@ -572,7 +572,7 @@ Plots of the feature importance were generated for all of the models. However, t
 
 ---
 
-### Task 3 — Business Strategy / Recommendations
+### Task 3 - Business Strategy / Recommendations
 
 Based on the [table](#glm-elasticnet-coefficients-provided-by-the-client) that Little bank provided, the data shows:
 
@@ -617,43 +617,43 @@ Six model families were trained and evaluated on the data. The results are taken
 
 ### 📢🎯 Marketing Campaign Performance 
 
-- 🚨 **Failure of the Marketing Campaign.** The failure of the Marketing Campaign is very clear. There isn't any impactful improvement in subscriptions for classic savings accounts. Despite the advertising. For example, 11,721 contacts were made in May. Only 749 customers subscribed. 6.39% conversion rate. → extremely low conversion
+- 🚨 **Failure of the Marketing Campaign.** The failure of the Marketing Campaign is very clear. There isn't any impactful improvement in subscriptions for classic savings accounts. Despite the advertising. For example, 11,721 contacts were made in May. Only 749 customers subscribed. 6.39% conversion rate. → Extremely low conversion
 
-- ↑↓ **High activity ≠ High impact.** A large number of calls did not translate into an increase in subscriptions, indicating poor targeting or messaging. Some months show ~50% success rates, but on a very small number of subscribers. → high conversion months lack scale
+- ↑↓ **High activity ≠ High impact.** A large number of calls did not translate into an increase in subscriptions, indicating poor targeting or messaging. Some months show ~50% success rates, but on a very small number of subscribers. → High conversion months lack scale
 
 - 🚀 **Business Implications.** Current strategy is not scalable and increasing calls won't lead to a higher conversion rate.
 
 ### ☎️📲 Contact Strategy & Call Behavior
 
-- 📲 **Mobile Dominates Outreach.** The majority of contacts were made via mobile - 22,215 mobile calls vs 12,785 landline calls. → both are outdated and ineffective approaches.
+- 📲 **Mobile Dominates Outreach.** The majority of contacts were made via mobile - 22,215 mobile calls vs 12,785 landline calls. → Both are outdated and ineffective approaches
 
-- ❌ **Severe Contact Inefficiency.** There are extreme outliers in the data (e.g., 40+ calls to a single customer). That suggests poor contact strategy. → spam-like patterns harming the brand
+- ❌ **Severe Contact Inefficiency.** There are extreme outliers in the data (e.g., 40+ calls to a single customer). That suggests poor contact strategy. → Spam-like patterns harming the brand
 
-- ✅ **Successful Contact Strategy** The average number of contacts for a successful conversion is ~2 calls. The successful second calls occur ~6 days after the first contact. → the optimal contact strategy
+- ✅ **Successful Contact Strategy** The average number of contacts for a successful conversion is ~2 calls. The successful second calls occur ~6 days after the first contact. → The optimal contact strategy
 
 - 🚀 **Business Implications.** Optimise call strategy increases the conversion rates. However, the marketing strategy is heavily outdated. The strategy should expand into digital channels.
 
 ### 👦👧 Customer's Profile 
 
-- 💪 **High-performing Customer Segments.** Most conversions are achieved amongst the Administrative professionals, Retired individuals, Unemployed customers and Students (full-time education). → more focused campaign towards the right segment
+- 💪 **High-performing Customer Segments.** Most conversions are achieved amongst the Administrative professionals, Retired individuals, Unemployed customers and Students (full-time education). → More focused campaign towards the right segment
 
-- 🎓 **Education Level.** Majority of customers (both overall and subscribers) have secondary or higher education. → difference in education does not influence results
+- 🎓 **Education Level.** Majority of customers (both overall and subscribers) have secondary or higher education. → Difference in education does not influence results
 
-- 📅 **Age.** The campaign focuses on 20–60 age range. The retired individuals are part of the high-performing segments, but are neglected. → missed opportunities with retired individuals
+- 📅 **Age.** The campaign focuses on 20–60 age range. The retired individuals are part of the high-performing segments, but are neglected. → Missed opportunities with retired individuals
 
-- 🏡 **Mortgage.** Mortgage holders are more likely to convert. Over 50% of subscribers (2133 / 3952) have a mortgage → mortgage is a strong indicator for conversions
+- 🏡 **Mortgage.** Mortgage holders are more likely to convert. Over 50% of subscribers (2133 / 3952) have a mortgage → Mortgage is a strong indicator for conversions
 
-- 💍 **Personal Loans and Marital Status.** Personal loans negatively correlate with conversion. Only 573 / 3952 subscribers have personal loans. Marital status has no impact on the subscription → weak indicator for conversions
+- 💍 **Personal Loans and Marital Status.** Personal loans negatively correlate with conversion. Only 573 / 3952 subscribers have personal loans. Marital status has no impact on the subscription → Weak indicator for conversions
 
 - 🚀 **Business Implications.** More focus on the higher performing customer segments. A targeted survey is mandatory. It could uncover why one segment is converting high and others don't.
 
 ### 📊📈 Model Performance Summary 
 
-- 📈 **Linear Models Plateau.** Logistic Regression, Lasso, and ElasticNet reach ~76% test accuracy. → Non-linear patterns in data.
+- 📈 **Linear Models Plateau.** Logistic Regression, Lasso, and ElasticNet reach ~76% test accuracy. → Non-linear patterns in data
 
-- 🖧 **Decision Trees - Better Option.** Decision Tree improves the accuracy but overfits. The model achieves 83.46% test accuracy, but with a clear train–test gap (89.42% vs 83.46%). → Limited generalisation.
+- 🖧 **Decision Trees - Better Option.** Decision Tree improves the accuracy but overfits. The model achieves 83.46% test accuracy, but with a clear train–test gap (89.42% vs 83.46%). → Limited generalisation
 
-- 🌲🌳🌿 **Tree-based Ensembles Dominance.** Random Forest and XGBoost outperform all other models by far. Random Forest hits the best precision (88.79%) and accuracy (89.59%). XGBoost has the highest recall 90.97% and near-best accuracy 89.54%. → ensemble models are the best solution for the problem
+- 🌲🌳🌿 **Tree-based Ensembles Dominance.** Random Forest and XGBoost outperform all other models by far. Random Forest hits the best precision (88.79%) and accuracy (89.59%). XGBoost has the highest recall 90.97% and near-best accuracy 89.54%. → Ensemble models are the best solution for the problem
 
 - 🚀 **Business Implications.** Random Forest and XGBoost are the best choice when the goal is to reduce the wasted outreach and maximise the subscriber detection. Note: overfitting and computation efficiency should be taken into consideration. Less complex models could be used for better understanding of the data and classification decisions.
 
@@ -664,9 +664,9 @@ Six model families were trained and evaluated on the data. The results are taken
 This is the section you came here for. It is split into five parts:
 
 1. **Basic directions** for a Data Science / ML interview at a Big Four firm.
-2. **Task-1 specific directions** — how to approach the EDA task.
-3. **Task-2 specific directions** — how to approach the ML task.
-4. **Task-3 specific directions** — how to approach the Business Strategy task.
+2. **Task-1 specific directions** - how to approach the EDA task.
+3. **Task-2 specific directions** - how to approach the ML task.
+4. **Task-3 specific directions** - how to approach the Business Strategy task.
 5. **Overview** of the guidelines
 
 ---
@@ -712,7 +712,7 @@ This is the section you came here for. It is split into five parts:
 
 **Use LLMs strategically.**
 
-- Use Claude, ChatGPT or Gemini to generate boilerplate quickly — but **understand every line** you submit.
+- Use Claude, ChatGPT or Gemini to generate boilerplate quickly - but **understand every line** you submit.
 - Keep a prepared library of prompts for: data overview, figure plotting, data analysis, class-imbalance handling, model implementation, feature-importance plotting.
 
 **Rehearse the narrative after the interview.**
@@ -721,7 +721,7 @@ This is the section you came here for. It is split into five parts:
 
 ---
 
-### Directions for Task 1 — The Exploratory Data Analysis
+### Directions for Task 1 - The Exploratory Data Analysis
 
 **The fast and effective overview.**
 
@@ -733,7 +733,7 @@ df.describe()
 df["outcome"].value_counts()
 ```
 
-> These three lines reveal dtypes, scale, missing data and the class distribution — roughly **80 % of everything you need to know** about the dataset.
+> These three lines reveal dtypes, scale, missing data and the class distribution - roughly **80 % of everything you need to know** about the dataset.
 
 -	Create a few simple plots for the key columns. Basic visuals often reveal patterns faster than complex modelling. 
 
@@ -753,7 +753,7 @@ df["outcome"].value_counts()
 **Perform focused EDA.**
 -	Perform EDA around your hypotheses. Every plot and analysis should help confirm or reject an assumption. 
 
--	**Extract insights and conclusions continuously**. Don’t just generate charts — explain what they mean for the business. 
+-	**Extract insights and conclusions continuously**. Don’t just generate charts - explain what they mean for the business. 
 
 -	**Be flexible**. If the data reveals something unexpected, adapt your strategy instead of forcing your original assumptions. 
 
@@ -763,11 +763,11 @@ df["outcome"].value_counts()
 
 - **Bad insight**: *"May has the lowest count."*
 
-- **Good Insight**: *"May is the worst month for conversion — we should cut campaign spend in May by 70%."*
+- **Good Insight**: *"May is the worst month for conversion - we should cut campaign spend in May by 70%."*
 
 ---
 
-### Directions for Task 2 — The Machine Learning Task
+### Directions for Task 2 - The Machine Learning Task
 
 **Win some time before and at the interview.**
 
@@ -805,7 +805,7 @@ df["outcome"].value_counts()
 
 ---
 
-### Directions for Task 3 — The Recommendations
+### Directions for Task 3 - The Recommendations
 
 -	**Review the coefficient table carefully**. Look for similarities, extreme values and unusual patterns. 
 
@@ -880,7 +880,7 @@ Contributions, suggestions and improvements are very welcome. The repository is 
 2. **Create** a feature branch (`git checkout -b feature/your-feature-name`).
 3. **Commit** your changes (`git commit -m "Add: your feature description"`).
 4. **Push** to the branch (`git push origin feature/your-feature-name`).
-5. **Open** a Pull Request — PRs are welcome!
+5. **Open** a Pull Request - PRs are welcome!
 
 For major changes, please open an issue first to discuss what you would like to change.
 
@@ -890,13 +890,13 @@ For major changes, please open an issue first to discuss what you would like to 
 - Alternative modelling approaches (CatBoost, LightGBM, other models).
 - More visualisations for the EDA notebook.
 
-**Maintainer:** [@krasvachev](https://github.com/krasvachev) — feel free to open an issue or reach out directly.
+**Maintainer:** [@krasvachev](https://github.com/krasvachev) - feel free to open an issue or reach out directly.
 
 ---
 
 ## License
 
-This project is licensed under the **MIT License** — see the [LICENSE](LICENSE) file for the full text.
+This project is licensed under the **MIT License** - see the [LICENSE](LICENSE) file for the full text.
 
 You are free to use, copy, modify, merge, publish, distribute and adapt this work, including for commercial purposes, as long as the original author is credited.
 
@@ -905,5 +905,5 @@ You are free to use, copy, modify, merge, publish, distribute and adapt this wor
 <p align="center">
   <em>Good luck with your interview. You've got this.</em> 🎯🎯🎯
   <br><br>
-  <strong>If this repository helped you, please consider giving it a ⭐ — it helps other candidates find it.</strong>
+  <strong>If this repository helped you, please consider giving it a ⭐ - it helps other candidates find it.</strong>
 </p>
