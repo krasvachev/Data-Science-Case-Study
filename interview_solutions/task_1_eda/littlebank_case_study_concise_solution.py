@@ -177,7 +177,7 @@ df_outcome_pivot = df_tr.pivot_table(index = "month",
                                      aggfunc = "size",
                                      sort = False)
 df_outcome_pivot["Total"] = df_outcome_pivot.iloc[:, 0] + df_outcome_pivot.iloc[:, 1]
-df_outcome_pivot["Successful_Rate"] = (df_outcome_pivot.iloc[:, 0] / df_outcome_pivot.iloc[:, 2]) * 100
+df_outcome_pivot["Success_Rate"] = (df_outcome_pivot.iloc[:, 0] / df_outcome_pivot.iloc[:, 2]) * 100
 
 df_outcome_pivot
 

@@ -276,11 +276,11 @@ df_outcome_pivot = df_tr.pivot_table(index = "month",
                                      aggfunc = "size",
                                      sort = False)
 df_outcome_pivot["Total"] = df_outcome_pivot.iloc[:, 0] + df_outcome_pivot.iloc[:, 1]
-df_outcome_pivot["Successful_Rate"] = (df_outcome_pivot.iloc[:, 0] / df_outcome_pivot.iloc[:, 2]) * 100
+df_outcome_pivot["Success_Rate"] = (df_outcome_pivot.iloc[:, 0] / df_outcome_pivot.iloc[:, 2]) * 100
 
 df_outcome_pivot
 # Total Column, Percent of Successful Outcomes
-# Day and Months Connected To the Successfull Outcome
+# Day and Months Connected To the Successful Outcome
 
 df_outcome_pivot.iloc[:, 0:3].plot(kind = "bar", figsize = (10, 8), rot = 45)
 
@@ -531,13 +531,13 @@ df_jobs_pivot = df_tr.pivot_table(index = "job",
                                   aggfunc = "size")
 
 df_jobs_pivot["Total"] = df_jobs_pivot["False"] + df_jobs_pivot["True"]
-df_jobs_pivot["Successful_Rate"] = (df_jobs_pivot["True"] / df_jobs_pivot["False"]) * 100
+df_jobs_pivot["Success_Rate"] = (df_jobs_pivot["True"] / df_jobs_pivot["False"]) * 100
 df_jobs_pivot
 
-df_jobs_pivot["Successful_Rate"].values
+df_jobs_pivot["Success_Rate"].values
 
 x = df_jobs_pivot.index
-y = df_jobs_pivot["Successful_Rate"].values
+y = df_jobs_pivot["Success_Rate"].values
 
 y1 = np.ones(len(y)) * 15              # Draw a line for 15%
 
