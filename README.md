@@ -37,6 +37,7 @@ The solutions are not limited to the Big Four accounting companies. They can be 
 6. [Solutions](#solutions)
    - [Task 1 - Exploratory Data Analysis](#task-1-eda)
    - [Task 2 - Machine Learning](#task-2-ml)
+   - [Task 3 - Recommendations](#task-3-recommendations)
 7. [Models and Accuracy](#models-and-accuracy)
 8. [Conclusion and Key Insights](#conclusion-and-key-insights)
 9. [How to Tackle the Interview](#how-to-tackle-the-interview)
@@ -575,9 +576,10 @@ Plots of the feature importance were generated for all of the models. However, t
 
 ---
 
+<a id="task-3-recommendations"></a>
 ### Task 3 - Business Strategy / Recommendations
 
-Based on the [table](#glm-elasticnet-coefficients-provided-by-the-client) that Little bank provided, the data shows:
+Based on the [table](#glm-elasticnet-coefficients-provided-by-the-client) that LittleBank provided, the data shows:
 
 1. If the previous campaign was successful, there is a high probability that the client would subscribe again for the product.
 
@@ -593,7 +595,7 @@ To improve the conversion rates, it is recommended to:
 
 3. To get feedback from the bank clients, do they like the products of the bank and what makes them eager to purchase a product. A satisfied client is more likely to purchase a product or recommend it to a friend.
 
-> For the presentation's bullets or more insights/recommendation, check the **add a link to the folder** (the link..)[linking_park]
+> For the presentation's bullets, check the [interview_solutions](https://github.com/krasvachev/Data-Science-Case-Study/tree/9eb45423c4f847a59524b3fe38bbd41a06b3da84/interview_solutions) folder. More insights can be found in the detailed solution [here](littlebank_task3_detailed.md).
 
 ---
 
