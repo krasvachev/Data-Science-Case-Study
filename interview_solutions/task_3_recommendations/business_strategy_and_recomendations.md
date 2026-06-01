@@ -15,4 +15,7 @@
 
 * Find the true needs of the customers and personalise the product for them. An improvement of the product will be needed in order to increase the conversion rate. 
 
-* Feedback from the bank clients – do they really like the products of the bank and what makes them eager to purchase a product; Satisfied client – higher probability of purchasing a product or recommending it 
+* Feedback from the bank clients – do they really like the products of the bank and what makes them eager to purchase a product; Satisfied client – higher probability of purchasing a product or recommending it.
+
+
+> Here you have [a link](https://docs.google.com/presentation/d/1KyfHOvXjGo-RK0SR1eG5no6zqnJVA_8k/edit?usp=drive_link&ouid=106004269038556024846&rtpof=true&sd=true) to my presentation template. A rule of thumb: choose a simple template and use concise, on-point bullets.
