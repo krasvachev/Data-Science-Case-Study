@@ -35,8 +35,8 @@ The solutions are not limited to the Big Four accounting companies. They can be 
 4. [Brief and Detailed Solutions](#brief-and-detailed-solutions)
 5. [Structure of the Notebooks](#structure-of-the-notebooks)
 6. [Solutions](#solutions)
-   - [Task 1 - Exploratory Data Analysis](#task-1--exploratory-data-analysis-eda)
-   - [Task 2 - Machine Learning](#task-2--machine-learning)
+   - [Task 1 - Exploratory Data Analysis](#task-1-eda)
+   - [Task 2 - Machine Learning](#task-2-ml)
 7. [Models and Accuracy](#models-and-accuracy)
 8. [Conclusion and Key Insights](#conclusion-and-key-insights)
 9. [How to Tackle the Interview](#how-to-tackle-the-interview)
@@ -258,8 +258,10 @@ This repository provides **two solution tiers** for each task. They exist for ve
 
 ---
 
+<a id="solutions"></a>
 ## Solutions
 
+<a id="task-1-eda"></a>
 ### Task 1 - Exploratory Data Analysis (EDA)
 
 #### 0. Load and Overview
@@ -391,6 +393,7 @@ plt.show()
 
 ---
 
+<a id="task-2-ml"></a>
 ### Task 2 - Machine Learning
 
 #### 1. Data Loading and Cleaning
