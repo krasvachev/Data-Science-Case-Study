@@ -243,7 +243,7 @@ The most famous sampling techniques are:
 
 * ADASYN (Adaptive Synthetic Sampling)
 
-The SMOTE technique was implemented in the notebook. It improves the classification of the minority class. Another benefit of SMOTE is the improvement of the ML model's variance. A disadvantage of the approach is the computational cost of the technique. However, in our case, it could be omitted because the data is relatively small.
+The SMOTE-NC technique was implemented in the notebook. The main difference from SMOTE is that SMOTE-NC is designed for datasets with numerical and categorical data. Why exactly SMOTE-NC? It improves the classification of the minority class. Another benefit of SMOTE is the improvement of the ML model's variance. A disadvantage of the approach is the computational cost of the technique. However, in our case, it could be omitted because the data is relatively small.
 
 Feel free to implement the other two over-sampling techniques and observe the result of the ML models. They could lead to better results in other tasks.
 """
@@ -358,7 +358,7 @@ test_inputs.to_parquet("save/test_inputs.parquet")
 pd.DataFrame(train_targets).to_parquet("save/train_target.parquet")
 pd.DataFrame(test_targets).to_parquet("save/test_target.parquet")
 
-"""## 6. Base Models
+"""## 6. Baseline Models
 
 ### 6.1 Random Guesses and All Negative Models
 """
@@ -615,7 +615,7 @@ importance_df.head(15)
 sns.barplot(data = importance_df.head(15), x = "importance", y = "feature",
             hue = "feature", legend = False, palette = "tab10")
 
-plt.title("Feature Importance of the Decision Tree");
+plt.title("Feature Importance of the Random Forest Model");
 
 ## Without Data Resampling
 # Train Accuracy = 1.0, Test Accuracy = 0.89687

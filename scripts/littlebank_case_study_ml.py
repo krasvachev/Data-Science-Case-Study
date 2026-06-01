@@ -243,7 +243,7 @@ The most famous sampling techniques are:
 
 * ADASYN (Adaptive Synthetic Sampling)
 
-The SMOTE technique was implemented in the notebook. It improves the classification of the minority class. Another benefit of SMOTE is the improvement of the ML model's variance. A disadvantage of the approach is the computational cost of the technique. However, in our case, it could be omitted because the data is relatively small.
+The SMOTE-NC technique was implemented in the notebook. The main difference from SMOTE is that SMOTE-NC is designed for datasets with numerical and categorical data. Why exactly SMOTE-NC? It improves the classification of the minority class. Another benefit of SMOTE is the improvement of the ML model's variance. A disadvantage of the approach is the computational cost of the technique. However, in our case, it could be omitted because the data is relatively small.
 
 Feel free to implement the other two over-sampling techniques and observe the result of the ML models. They could lead to better results in other tasks.
 """
@@ -358,7 +358,7 @@ test_inputs.to_parquet("save/test_inputs.parquet")
 pd.DataFrame(train_targets).to_parquet("save/train_target.parquet")
 pd.DataFrame(test_targets).to_parquet("save/test_target.parquet")
 
-"""## 6. Base Models
+"""## 6. Baseline Models
 
 ### 6.1 Random Guesses and All Negative Models
 """
@@ -400,7 +400,7 @@ train_acc = accuracy_score(train_targets, train_preds)
 test_acc = accuracy_score(test_targets, test_preds)
 
 precision, recall, f1score, _ = precision_recall_fscore_support(test_targets, test_preds, pos_label = 1, average = "binary")
-print(f"Train Accuracy = {train_acc:.5f} Test Accuracy = {test_acc:.5f}, Precision = {precision:.5f}, Recall = {recall:.5f}, F1_Score = {f1score:.5f}")
+print(f"Train Accuracy = {train_acc:.5f}, Test Accuracy = {test_acc:.5f}, Recall = {recall:.5f}, Precision = {precision:.5f}, F1_Score = {f1score:.5f}")
 
 """### 6.2.2 Find the Best Parameters via Grid Search"""
 
@@ -438,7 +438,7 @@ test_preds = temp_best_model.predict(test_inputs)
 test_acc = accuracy_score(test_targets, test_preds)
 
 precision, recall, f1score, _ = precision_recall_fscore_support(test_targets, test_preds, pos_label = 1, average = "binary")
-print(f"Test Accuracy = {test_acc:.5f}, Precision = {precision:.5f}, Recall = {recall:.5f}, F1_Score = {f1score:.5f}")
+print(f"Test Accuracy = {test_acc:.5f}, Recall = {recall:.5f}, Precision = {precision:.5f}, F1_Score = {f1score:.5f}")
 
 """### 6.2.3 The Best Model"""
 
@@ -724,6 +724,22 @@ test_preds_rforest = model_random_forest.predict(test_inputs)
 
 train_acc = accuracy_score(train_targets, train_preds_rforest)
 
+from sklearn.ensemble import RandomForestClassifier
+
+model_random_forest = RandomForestClassifier(n_jobs = -1,
+                                             n_estimators = 500,
+                                             max_features = 9,
+                                             max_depth = 35,
+                                             min_samples_split = 2,
+                                             random_state = 42)
+
+model_random_forest.fit(train_inputs, train_targets)
+
+train_preds_rforest = model_random_forest.predict(train_inputs)
+test_preds_rforest = model_random_forest.predict(test_inputs)
+
+train_acc = accuracy_score(train_targets, train_preds_rforest)
+
 test_acc, recall_test, precision_test = calculate_basic_metrics(test_targets, test_preds_rforest)
 
 print(f"Train Accuracy = {train_acc:.5f}, Test Accuracy = {test_acc:.5f}")
@@ -743,7 +759,7 @@ importance_df.head(15)
 sns.barplot(data = importance_df.head(15), x = "importance", y = "feature",
             hue = "feature", legend = False, palette = "tab10")
 
-plt.title("Feature Importance of the Decision Tree");
+plt.title("Feature Importance of the Random Forest Model");
 
 ## Without Data Resampling
 # Train Accuracy = 1.0, Test Accuracy = 0.89687
@@ -823,7 +839,10 @@ joblib.dump(value = best_model_pipeline, filename = "models/model_random_forest.
 
 best_model_load = joblib.load("models/model_random_forest.joblib")
 
+preds_best_model_train = best_model_load["model"].predict(train_inputs)
 preds_best_model = best_model_load["model"].predict(test_inputs)
+
+train_acc = accuracy_score(train_targets, preds_best_model_train)
 test_acc, recall_test, precision_test = calculate_basic_metrics(test_targets, preds_best_model)
 
 print(f"Train Accuracy = {train_acc:.5f}, Test Accuracy = {test_acc:.5f}")
@@ -833,13 +852,16 @@ print(f"Recall = {recall_test:.5}, Precision = {precision_test:.5}")
 
 import pickle
 
-with open("models/xgboost_model.pkl", "wb") as file:
-    pickle.dump(xgboost_model, file)
+with open("models/decision_tree_model.pkl", "wb") as file:
+    pickle.dump(model_decision_tree, file)
 
-with open("models/xgboost_model.pkl", "rb") as file:
+with open("models/decision_tree_model.pkl", "rb") as file:
     best_model = pickle.load(file)
 
+preds_best_model_train = best_model.predict(train_inputs)
 preds_best_model = best_model.predict(test_inputs)
+
+train_acc = accuracy_score(train_targets, preds_best_model_train)
 test_acc, recall_test, precision_test = calculate_basic_metrics(test_targets, preds_best_model)
 
 print(f"Train Accuracy = {train_acc:.5f}, Test Accuracy = {test_acc:.5f}")
