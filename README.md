@@ -41,9 +41,10 @@ The solutions are not limited to the Big Four accounting companies. They can be 
 7. [Models and Accuracy](#models-and-accuracy)
 8. [Conclusion and Key Insights](#conclusion-and-key-insights)
 9. [How to Tackle the Interview](#how-to-tackle-the-interview)
-10. [Requirements](#requirements)
-11. [Contributing](#contributing)
-12. [License](#license)
+10. [Prompts](#prompts)
+11. [Requirements](#requirements)
+12. [Contributing](#contributing)
+13. [License](#license)
 
 ---
 

@@ -10,7 +10,7 @@ __pycache__/
 
 # Jupyter
 .ipynb_checkpoints/
-.virtual_documents/ 
+.virtual_documents/
 profile_default/
 ipython_config.py
 *.nbconvert.ipynb
