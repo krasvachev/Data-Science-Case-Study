@@ -326,7 +326,7 @@ print(f"No previous contact: {(df['days_since_previous'] == -1).sum()}")
 
 #### 2. Macroeconomic and Environmental Factors
 
-The dataset includes macroeconomic indicators (`num_employed`, `employment_variation`, `consumer_confidence`, `forward_rate`, `price_index`) and weather indicators (`high_temp`, `low_temp`) captured at the time of each contact. The analysis ot these factors doesn't provide us with informative insights about the campaign. They aren't very helpful for Task 1. However, the ML models use them as one of the most important features that could predict the success of the call. 
+The dataset includes macroeconomic indicators (`num_employed`, `employment_variation`, `consumer_confidence`, `forward_rate`, `price_index`) and weather indicators (`high_temp`, `low_temp`) captured at the time of each contact. The analysis of these factors doesn't provide informative insights about the campaign. They aren't very helpful for Task 1. However, the ML models use them as one of the most important features that could predict the success of the call. 
 
 ---
 
@@ -444,7 +444,7 @@ The figure below depicts the distribution of the target value over the months an
   <img src="images/task_2_figures/days_of_week_vs_outcome.png" width="640" alt="Day of week vs outcome"/>
 </p>
 
-> **Insight.** The month-vs-outcome and day-vs-outcome figures outline the data imballance problem that should be taken into account. 
+> **Insight.** The month-vs-outcome and day-vs-outcome figures outline the data imbalance problem that should be taken into account. 
 
 ---
 
@@ -570,7 +570,7 @@ Plots of the feature importance were generated for all of the models. However, t
   <img src="images/task_2_figures/feature_importance_random_forest.png" width="680" alt="Random Forest feature importance"/>
 </p>
 
-> **Insight.** The decision tree distinguish the `forward_rate`, `num_employed` and `employment_variation` as one of the most important features. The macroeconomic features dominate the top 10 ranking. Alternatively, the model considers environmental factors like `low_temperature` and `high_temperature` connected to the decision of a customer to subscribe to the product. The `age` of the clients also influences the success of the telemarketing. It is significant to point out that the `call_centre_volume` also impacts significantly the decision of the model. However, based on the analysis for Task 1, the load of the call centre is very low to have any big impact. It is crucial to highlight that the factors for the unsuccessful campaign should be found in a different place.
+> **Insight.** The decision tree distinguishes the `forward_rate`, `num_employed` and `employment_variation` as one of the most important features. The macroeconomic features dominate the top 10 ranking. Alternatively, the model considers environmental factors like `low_temperature` and `high_temperature` connected to the decision of a customer to subscribe to the product. The `age` of the clients also influences the success of the telemarketing. It is significant to point out that the `call_centre_volume` also impacts significantly the decision of the model. However, based on the analysis for Task 1, the load of the call centre is very low to have any big impact. It is crucial to highlight that the factors for the unsuccessful campaign should be found in a different place.
 
 **How to explain Random Forest to a non-technical stakeholder:**
 > *"We train hundreds of small decision trees using a random slice of customers and features. Every tree makes its own prediction as to whether a customer will subscribe. The final decision comes from a majority vote across all trees. Feature importance reflects how frequently and how effectively trees distinguish between subscribers and non-subscribers."*
@@ -829,7 +829,7 @@ df["outcome"].value_counts()
 
 - Start immediately. Use an effective time strategy, or you will run out of time without finishing the three tasks.
 
-- State 3-5 hypotheses and develop analysis that prooves/rejects them.
+- State 3-5 hypotheses and develop analysis that proves/rejects them.
 
 - Clean the data early if you want to succeed with the task. Handle duplicates, missing values, incorrect types, suspicious values and outliers.
 
@@ -852,7 +852,7 @@ df["outcome"].value_counts()
 ## Prompts
 AI can leverage your interview performance and get you closer to that dream job. I prepared a few [great prompts](prompts) to help you with your case study. If you are allowed to use AI, just paste them into your favourite LLM. However, do not trust the results blindly. Instead, use them as a reference. As you know, LLMs often hallucinate, i.e. come up with stuff that isn’t accurate.
 
-How would I use the prompts? In the beginning, I would run the [Case Study Deep Analysis prompt](prompts\Case%20Study%20Deep%20Analysis.md) in Deep Research mode into one or two of the top LLM models. It doesn't matter which LLM model, just pick your favourite one. While I'm waiting, I will start implementing my solution. After the report is ready, I will read it and start investigating step by step. Usually, the model would give a broad answer and a good practice is to go through each task seperately. You can paste and run the prompt directly into the Code models. Yet, it will solve the task, but you also need a deeper business analysis of the task.
+How would I use the prompts? In the beginning, I would run the [Case Study Deep Analysis prompt](prompts\Case%20Study%20Deep%20Analysis.md) in Deep Research mode into one or two of the top LLM models. It doesn't matter which LLM model, just pick your favourite one. While I'm waiting, I will start implementing my solution. After the report is ready, I will read it and start investigating step by step. Usually, the model would give a broad answer and a good practice is to go through each task separately. You can paste and run the prompt directly into the Code models. Yet, it will solve the task, but you also need a deeper business analysis of the task.
 
 Next, you could run the [Dataset Analysis Prompt](prompts\Dataset%20Analysis.md). It generates a detailed analysis of the dataset. Use it for bonus insight into the data.
 
