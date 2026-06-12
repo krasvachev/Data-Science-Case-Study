@@ -1,6 +1,6 @@
 ## Introduction
 
-The table represents the relation between the features of the data and their importance for the GLM ElasticNet model. Positive values mean that the feature increases the probability of classifying the sample as 1, i.e. a higher probability for a customer to subscribe to the product. Higher values lead to higher impact for the classification. For example, outcome_previous.success is 0.2101, i.e. it impacts the ML model to classify the sample as a successful outcome. It also has a bigger impact on the classification than the low_temp feature. To the contrary, negative values impact the model to classify the sample as a person who won’t subscribe. The higher the negative value, the stronger the impact of the feature. For example, num_employed leads the model towards classifying the sample as non-subscription.
+The table represents the relationship between the features of the data and their importance for the GLM ElasticNet model. Positive values mean that the feature increases the probability of classifying the sample as 1, i.e. a higher probability for a customer to subscribe to the product. Higher values lead to higher impact for the classification. For example, outcome_previous.success is 0.2101, i.e. it impacts the ML model to classify the sample as a successful outcome. It also has a bigger impact on the classification than the low_temp feature. To the contrary, negative values impact the model to classify the sample as a person who won’t subscribe. The higher the negative value, the stronger the impact of the feature. For example, num_employed leads the model towards classifying the sample as non-subscription.
 
 ## A Closer Look
 
@@ -22,7 +22,7 @@ The table represents the relation between the features of the data and their imp
 
 ### Recommendation
 
-Advertisement of the product is important, but the quality of the product is more important. The most important part in a business, however, is the customers. A product should solve the needs of a customer, remove pains, give efficiency. 
+Advertising the product is important, but the quality of the product is more important. The most important part in a business, however, is the customers. A product should solve the needs of a customer, remove pains, and provide efficiency. 
 
 * The advertisement campaign is disastrous. With or without it, the relative percentage of subscriptions is almost the same. The campaign should be more focused on the right customer segment, communicated with an accurate message via the most appropriate medium (Social media, Website, not via mobile or landline).
 
