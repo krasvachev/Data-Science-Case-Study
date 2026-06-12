@@ -388,7 +388,7 @@ plt.show()
 </p>
 
 <p align="center">
-  <img src="images/task_1_figures/subscriptions_by_proffesion_of_the_customers.png" width="700" alt="Subscriptions by profession"/>
+  <img src="images/task_1_figures/subscriptions_by_profession_of_the_customers.png" width="700" alt="Subscriptions by profession"/>
 </p>
 
 > **Insight.** **The most customers who subscribed** for the savings account after the marketing campaign are between 25 and 40. However, this is due to the fact that most of the calls were made to people in that age span. The plot of the success rate based on the customers' job shows that those who are in full-time education or retired are very likely to subscribe to the savings account product. The success rate of the calls, respectively, is approx. 45% and 35%. Above a 15% success rate of the advertisement can be observed for administrative jobs and the unemployed. 
@@ -437,7 +437,7 @@ Histograms of the numerical features and a correlation heatmap are drawn. The go
 The figure below depicts the distribution of the target value over the months and the days.
 
 <p align="center">
-  <img src="images/task_2_figures/month_vs_outcome.png" width="640" alt="Month vs outcome"/>
+  <img src="images/task_2_figures/months_vs_outcome.png" width="640" alt="Month vs outcome"/>
 </p>
 
 <p align="center">
