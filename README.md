@@ -391,7 +391,7 @@ plt.show()
   <img src="images/task_1_figures/subscriptions_by_proffesion_of_the_customers.png" width="700" alt="Subscriptions by profession"/>
 </p>
 
-> **Insight.** **The most customers who subscribed** for the savings account after the marketing campaign are between 25 and 40. However, this is due to the fact that most of the calls were made to people in that age span. The plot of the success rate based on the customers' job shows that those who are in full-time education or retired are very likely to subscribe to the savings account product. The success rate of the calls respectively, is approx. 45% and 35%. Above 15% success rate of the advertisement can be observed for administrative jobs and unemployed. 
+> **Insight.** **The most customers who subscribed** for the savings account after the marketing campaign are between 25 and 40. However, this is due to the fact that most of the calls were made to people in that age span. The plot of the success rate based on the customers' job shows that those who are in full-time education or retired are very likely to subscribe to the savings account product. The success rate of the calls, respectively, is approx. 45% and 35%. Above a 15% success rate of the advertisement can be observed for administrative jobs and the unemployed. 
 
 ---
 
@@ -550,7 +550,7 @@ Recall = 0.90316, Precision = 0.88792
 
 #### 6. Feature Importance
 
-The essence of the second task is to **produce estimates of feature importance from a trained predictive model**. In other words, we have to train the model and find out how it makes decisions to classify customers as potential subscriber. Not just that, but we also have to figure out the factors that influence a person's decision and give insights to the head of loan sales, based on the results. After all, the bank invested thousands of dollars to advertise and increase the subscriptions to the classic savings account.
+The essence of the second task is to **produce estimates of feature importance from a trained predictive model**. In other words, we have to train the model and find out how it makes decisions to classify customers as potential subscribers. Not just that, but we also have to figure out the factors that influence a person's decision and give insights to the head of loan sales, based on the results. After all, the bank invested thousands of dollars to advertise and increase subscriptions to the classic savings account.
 
 ```python
 importance_df = pd.DataFrame({
@@ -852,7 +852,7 @@ df["outcome"].value_counts()
 ## Prompts
 AI can leverage your interview performance and get you closer to that dream job. I prepared a few [great prompts](prompts) to help you with your case study. If you are allowed to use AI, just paste them into your favourite LLM. However, do not trust the results blindly. Instead, use them as a reference. As you know, LLMs often hallucinate, i.e. come up with stuff that isn’t accurate.
 
-How would I use the prompts? In the beginning, I would run the [Case Study Deep Analysis prompt](prompts\Case%20Study%20Deep%20Analysis.md) in Deep Research mode into one or two of the top LLM models. It doesn't matter which LLM model, just pick your favourite one. While I'm waiting, I will start implementing my solution. After the report is ready, I will read it and start investigating step by step. Usually, the model would give a broad answer and a good practice is to go through each task seperately. You can paste and run the prompt directly into the Code models. Yet, it will solve the task, but you also need a deeper business analysis of the task.
+How would I use the prompts? In the beginning, I would run the [Case Study Deep Analysis prompt](prompts\Case%20Study%20Deep%20Analysis.md) in Deep Research mode into one or two of the top LLM models. It doesn't matter which LLM model, just pick your favourite one. While I'm waiting, I will start implementing my solution. After the report is ready, I will read it and start investigating step by step. Usually, the model would give a broad answer and a good practice is to go through each task separately. You can paste and run the prompt directly into the Code models. Yet, it will solve the task, but you also need a deeper business analysis of the task.
 
 Next, you could run the [Dataset Analysis Prompt](prompts\Dataset%20Analysis.md). It generates a detailed analysis of the dataset. Use it for bonus insight into the data.
 
