@@ -165,30 +165,43 @@ The third task provides a ready-made GLM ElasticNet (binomial) coefficient table
 ```
 Data-Science-Case-Study/
 │
-├── LittleBank_Case_Study.ipynb              # Exhaustive EDA solution (Task 1)
-├── LittleBank_Case_Study_ML.ipynb           # Exhaustive ML solution (Task 2)
-├── littlebank_case_study.py                 # Script equivalent of the EDA notebook
-├── littlebank_case_study_ml.py              # Script equivalent of the ML notebook
+├── LittleBank_Case_Study.ipynb                  # Detailed EDA solution (Task 1)
+├── LittleBank_Case_Study_ML.ipynb               # Detailed ML solution (Task 2)
+├── littlebank_task3_detailed.md                 # Detailed interpretation & recommendations (Task 3)
 │
 ├── interview_solutions/
 │   ├── task_1_eda/
-│   │   ├── LittleBank_Case_Study_Concise_Solution.ipynb   # Concise EDA (interview use)
-│   │   └── littlebank_case_study_concise_solution.py
-│   └── task_2_machine_learning/
-│       ├── LittleBank_Case_Study_ML_Concise_Solution.ipynb # Concise ML (interview use)
-│       └── littlebank_case_study_ml_concise_solution.py
+│   │   ├── LittleBank_Case_Study_Concise_Solution.ipynb      # Concise EDA notebook (interview use)
+│   │   ├── littlebank_case_study_concise_solution.py         # Script equivalent
+│   │   └── README.md                                         # Guide for the concise EDA solution
+│   ├── task_2_machine_learning/
+│   │   ├── LittleBank_Case_Study_ML_Concise_Solution.ipynb   # Concise ML notebook (interview use)
+│   │   ├── littlebank_case_study_ml_concise_solution.py      # Script equivalent
+│   │   └── README.md                                         # Guide for the concise ML solution
+│   └── task_3_recommendations/
+│       └── business_strategy_and_recommendations.md          # Slide bullets & recommendations
+│
+├── scripts/
+│   ├── littlebank_case_study.py                 # Script equivalent of the detailed EDA notebook
+│   ├── littlebank_case_study_ml.py              # Script equivalent of the detailed ML notebook
+│   └── README.md                                # Guide for the scripts
 │
 ├── data/
-│   └── LittleBank_Case_Study.csv            # Source dataset (35,000 records)
+│   └── LittleBank_Case_Study.csv                # Source dataset (35,000 records)
 │
 ├── models/
-│   └── model_decision_tree.pkl              # Saved Decision Tree model
+│   ├── decision_tree_model.pkl                  # Saved Decision Tree model
+│   └── logistic_regr_model.pkl                  # Saved Logistic Regression model
 │
 ├── images/
-│   ├── task_1_figures/                       # EDA visualisations
-│   └── task_2_figures/                       # ML visualisations
+│   ├── task_1_figures/                          # EDA visualisations (6 plots)
+│   └── task_2_figures/                          # ML visualisations (3 plots)
 │
-├── save/                                     # Preprocessed data (parquet, gitignored)
+├── prompts/
+│   ├── Case Study Deep Analysis.md              # LLM prompt — full case-study analysis
+│   ├── Dataset Analysis.md                      # LLM prompt — dataset EDA framework
+│   └── Simple Consulting Interview Prompt.md    # LLM prompt — interview practice
+│
 ├── requirements.txt
 ├── LICENSE
 └── README.md
@@ -215,7 +228,7 @@ This repository provides **two solution tiers** for each task. They exist for ve
 | | Detailed Solution | Concise (Brief) Solution |
 |-|-------------------|--------------------------|
 | **Purpose** | In-depth understanding and portfolio showcase | Interview time-pressure practice |
-| **Location** | `LittleBank_Case_Study.ipynb` / `LittleBank_Case_Study_ML.ipynb` | `interview_solutions/task_1_eda/` / `interview_solutions/task_2_machine_learning/` |
+| **Location** | `LittleBank_Case_Study.ipynb` / `LittleBank_Case_Study_ML.ipynb` / `littlebank_task3_detailed.md` | `interview_solutions/task_1_eda/` / `interview_solutions/task_2_machine_learning/` / `interview_solutions/task_3_recommendations/`|
 | **Depth** | Exhaustive - written insight after every section | Focused on the essential steps only |
 | **Length** | ~140 cells per notebook | Designed to fit comfortably within a 3-hour window |
 | **Best for** | Building a complete understanding of the techniques | Timed mock interviews |
