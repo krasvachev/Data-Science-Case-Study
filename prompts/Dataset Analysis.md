@@ -1,4 +1,4 @@
-I have a tabular dataset for a binary/multi-class classification ML project (adjust as needed). I'm uploading a CSV file. Please perform a complete EDA and pre-modelling analysis following this framework:
+I have a tabular dataset for a binary classification ML project. I'm uploading a CSV file. Please perform a complete EDA and pre-modelling analysis following this framework:
 
 Phase 1 - Data Ingestion & First Look: Show shape, dtypes, head, and descriptive statistics. Flag any type mismatches or naming issues.
 
