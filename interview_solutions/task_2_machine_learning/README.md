@@ -11,10 +11,10 @@ This folder contains the **concise solution** for **Task 2 - Machine Learning**.
 
 ## Why "Concise"?
 
-The detailed solution in the repository root (`LittleBank_Case_Study_ML.ipynb`) trains six model families and includes exhaustive hyper-parameter tuning. This concise version focuses on the essentials you can realistically reproduce within the 3-hour window:
+The detailed solution in the repository root (`LittleBank_Case_Study_ML.ipynb`) trains six model families and includes exhaustive hyperparameter tuning. This concise version focuses on the essentials you can realistically reproduce within the 3-hour window:
 
 - Data cleaning tailored for ML.
-- Class-imbalance handling with **SMOTE** .
+- Class-imbalance handling with **SMOTE**.
 - Preprocessing with `MinMaxScaler` + `OneHotEncoder`.
 - A compact model comparison: Baseline → Logistic Regression → Decision Trees → Random Forest → XGBoost.
 - **Feature importance** plots.

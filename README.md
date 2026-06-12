@@ -391,7 +391,7 @@ plt.show()
   <img src="images/task_1_figures/subscriptions_by_proffesion_of_the_customers.png" width="700" alt="Subscriptions by profession"/>
 </p>
 
-> **Insight.** **The most customers who subscribed** for the savings account after the marketing campaign are between 25 and 40. However, this is due to the fact that most of the calls were made to people in that age span. The plot of the success rate based on the customers' job shows that those who are in full-time education or retired are very likely to subscribe to the savings account product. The success rate of the calls respectively, is approx. 45% and 35%. Above 15% success rate of the advertisement can be observed for administrative jobs and unemployed. 
+> **Insight.** **The most customers who subscribed** for the savings account after the marketing campaign are between 25 and 40. However, this is due to the fact that most of the calls were made to people in that age span. The plot of the success rate based on the customers' job shows that those who are in full-time education or retired are very likely to subscribe to the savings account product. The success rate of the calls, respectively, is approx. 45% and 35%. Above a 15% success rate of the advertisement can be observed for administrative jobs and the unemployed. 
 
 ---
 
@@ -550,7 +550,7 @@ Recall = 0.90316, Precision = 0.88792
 
 #### 6. Feature Importance
 
-The essence of the second task is to **produce estimates of feature importance from a trained predictive model**. In other words, we have to train the model and find out how it makes decisions to classify customers as potential subscriber. Not just that, but we also have to figure out the factors that influence a person's decision and give insights to the head of loan sales, based on the results. After all, the bank invested thousands of dollars to advertise and increase the subscriptions to the classic savings account.
+The essence of the second task is to **produce estimates of feature importance from a trained predictive model**. In other words, we have to train the model and find out how it makes decisions to classify customers as potential subscribers. Not just that, but we also have to figure out the factors that influence a person's decision and give insights to the head of loan sales, based on the results. After all, the bank invested thousands of dollars to advertise and increase subscriptions to the classic savings account.
 
 ```python
 importance_df = pd.DataFrame({

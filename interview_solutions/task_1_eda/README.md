@@ -11,7 +11,7 @@ This folder contains the **concise solution** for **Task 1 - Exploratory Data An
 
 ## Why "Concise"?
 
-The detailed solution in the repository root (`LittleBank_Case_Study.ipynb`) is ~140 cells. It is designed for learning, not for time-pressured interviews. This concise version leds to the essentials and you can re-produce within the 1-hour window:
+The detailed solution in the repository root (`LittleBank_Case_Study.ipynb`) is ~140 cells. It is designed for learning, not for time-pressured interviews. This concise version leads to the essentials, and you can re-produce within the 1-hour window:
 
 - Data overview (`df.info()`, `df.describe()`, class imbalance).
 - Targeted data cleaning (duplicates, `"unknown"` categories, `-1` sentinels).
