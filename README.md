@@ -56,7 +56,7 @@ The solutions are not limited to the Big Four accounting companies. They can be 
 
 <mark>**Problem:**</mark> The head of loan sales has noticed a recent **drop in subscriptions of the "classic savings account"** product, despite consistent telemarketing efforts offering the account to customers. He has turned to our company for advice on how to improve sales of this product.
 
-<mark>**Data:**</mark> LittleBank has shared a [data file](https://github.com/krasvachev/Data-Science-Case-Study/tree/749f388c5ddd75bffebf4815294aec153770be96/data) (`LittleBank_Case_Study.csv`) containing historical telemarketing-campaign records. 
+<mark>**Data:**</mark> LittleBank has shared a [data file](data/LittleBank_Case_Study.csv) (`LittleBank_Case_Study.csv`) containing historical telemarketing-campaign records. 
 
 The file includes:
 
@@ -609,7 +609,7 @@ To improve the conversion rates, it is recommended to:
 
 3. To get feedback from the bank clients, do they like the products of the bank and what makes them eager to purchase a product. A satisfied client is more likely to purchase a product or recommend it to a friend.
 
-> For the presentation's bullets, check the [interview_solutions](https://github.com/krasvachev/Data-Science-Case-Study/tree/9eb45423c4f847a59524b3fe38bbd41a06b3da84/interview_solutions) folder. More insights can be found in the detailed solution [here](littlebank_task3_detailed.md).
+> For the presentation's bullets, check the [interview_solutions](interview_solutions/) folder. More insights can be found in the detailed solution [here](littlebank_task3_detailed.md).
 
 ---
 
