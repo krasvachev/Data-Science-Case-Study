@@ -865,11 +865,11 @@ df["outcome"].value_counts()
 ## Prompts
 AI can leverage your interview performance and get you closer to that dream job. I prepared a few [great prompts](prompts) to help you with your case study. If you are allowed to use AI, just paste them into your favourite LLM. However, do not trust the results blindly. Instead, use them as a reference. As you know, LLMs often hallucinate, i.e. come up with stuff that isn’t accurate.
 
-How would I use the prompts? In the beginning, I would run the [Case Study Deep Analysis prompt](prompts\Case%20Study%20Deep%20Analysis.md) in Deep Research mode into one or two of the top LLM models. It doesn't matter which LLM model, just pick your favourite one. While I'm waiting, I will start implementing my solution. After the report is ready, I will read it and start investigating step by step. Usually, the model would give a broad answer and a good practice is to go through each task separately. You can paste and run the prompt directly into the Code models. Yet, it will solve the task, but you also need a deeper business analysis of the task.
+How would I use the prompts? In the beginning, I would run the [Case Study Deep Analysis prompt](prompts/Case%20Study%20Deep%20Analysis.md) in Deep Research mode into one or two of the top LLM models. It doesn't matter which LLM model, just pick your favourite one. While I'm waiting, I will start implementing my solution. After the report is ready, I will read it and start investigating step by step. Usually, the model would give a broad answer and a good practice is to go through each task separately. You can paste and run the prompt directly into the Code models. Yet, it will solve the task, but you also need a deeper business analysis of the task.
 
-Next, you could run the [Dataset Analysis Prompt](prompts\Dataset%20Analysis.md). It generates a detailed analysis of the dataset. Use it for bonus insight into the data.
+Next, you could run the [Dataset Analysis Prompt](prompts/Dataset%20Analysis.md). It generates a detailed analysis of the dataset. Use it for bonus insight into the data.
 
-In the end, there is also [one bonus prompt](prompts\Simple%20Consulting%20Interview%20Prompt.md) for the interview preparation. It is simple, but effective. If necessary, you could customise it for your needs.
+In the end, there is also [one bonus prompt](prompts/Simple%20Consulting%20Interview%20Prompt.md) for the interview preparation. It is simple, but effective. If necessary, you could customise it for your needs.
 
 ## Requirements
 
