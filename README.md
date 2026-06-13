@@ -109,8 +109,6 @@ The third task provides a ready-made GLM ElasticNet (binomial) coefficient table
 
 > *Notes: all categorical variables were one-hot encoded, all variables were centred and scaled, zero-coefficient variables excluded; the GLM uses the **binomial** distribution.*
 
-> *Link: You could find a PDF file with the instructions [here](https://drive.google.com/file/d/1_VQwJuwf29FRUfQZCqiO7c3RLiOy2tra/view?usp=drive_link).*
-
 ---
 
 ## Dataset
@@ -876,10 +874,18 @@ In the end, there is also [one bonus prompt](prompts/Simple%20Consulting%20Inter
 Install all dependencies in a fresh virtual environment:
 
 ```bash
+# 1. Create the virtual environment
 python -m venv .venv
-.venv\Scripts\activate          # on macOS/Linux: source .venv/bin/activate 
+
+# 2. Activate it
+source .venv/bin/activate      # macOS / Linux
+.venv\Scripts\activate         # Windows (PowerShell / CMD)
+
+# 3. Install dependencies
 pip install -r requirements.txt
 ```
+
+
 
 **Key libraries used in the analysis:**
 
