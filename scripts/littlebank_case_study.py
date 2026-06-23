@@ -18,7 +18,7 @@ import seaborn as sns
 
 """## 0. Load and Overview the Data"""
 
-df = pd.read_csv("/content/data/LittleBank_Case_Study.csv").convert_dtypes()
+df = pd.read_csv("data/LittleBank_Case_Study.csv").convert_dtypes()
 
 pd.set_option("display.max_columns", None)
 df

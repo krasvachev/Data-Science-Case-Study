@@ -22,7 +22,7 @@ from sklearn.model_selection import train_test_split
 >The section is exactly the same as the `0. section` for the EDA solution (task 1).
 """
 
-df = pd.read_csv("/content/data/LittleBank_Case_Study.csv")
+df = pd.read_csv("data/LittleBank_Case_Study.csv")
 
 pd.set_option("display.max_columns", None)
 df
@@ -629,23 +629,23 @@ plt.title("Feature Importance of the Random Forest Model");
 
 # Commented out IPython magic to ensure Python compatibility.
 # %%time
-# from xgboost import XGBClassifier
-# 
-# xgboost_model = XGBClassifier(max_depth = 10,                # 6-10
-#                               min_child_weight = 5,          # 2, 5
-#                               #gamma = 0,
-#                               n_estimators = 1000,
-#                               n_jobs = -1,
-#                               subsample = 1,                # 1, 0.93
-#                               #colsample_bytree = 1,
-#                               learning_rate = 0.1,           # 0.3-0.4
-#                               random_state = 42,
-#                               objective = "reg:squarederror",)      #reg:squarederror
-# 
-# xgboost_model.fit(train_inputs, train_targets)
-# 
-# train_preds_xgb = xgboost_model.predict(train_inputs)
-# test_preds_xgb = xgboost_model.predict(test_inputs)
+from xgboost import XGBClassifier
+
+xgboost_model = XGBClassifier(max_depth = 10,                # 6-10
+                              min_child_weight = 5,          # 2, 5
+                              #gamma = 0,
+                              n_estimators = 1000,
+                              n_jobs = -1,
+                              subsample = 1,                # 1, 0.93
+                              #colsample_bytree = 1,
+                              learning_rate = 0.1,           # 0.3-0.4
+                              random_state = 42,
+                              objective = "reg:squarederror",)      #reg:squarederror
+
+xgboost_model.fit(train_inputs, train_targets)
+
+train_preds_xgb = xgboost_model.predict(train_inputs)
+test_preds_xgb = xgboost_model.predict(test_inputs)
 
 train_acc = accuracy_score(train_targets, train_preds_xgb)
 test_acc, recall_test, precision_test = calculate_basic_metrics(test_targets, test_preds_xgb)
