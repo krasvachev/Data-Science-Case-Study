@@ -165,7 +165,7 @@ Data-Science-Case-Study/
 │
 ├── LittleBank_Case_Study.ipynb                  # Detailed EDA solution (Task 1)
 ├── LittleBank_Case_Study_ML.ipynb               # Detailed ML solution (Task 2)
-├── littlebank_task3_detailed.md                 # Detailed interpretation & recommendations (Task 3)
+├── LittleBank_Recommendations_detailed.md       # Detailed interpretation & recommendations (Task 3)
 │
 ├── interview_solutions/
 │   ├── task_1_eda/
@@ -226,7 +226,7 @@ This repository provides **two solution tiers** for each task. They exist for ve
 | | Detailed Solution | Concise (Brief) Solution |
 |-|-------------------|--------------------------|
 | **Purpose** | In-depth understanding and portfolio showcase | Interview time-pressure practice |
-| **Location** | `LittleBank_Case_Study.ipynb` / `LittleBank_Case_Study_ML.ipynb` / `littlebank_task3_detailed.md` | `interview_solutions/task_1_eda/` / `interview_solutions/task_2_machine_learning/` / `interview_solutions/task_3_recommendations/`|
+| **Location** | `LittleBank_Case_Study.ipynb` / `LittleBank_Case_Study_ML.ipynb` / `LittleBank_Recommendations_detailed.md` | `interview_solutions/task_1_eda/` / `interview_solutions/task_2_machine_learning/` / `interview_solutions/task_3_recommendations/`|
 | **Depth** | Exhaustive - written insight after every section | Focused on the essential steps only |
 | **Length** | ~140 cells per notebook | Designed to fit comfortably within a 3-hour window |
 | **Best for** | Building a complete understanding of the techniques | Timed mock interviews |
@@ -607,7 +607,7 @@ To improve the conversion rates, it is recommended to:
 
 3. To get feedback from the bank clients, do they like the products of the bank and what makes them eager to purchase a product. A satisfied client is more likely to purchase a product or recommend it to a friend.
 
-> For the presentation's bullets, check the [interview_solutions](interview_solutions/) folder. More insights can be found in the detailed solution [here](littlebank_task3_detailed.md).
+> For the presentation's bullets, check the [interview_solutions](interview_solutions/) folder. More insights can be found in the detailed solution [here](LittleBank_Recommendations_detailed.md).
 
 ---
 
