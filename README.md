@@ -224,7 +224,7 @@ Data-Science-Case-Study/
 This repository provides **two solution tiers** for each task. They exist for very different purposes.
 
 | | Detailed Solution | Concise (Brief) Solution |
-|-|-------------------|--------------------------|
+|:-:|-------------------|--------------------------|
 | **Purpose** | In-depth understanding and portfolio showcase | Interview time-pressure practice |
 | **Location** | `LittleBank_Case_Study.ipynb` / `LittleBank_Case_Study_ML.ipynb` / `LittleBank_Recommendations_detailed.md` | `interview_solutions/task_1_eda/` / `interview_solutions/task_2_machine_learning/` / `interview_solutions/task_3_recommendations/`|
 | **Depth** | Exhaustive - written insight after every section | Focused on the essential steps only |
