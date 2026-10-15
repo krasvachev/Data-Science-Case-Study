@@ -1,0 +1,6 @@
+| Notebook | Run it |
+|---|---|
+| Detailed EDA (Task 1) | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/krasvachev/Data-Science-Case-Study/blob/main/LittleBank_Case_Study.ipynb) |
+| Detailed ML (Task 2) | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/krasvachev/Data-Science-Case-Study/blob/main/LittleBank_Case_Study_ML.ipynb) |
+| Concise EDA (Task 1) | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/krasvachev/Data-Science-Case-Study/blob/main/interview_solutions/task_1_eda/LittleBank_Case_Study_Concise_Solution.ipynb) |
+| Concise ML (Task 2) | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/krasvachev/Data-Science-Case-Study/blob/main/interview_solutions/task_2_machine_learning/LittleBank_Case_Study_ML_Concise_Solution.ipynb) |

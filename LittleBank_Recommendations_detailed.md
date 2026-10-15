@@ -16,8 +16,6 @@ The table represents the relationship between the features of the data and their
 
 * It could be said with high probability that being on a credit product does not influence the customer's decision to purchase the product. And that is not good news.
 
-* The probability of a successful conversion rate is approx. 8.3% (0.083). That means around 10% of the people will subscribe to the savings account after the marketing. These results are also affirmed by the implemented ML models.
-
 * There isn’t any visible improvement in the subscriptions, even with the advertisement campaign. This means that there is a problem with the campaign. The conclusion is derived from the applied analysis and models.
 
 ### Recommendation
