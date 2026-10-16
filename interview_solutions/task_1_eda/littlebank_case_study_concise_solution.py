@@ -120,7 +120,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 import seaborn as sns
 
-# df = pd.read_csv("/content/data/LittleBank_Case_Study.csv").convert_dtypes()
+# df = pd.read_csv("data/LittleBank_Case_Study.csv").convert_dtypes()
 
 # pd.set_option('display.max_columns', None)
 # df
