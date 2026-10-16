@@ -16,6 +16,34 @@ import seaborn as sns
 
 """## 0. Load and Overview the Data"""
 
+# Find the repository so the data path works everywhere - locally from any folder,
+# on Google Colab, or when this notebook was downloaded on its own)
+
+import os
+import subprocess
+import sys
+from pathlib import Path
+
+REPO_URL = "https://github.com/krasvachev/Data-Science-Case-Study.git"
+DATA_FILE = Path("data") / "LittleBank_Case_Study.csv"
+
+ROOT = next((p for p in [Path.cwd(), *Path.cwd().parents] if (p / DATA_FILE).exists()), None)
+
+if ROOT is None:
+    ROOT = Path.cwd() / "Data-Science-Case-Study"
+    if not (ROOT / DATA_FILE).exists():
+        print("Downloading the repository (data included)...")
+        subprocess.run(["git", "clone", "--depth", "1", "-q", REPO_URL, str(ROOT)], check=True)
+
+os.chdir(ROOT)
+
+try:
+    import imblearn  # noqa: F401
+except ImportError:
+    subprocess.run([sys.executable, "-m", "pip", "install", "-q", "imbalanced-learn"], check=True)
+
+print(f"Working from: {ROOT}")
+
 df = pd.read_csv("data/LittleBank_Case_Study.csv").convert_dtypes()
 
 pd.set_option("display.max_columns", None)
