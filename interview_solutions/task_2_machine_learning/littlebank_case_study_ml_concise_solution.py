@@ -22,6 +22,34 @@ from sklearn.model_selection import train_test_split
 >The section is exactly the same as the `0. section` for the EDA solution (task 1).
 """
 
+# Find the repository so the data path works everywhere - locally from any folder,
+# on Google Colab, or when this notebook was downloaded on its own)
+
+import os
+import subprocess
+import sys
+from pathlib import Path
+
+REPO_URL = "https://github.com/krasvachev/Data-Science-Case-Study.git"
+DATA_FILE = Path("data") / "LittleBank_Case_Study.csv"
+
+ROOT = next((p for p in [Path.cwd(), *Path.cwd().parents] if (p / DATA_FILE).exists()), None)
+
+if ROOT is None:
+    ROOT = Path.cwd() / "Data-Science-Case-Study"
+    if not (ROOT / DATA_FILE).exists():
+        print("Downloading the repository (data included)...")
+        subprocess.run(["git", "clone", "--depth", "1", "-q", REPO_URL, str(ROOT)], check=True)
+
+os.chdir(ROOT)
+
+try:
+    import imblearn  # noqa: F401
+except ImportError:
+    subprocess.run([sys.executable, "-m", "pip", "install", "-q", "imbalanced-learn"], check=True)
+
+print(f"Working from: {ROOT}")
+
 df = pd.read_csv("data/LittleBank_Case_Study.csv")
 
 pd.set_option("display.max_columns", None)
@@ -639,25 +667,25 @@ plt.title("Feature Importance of the Random Forest Model");
 
 print("Extreme Gradient Boosting")
 
-# Commented out IPython magic to ensure Python compatibility.
 # %%time
-# from xgboost import XGBClassifier
-# 
-# xgboost_model = XGBClassifier(max_depth = 10,                # 6-10
-#                               min_child_weight = 5,          # 2, 5
-#                               #gamma = 0,
-#                               n_estimators = 1000,
-#                               n_jobs = -1,
-#                               subsample = 1,                # 1, 0.93
-#                               #colsample_bytree = 1,
-#                               learning_rate = 0.1,           # 0.3-0.4
-#                               random_state = 42,
-#                               objective = "reg:squarederror",)      #reg:squarederror
-# 
-# xgboost_model.fit(train_inputs, train_targets)
-# 
-# train_preds_xgb = xgboost_model.predict(train_inputs)
-# test_preds_xgb = xgboost_model.predict(test_inputs)
+
+from xgboost import XGBClassifier
+
+xgboost_model = XGBClassifier(max_depth = 10,                # 6-10
+                              min_child_weight = 5,          # 2, 5
+                              #gamma = 0,
+                              n_estimators = 1000,
+                              n_jobs = -1,
+                              subsample = 1,                # 1, 0.93
+                              #colsample_bytree = 1,
+                              learning_rate = 0.1,           # 0.3-0.4
+                              random_state = 42,
+                              objective = "reg:squarederror",)      #reg:squarederror
+
+xgboost_model.fit(train_inputs, train_targets)
+
+train_preds_xgb = xgboost_model.predict(train_inputs)
+test_preds_xgb = xgboost_model.predict(test_inputs)
 
 train_acc = accuracy_score(train_targets, train_preds_xgb)
 test_acc, recall_test, precision_test = calculate_basic_metrics(test_targets, test_preds_xgb)
