@@ -614,14 +614,14 @@ df_education.plot(kind = "bar", rot = 45, figsize = (12, 10), colormap = "Spectr
                   xlabel = "Education", ylabel = "Outcome of the contact",
                   title = "Outcome of the Contact based on Education");
 
-df_age = df_tr[df_tr["age"] < 80]                # The Number of Customers above 70 is small and can be omited
+df_age = df_tr[df_tr["age"] < 80]                # The Number of Customers above 80 is small and can be omited
 age_unique = df_age["age"].unique().tolist()
 age_unique.sort()
 #print(age_unique)
 
 age_counts = df_age["age"].value_counts().sort_index()
 
-df_age_true = df_outcome_true[df_outcome_true["age"] < 80]                # The Number of Customers above 70 is small and can be omited
+df_age_true = df_outcome_true[df_outcome_true["age"] < 80]                # The Number of Customers above 80 is small and can be omited
 age_unique_true = df_age_true["age"].unique().tolist()
 age_unique_true.sort()
 #print(age_unique_true)

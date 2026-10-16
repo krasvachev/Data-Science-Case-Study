@@ -385,6 +385,8 @@ accuracy_score(test_targets, all_output_negative(test_inputs))
 #### 6.2.1 Simple Model for Finding the Best Hyperparameters
 """
 
+print("Logistic Regression")
+
 from sklearn.linear_model import LogisticRegression
 from sklearn.metrics import accuracy_score, confusion_matrix
 from sklearn.metrics import recall_score, precision_score
@@ -462,6 +464,8 @@ def calculate_basic_metrics(targets, preds):
 ### 7.1 Lasso
 """
 
+print("Logistic Regression with Lasso")
+
 #from sklearn.linear_model import LogisticRegression
 
 model_lasso = LogisticRegression(penalty = "l1", C = 1, solver = "saga", n_jobs = -1, max_iter = 500)
@@ -488,6 +492,8 @@ print(f"Recall = {recall_test:.5f}, Precision = {precision_test:.5f}")
 # Recall = 0.72231, Precision = 0.77661
 
 """### 7.2 ElasticNet"""
+
+print("ElasticNet")
 
 model_elastic_net = LogisticRegression(penalty = "elasticnet",
                                          C = 1,
@@ -521,9 +527,11 @@ print(f"Recall = {recall_test:.5f}, Precision = {precision_test:.5f}")
 """## 8. Decision Tree and Random Forest
 
 ### 8.1 Decision Tree
-
-#### 8.1.1 Without Pruning
 """
+
+print("Decision Trees")
+
+"""#### 8.1.1 Without Pruning"""
 
 from sklearn.tree import DecisionTreeClassifier
 
@@ -580,6 +588,8 @@ plt.title("Feature Importance of the Decision Tree");
 
 """## 8.2 Random Forest"""
 
+print("Random Forest")
+
 from sklearn.ensemble import RandomForestClassifier
 
 model_random_forest = RandomForestClassifier(n_jobs = -1,
@@ -626,6 +636,8 @@ plt.title("Feature Importance of the Random Forest Model");
 # Recall = 0.90316, Precision = 0.88792
 
 """## 9. Gradient Boosting Model"""
+
+print("Extreme Gradient Boosting")
 
 # Commented out IPython magic to ensure Python compatibility.
 # %%time
