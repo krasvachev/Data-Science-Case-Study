@@ -619,12 +619,12 @@ Six model families were trained and evaluated on the data. The results are taken
 
 | Model                     | Train Accuracy | Test Accuracy | Recall    |  Precision  |
 | ------------------------- |:--------------:|:-------------:|:---------:|:-----------:|
-| Logistic Regression       | 0,7512         | 0,7604        | 0,7239    | 0,7758      |
-| Lasso Regression          | 0,7519         | 0,7603        | 0,7223    | 0,7766      |
-| ElasticNet                | 0,7515         | 0,7602        | 0,7232    | 0,7759      |
-| Decision Tree             | 0,8942         | 0,8346        | 0,8482    | 0,8224      |
-| **Random Forest** 🏆🏆🏆 | **1.00000**    | **0,8959**  | **0,9032**  | **0,8879**  |
-| Extreme Gradient Boosting | 0,9998         | 0,8954        | 0,9097    | 0,8821      |
+| Logistic Regression       | 0.7512         | 0.7604        | 0.7239    | 0.7758      |
+| Lasso Regression          | 0.7519         | 0.7603        | 0.7223    | 0.7766      |
+| ElasticNet                | 0.7515         | 0.7602        | 0.7232    | 0.7759      |
+| Decision Tree             | 0.8942         | 0.8346        | 0.8482    | 0.8224      |
+| **Random Forest** 🏆🏆🏆 | **1.00000**    | **0.8959**  | **0.9032**  | **0.8879**  |
+| Extreme Gradient Boosting | 0.9998         | 0.8954        | 0.9097    | 0.8821      |
 
 > **Top-performing model.** Without a doubt, the best results are achieved with the Random Forest model. It has the highest `test accuracy` and the second highest `recall`.
 
