@@ -1,0 +1,57 @@
+name: Run notebooks
+
+# Runs every script and notebook from top to bottom on a clean machine.
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:      # adds a "Run workflow" button in the Actions tab
+  schedule:
+    - cron: "0 6 * * 1"   # every Monday 06:00 UTC: catches breaking library releases
+
+permissions:
+  contents: read          # the workflow only reads the repository
+
+jobs:
+  run:
+    name: ${{ matrix.file }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    strategy:
+      fail-fast: false    # one broken file doesn't stop the others
+      matrix:
+        file:
+          - scripts/littlebank_case_study.py
+          - scripts/littlebank_case_study_ml.py
+          - interview_solutions/task_1_eda/littlebank_case_study_concise_solution.py
+          - interview_solutions/task_2_machine_learning/littlebank_case_study_ml_concise_solution.py
+          - LittleBank_Case_Study.ipynb
+          - LittleBank_Case_Study_ML.ipynb
+          - interview_solutions/task_1_eda/LittleBank_Case_Study_Concise_Solution.ipynb
+          - interview_solutions/task_2_machine_learning/LittleBank_Case_Study_ML_Concise_Solution.ipynb
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: pip
+
+      - name: Install requirements
+        run: pip install -r requirements.txt
+
+      - name: Run ${{ matrix.file }}
+        env:
+          MPLBACKEND: Agg   # draw plots without a screen
+        run: |
+          case "${{ matrix.file }}" in
+            *.py)
+              python "${{ matrix.file }}" ;;
+            *.ipynb)
+              jupyter nbconvert --to notebook --execute \
+                --ExecutePreprocessor.timeout=600 \
+                --output-dir "$RUNNER_TEMP" "${{ matrix.file }}" ;;
+            *)
+              echo "Unsupported file type: ${{ matrix.file }}"; exit 1 ;;
+          esac
