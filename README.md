@@ -8,6 +8,7 @@
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](#contributing)
 [![Last Commit](https://img.shields.io/github/last-commit/krasvachev/Data-Science-Case-Study)](https://github.com/krasvachev/Data-Science-Case-Study)
 [![Stars](https://img.shields.io/github/stars/krasvachev/Data-Science-Case-Study?style=social)](https://github.com/krasvachev/Data-Science-Case-Study)
+[![Run notebooks](https://github.com/krasvachev/Data-Science-Case-Study/actions/workflows/run-notebooks.yml/badge.svg)](https://github.com/krasvachev/Data-Science-Case-Study/actions/workflows/run-notebooks.yml)
 
 > **A complete, interview-ready Data Science Case Study for Big Four (Deloitte, EY, KPMG, PwC) technical interviews - featuring an exhaustive EDA, a full ML pipeline, business-focused recommendations and a detailed interview preparation guide.**
 
