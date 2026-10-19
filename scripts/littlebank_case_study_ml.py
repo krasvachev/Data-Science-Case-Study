@@ -288,7 +288,7 @@ y = df_tr[target_col_df].copy()
 
 X.shape, y.shape
 
-categorical_cols_df = X.select_dtypes("object").columns.tolist()
+categorical_cols_df = X.select_dtypes(include = ["object", "string"]).columns.tolist()
 categorical_cols_df
 
 smote = SMOTENC(categorical_features = categorical_cols_df, sampling_strategy = "auto", random_state = 42)
@@ -322,7 +322,7 @@ test_inputs = test_df[input_cols].copy()
 test_targets = test_df[target_col].copy()
 
 numeric_cols = train_inputs.select_dtypes(include = ["number"]).columns.tolist()        # np.number
-categorical_cols = train_inputs.select_dtypes("object").columns.tolist()
+categorical_cols = train_inputs.select_dtypes(include = ["object", "string"]).columns.tolist()
 
 train_inputs[categorical_cols].nunique()
 
@@ -420,7 +420,7 @@ from sklearn.metrics import accuracy_score, confusion_matrix
 from sklearn.metrics import recall_score, precision_score
 from sklearn.metrics import precision_recall_fscore_support
 
-model_log_regr_temp = LogisticRegression(C = 0.98, solver = "lbfgs", n_jobs = -1, max_iter = 500)
+model_log_regr_temp = LogisticRegression(C = 0.98, solver = "lbfgs", max_iter = 500)
 
 model_log_regr_temp.fit(train_inputs, train_targets)
 
@@ -451,7 +451,7 @@ model_log_regr_simple = LogisticRegression()
 grid_search_log_regr = GridSearchCV(estimator = model_log_regr_simple,
                                     param_grid = param_grid,
                                     scoring = ["accuracy", "recall", "precision"],      # Test only one scoring...
-                                    n_jobs = -1,
+                                    #n_jobs = -1,
                                     refit = "accuracy",                                 # Accuracy if the classes are balanced, Recall if you use unbalanced data
                                     cv = 5,
                                     verbose = 3)
@@ -472,7 +472,7 @@ print(f"Test Accuracy = {test_acc:.5f}, Recall = {recall:.5f}, Precision = {prec
 
 """### 6.2.3 The Best Model"""
 
-model_log_regr = LogisticRegression(C = 0.98, solver = "lbfgs", n_jobs = -1, max_iter = 500)
+model_log_regr = LogisticRegression(C = 0.98, solver = "lbfgs", max_iter = 500)
 #model_log_regr = clf.best_estimator_
 
 model_log_regr.fit(train_inputs, train_targets)
@@ -562,7 +562,7 @@ print("Logistic Regression with Lasso")
 
 #from sklearn.linear_model import LogisticRegression
 
-model_lasso = LogisticRegression(penalty = "l1", C = 1, solver = "saga", n_jobs = -1, max_iter = 500)
+model_lasso = LogisticRegression(penalty = "l1", C = 1, solver = "saga", max_iter = 500)
 
 model_lasso.fit(train_inputs, train_targets)
 
