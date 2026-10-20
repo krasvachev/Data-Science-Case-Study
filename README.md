@@ -12,24 +12,42 @@
 
 > **A complete, interview-ready Data Science Case Study for Big Four (Deloitte, EY, KPMG, PwC) technical interviews - featuring an exhaustive EDA, a full ML pipeline, business-focused recommendations and a detailed interview preparation guide.**
 
----
 
-## Introduction
 
-A Data Scientist 📊 or Machine Learning Engineer 📈 role at one of the Big Four companies (Deloitte, EY, KPMG, PwC)... That's a great opportunity that should not be missed. The Big Four companies generate  $219 billion in revenue 💵, with worldwide offices and more than 1.5 million employees 🧑‍💼. This makes them the largest professional service and accounting companies in the world 🧮. Being a part of them means you could work on a variety of projects across a wide range of fields and build broad experience across many topics - especially in the early stages of your career 🚀. However, to be a part of the Big Four, first you have to pass the interview process. And the case study task... I mean the technical case study 👨‍💻.
+## Start Here
 
-What is a case study 😦🤨? That is the question I asked myself when I first heard that I had to tackle such a problem. A coding task or implementing an ML algorithm, we all get that. But what a case study actually is 🤷‍♂️🤷‍♂️🤷‍♂️? Typically, there are between 3 and 5 steps when applying to a Big Four company. The case study is a business task that the candidate has to solve within a fixed time ⌛. For the tech interview, the company often provides a real-world dataset. The goal is to perform Exploratory Data Analysis (EDA) 📊, apply Machine Learning (ML) models 📈 and answer specific business questions connected to the task 📝. Usually, the time to solve all three tasks is 3 hours.
+**Interview coming up and short on time?** Follow these seven steps: read the brief, solve a real Big Four case study against the clock, check your work against a complete solution and walk into the interview prepared.
 
-When I was doing my preparation, I could not find a case study example for Data Scientists or ML Engineers. This is the first reason for creating this repository - to provide job seekers with an exercise to practise on 🔍. There is also a second reason: I failed to pass the data science case study. However, I decided to solve the task outstandingly with a solution that successfully passes the case study interview. Last but not least, the goal of the repo is not just to help me, but also to help **you** land that dream job 💪💪💪.
+```mermaid
+flowchart LR
+    A["1. Read the<br/>instructions"] --> B["2. Choose<br/>your track"] --> C["3. Solve the<br/>blank exam"] --> D["4. Compare<br/>results"] --> E["5. Turn data<br/>into insights"] --> F["6. Prepare for<br/>the interview"] --> G["7. Bonus:<br/>AI prompts"]
+```
 
-The repo provides an exhaustive solution to a Data Science case study task given during a Big Four technical interview. It also provides guidance on how to prepare for the interviews 📋. The main focus is on how to tackle the case study. There are also hints on how to use LLM models to help you efficiently during your interview preparation 🤖.
+| Step | What to do | Time | Go to |
+|:----:|------------|:----:|-------|
+| **1. Read the instructions** | Read the client's brief, the three business questions and what each column in the data means. | 10 min | [Case Study Instructions](#case-study-instructions) · [Dataset](#dataset) |
+| **2. Choose your track** | **Concise** if your interview is two days away: it trains you to finish all three tasks in 3 hours. **Detailed** if you have three days or more: learn the full analysis first, then switch to concise. | 2 min | [Brief and Detailed Solutions](#brief-and-detailed-solutions) |
+| **3. Solve the blank exam** | Open the blank exam for your track (table below) and solve Tasks 1 and 2 without looking at the solution. For Task 3, interpret the [GLM coefficients](#glm-elasticnet-coefficients-provided-by-the-client) and write three recommendations. | Concise: 70 + 70 + 20 min | [Blank exams](#blank-exams) |
+| **4. Compare results** | Compare your notebook with the solution, section by section, and your model metrics with the results table. Then score yourself with the self-check. | 20 min | [Solutions](#solutions) · [Models and Accuracy](#models-and-accuracy) · [Self-Check](practice_kit/Data_Science_Case_Study_Self_Check.md) |
+| **5. Turn data into insights** | Compare your findings and recommendations with the solution's. Every insight should come with a number and an action. | 15 min | [Conclusion and Key Insights](#conclusion-and-key-insights) · [Task 3 - Recommendations](#task-3-recommendations) |
+| **6. Prepare for the interview** | Learn the time strategy, the answer structure and how to explain each model to a non-technical client. Rehearse the questions on page 2 of the self-check out loud. | 20 min | [How to Tackle the Interview](#how-to-tackle-the-interview) |
+| **7. Bonus: use AI** | Use ready-made prompts for a deep analysis of the case, the dataset and a mock interview. | 10 min | [Prompts](#prompts) |
 
-The solutions are not limited to the Big Four accounting companies. They can be helpful for other accounting and professional service firms as well 🎯🎯🎯. In addition, the solutions apply the most common ML and Data Science practices. That is why they can be a great resource for any ML Engineer or Data Scientist preparing for a tech interview 🎯🎯🎯.
+<a id="blank-exams"></a>
+**Blank exams.** The same sections as the solutions, with `# TODO` cells, hidden hints and space for your insights.
+
+| | Concise (timed, 70 min each) | Detailed (untimed) |
+|---|---|---|
+| **Task 1 - EDA** | [Notebook](interview_solutions/task_1_eda/LittleBank_Case_Study_Concise_Blank_Exam.ipynb) [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/krasvachev/Data-Science-Case-Study/blob/main/interview_solutions/task_1_eda/LittleBank_Case_Study_Concise_Blank_Exam.ipynb) | [Notebook](practice_kit/LittleBank_Case_Study_Blank_Exam.ipynb) [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/krasvachev/Data-Science-Case-Study/blob/main/practice_kit/LittleBank_Case_Study_Blank_Exam.ipynb) |
+| **Task 2 - ML** | [Notebook](interview_solutions/task_2_machine_learning/LittleBank_Case_Study_ML_Concise_Blank_Exam.ipynb) [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/krasvachev/Data-Science-Case-Study/blob/main/interview_solutions/task_2_machine_learning/LittleBank_Case_Study_ML_Concise_Blank_Exam.ipynb) | [Notebook](practice_kit/LittleBank_Case_Study_ML_Blank_Exam.ipynb) [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/krasvachev/Data-Science-Case-Study/blob/main/practice_kit/LittleBank_Case_Study_ML_Blank_Exam.ipynb) |
+
+> **Only one evening?** Do steps 1 and 6, then the concise Task 1 exam. That covers the brief, the strategy and the task every case study starts with.
 
 ---
 
 ## Table of Contents
 
+0. [Introduction](#introduction)
 1. [Case Study Instructions](#case-study-instructions)
 2. [Dataset](#dataset)
 3. [Repository Structure](#repository-structure)
@@ -46,6 +64,20 @@ The solutions are not limited to the Big Four accounting companies. They can be 
 11. [Requirements](#requirements)
 12. [Contributing](#contributing)
 13. [License](#license)
+
+---
+
+## Introduction
+
+A Data Scientist 📊 or Machine Learning Engineer 📈 role at one of the Big Four companies (Deloitte, EY, KPMG, PwC)... That's a great opportunity that should not be missed. The Big Four companies generate  $219 billion in revenue 💵, with worldwide offices and more than 1.5 million employees 🧑‍💼. This makes them the largest professional service and accounting companies in the world 🧮. Being a part of them means you could work on a variety of projects across a wide range of fields and build broad experience across many topics - especially in the early stages of your career 🚀. However, to be a part of the Big Four, first you have to pass the interview process. And the case study task... I mean the technical case study 👨‍💻.
+
+What is a case study 😦🤨? That is the question I asked myself when I first heard that I had to tackle such a problem. A coding task or implementing an ML algorithm, we all get that. But what a case study actually is 🤷‍♂️🤷‍♂️🤷‍♂️? Typically, there are between 3 and 5 steps when applying to a Big Four company. The case study is a business task that the candidate has to solve within a fixed time ⌛. For the tech interview, the company often provides a real-world dataset. The goal is to perform Exploratory Data Analysis (EDA) 📊, apply Machine Learning (ML) models 📈 and answer specific business questions connected to the task 📝. Usually, the time to solve all three tasks is 3 hours.
+
+When I was doing my preparation, I could not find a case study example for Data Scientists or ML Engineers. This is the first reason for creating this repository - to provide job seekers with an exercise to practise on 🔍. There is also a second reason: I failed to pass the data science case study. However, I decided to solve the task outstandingly with a solution that successfully passes the case study interview. Last but not least, the goal of the repo is not just to help me, but also to help **you** land that dream job 💪💪💪.
+
+The repo provides an exhaustive solution to a Data Science case study task given during a Big Four technical interview. It also provides guidance on how to prepare for the interviews 📋. The main focus is on how to tackle the case study. There are also hints on how to use LLM models to help you efficiently during your interview preparation 🤖.
+
+The solutions are not limited to the Big Four accounting companies. They can be helpful for other accounting and professional service firms as well 🎯🎯🎯. In addition, the solutions apply the most common ML and Data Science practices. That is why they can be a great resource for any ML Engineer or Data Scientist preparing for a tech interview 🎯🎯🎯.
 
 ---
 
