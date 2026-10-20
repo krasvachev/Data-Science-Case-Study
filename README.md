@@ -21,7 +21,7 @@
 | **1. Read the instructions** | Read the client's brief, the three business questions and what each column in the data means. | 10 min | [Case Study Instructions](#case-study-instructions) · [Dataset](#dataset) |
 | **2. Choose your track** | **Concise** if your interview is two days away: it trains you to finish all three tasks in 3 hours. **Detailed** if you have three days or more: learn the full analysis first, then switch to concise. | 2 min | [Brief and Detailed Solutions](#brief-and-detailed-solutions) |
 | **3. Solve the blank exam** | Open the blank exam for your track (table below) and solve Tasks 1 and 2 without looking at the solution. For Task 3, interpret the [GLM coefficients](#glm-elasticnet-coefficients-provided-by-the-client) and write three recommendations. | Concise: 70 + 70 + 20 min | [Blank exams](#blank-exams) |
-| **4. Compare results** | Compare your notebook with the solution, section by section, and your model metrics with the results table. Then score yourself with the self-check. | 20 min | [Solutions](#solutions) · [Models and Accuracy](#models-and-accuracy) · [Self-Check](practice_kit/Data_Science_Case_Study_Self_Check.md) |
+| **4. Compare results** | Compare your notebook with the solution, section by section, and your model metrics with the results table. Then score yourself with the self-check. | 20 min | [Models and Accuracy](#models-and-accuracy) · [Self-Check](practice_kit/Data_Science_Case_Study_Self_Check.md) |
 | **5. Turn data into insights** | Compare your findings and recommendations with the solution's. Every insight should come with a number and an action. | 15 min | [Conclusion and Key Insights](#conclusion-and-key-insights) · [Task 3 - Recommendations](#task-3-recommendations) |
 | **6. Prepare for the interview** | Learn the time strategy, the answer structure and how to explain each model to a non-technical client. Rehearse the questions on page 2 of the self-check out loud. | 20 min | [How to Tackle the Interview](#how-to-tackle-the-interview) |
 | **7. Bonus: use AI** | Use ready-made prompts for a deep analysis of the case, the dataset and a mock interview. | 10 min | [Prompts](#prompts) |
@@ -193,15 +193,22 @@ Data-Science-Case-Study/
 ├── LittleBank_Case_Study_ML.ipynb               # Detailed ML solution (Task 2)
 ├── LittleBank_Recommendations_detailed.md       # Detailed interpretation & recommendations (Task 3)
 │
+├── practice_kit/
+│   ├── LittleBank_Case_Study_Blank_Exam.ipynb       # Detailed-track blank exam (Task 1)
+│   ├── LittleBank_Case_Study_ML_Blank_Exam.ipynb    # Detailed-track blank exam (Task 2)
+│   └── Data_Science_Case_Study_Self_Check.md        # Deal-breakers, scoring rubric, rehearsal questions
+│
 ├── interview_solutions/
 │   ├── task_1_eda/
-│   │   ├── LittleBank_Case_Study_Concise_Solution.ipynb      # Concise EDA notebook (interview use)
+│   │   ├── LittleBank_Case_Study_Concise_Blank_Exam.ipynb    # Concise blank exam (70 min)
+│   │   ├── LittleBank_Case_Study_Concise_Solution.ipynb      # Concise EDA solution
 │   │   ├── littlebank_case_study_concise_solution.py         # Script equivalent
-│   │   └── README.md                                         # Guide for the concise EDA solution
+│   │   └── README.md                                         # How to practise Task 1
 │   ├── task_2_machine_learning/
-│   │   ├── LittleBank_Case_Study_ML_Concise_Solution.ipynb   # Concise ML notebook (interview use)
+│   │   ├── LittleBank_Case_Study_ML_Concise_Blank_Exam.ipynb # Concise blank exam (70 min)
+│   │   ├── LittleBank_Case_Study_ML_Concise_Solution.ipynb   # Concise ML solution
 │   │   ├── littlebank_case_study_ml_concise_solution.py      # Script equivalent
-│   │   └── README.md                                         # Guide for the concise ML solution
+│   │   └── README.md                                         # How to practise Task 2
 │   └── task_3_recommendations/
 │       └── business_strategy_and_recommendations.md          # Slide bullets & recommendations
 │
@@ -226,6 +233,11 @@ Data-Science-Case-Study/
 │   ├── Dataset Analysis.md                      # LLM prompt — dataset EDA framework
 │   └── Simple Consulting Interview Prompt.md    # LLM prompt — interview practice
 │
+├── .github/workflows/
+│   └── run-notebooks.yml                        # CI: runs every notebook and script on a clean machine
+│
+├── save/                                        # (generated, not in git) preprocessed train/test parquet
+│
 ├── requirements.txt
 ├── LICENSE
 └── README.md
@@ -233,15 +245,23 @@ Data-Science-Case-Study/
 
 ### Folder Reference Table
 
-| Folder / File | Purpose |
-|---------------|---------|
-| `LittleBank_Case_Study.ipynb` | The **detailed** EDA notebook - every section ends with a written business insight. |
-| `LittleBank_Case_Study_ML.ipynb` | The **detailed** ML notebook - baselines, regularised models, tree models, XGBoost and feature importance. |
-| `interview_solutions/` | **Concise** versions of both notebooks, optimised for the 3-hour time limit. |
-| `data/` | The source CSV provided by the client. |
-| `models/` | Serialised model artefacts. |
-| `images/` | All plots generated during the analysis, split by task. |
-| `save/` | Preprocessed train/test parquet files (not tracked in git). |
+| Folder / File | Purpose | When you use it |
+|---------------|---------|-----------------|
+| `practice_kit/` | Detailed-track blank exams and the **Self-Check** rubric. | Step 3 (detailed track) · Steps 4 and 6 |
+| `interview_solutions/task_1_eda/` | Concise Task 1 **blank exam** and **solution** (notebook + script). | Step 3 (concise track) · Step 4 |
+| `interview_solutions/task_2_machine_learning/` | Concise Task 2 **blank exam** and **solution** (notebook + script). | Step 3 (concise track) · Step 4 |
+| `interview_solutions/task_3_recommendations/` | Slide-ready bullets for Task 3. | Step 5 |
+| `LittleBank_Case_Study.ipynb` | **Detailed** EDA solution - every section ends with a written business insight. | Step 4 (detailed track) |
+| `LittleBank_Case_Study_ML.ipynb` | **Detailed** ML solution - baselines, regularised models, tree models, XGBoost, feature importance. | Step 4 (detailed track) |
+| `LittleBank_Recommendations_detailed.md` | **Detailed** interpretation of the GLM table and recommendations. | Step 5 |
+| `prompts/` | Ready-made LLM prompts: case analysis, dataset analysis, mock interview. | Step 7 |
+| `scripts/` | `.py` equivalents of the detailed notebooks, for command-line runs. | Optional |
+| `data/` | The source CSV provided by the client. | Every step |
+| `models/` | Saved models (Decision Tree, Logistic Regression). | Optional |
+| `images/` | Plots used in this README, split by task. | — |
+| `.github/workflows/` | CI that runs every notebook and script weekly and on every push. | — |
+| `requirements.txt` | Python dependencies. | Before step 3 |
+| `save/` | Preprocessed train/test parquet files. Created by the ML notebook; not tracked in git. | — |
 
 ---
 
