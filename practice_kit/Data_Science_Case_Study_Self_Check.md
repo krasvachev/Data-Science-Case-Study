@@ -1,10 +1,10 @@
-# Data Science Case Study — Self-Check
+# Data Science Case Study - Self-Check
 
 Use it twice: for 15 minutes **before you submit**, and for 30 minutes **before the interview**. 
 
 ---
 
-## Page 1 — Before you submit
+## Page 1 - Before you submit
 
 ### Step 1. Deal-breakers (5 minutes)
 
@@ -53,7 +53,7 @@ Total out of 20, or out of 18 if you skipped question 4.
 
 ---
 
-## Page 2 — Before the interview
+## Page 2 - Before the interview
 
 ### Prepare one card per weakness (one line each)
 
