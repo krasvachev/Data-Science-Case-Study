@@ -21,7 +21,7 @@
 | **1. Read the instructions** | Read the client's brief, the three business questions and what each column in the data means. | 10 min | [Case Study Instructions](#case-study-instructions) · [Dataset](#dataset) |
 | **2. Choose your track** | **Concise** if your interview is two days away: it trains you to finish all three tasks in 3 hours. **Detailed** if you have three days or more: learn the full analysis first, then switch to concise. | 2 min | [Brief and Detailed Solutions](#brief-and-detailed-solutions) |
 | **3. Solve the blank exam** | Open the blank exam for your track (table below) and solve Tasks 1 and 2 without looking at the solution. For Task 3, interpret the [GLM coefficients](#glm-elasticnet-coefficients-provided-by-the-client) and write three recommendations. | Concise: 70 + 70 + 20 min | [Blank exams](#blank-exams) |
-| **4. Compare results** | Compare your notebook with the solution, section by section, and your model metrics with the results table. Then score yourself with the self-check. | 20 min | [Models and Accuracy](#models-and-accuracy) · [Self-Check](practice_kit/Data_Science_Case_Study_Self_Check.md) |
+| **4. Compare results** | Compare your notebook with the solution, section by section, and your model metrics with the results table. Then score yourself with the self-check. | 20 min | [Solution notebooks](#brief-and-detailed-solutions) · [Models and Accuracy](#models-and-accuracy) · [Self-Check](practice_kit/Data_Science_Case_Study_Self_Check.md) |
 | **5. Turn data into insights** | Compare your findings and recommendations with the solution's. Every insight should come with a number and an action. | 15 min | [Conclusion and Key Insights](#conclusion-and-key-insights) · [Task 3 - Recommendations](#task-3-recommendations) |
 | **6. Prepare for the interview** | Learn the time strategy, the answer structure and how to explain each model to a non-technical client. Rehearse the questions on page 2 of the self-check out loud. | 20 min | [How to Tackle the Interview](#how-to-tackle-the-interview) |
 | **7. Bonus: use AI** | Use ready-made prompts for a deep analysis of the case, the dataset and a mock interview. | 10 min | [Prompts](#prompts) |
@@ -782,7 +782,7 @@ This is the section you came here for. It is split into five parts:
 - Use Claude, ChatGPT or Gemini to generate boilerplate quickly - but **understand every line** you submit.
 - Keep a prepared library of prompts for: data overview, figure plotting, data analysis, class-imbalance handling, model implementation, feature-importance plotting.
 
-**Rehearse the narrative after the interview.**
+**Rehearse the narrative before the interview.**
 
 - Record yourself walking through the notebook as if presenting to the head of loan sales. Focus on *why* each step exists, not *what* you typed.
 
