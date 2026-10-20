@@ -12,5 +12,5 @@ The `.py` files are auto-generated script that are equivalents of the Jupyter no
 To run any script:
 
 ```bash
-python littlebank_case_study.py
+python scripts/littlebank_case_study.py
 ```

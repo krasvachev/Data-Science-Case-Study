@@ -657,6 +657,8 @@ To improve the conversion rates, it is recommended to:
 
 > For the presentation's bullets, check the [interview_solutions](interview_solutions/) folder. More insights can be found in the detailed solution [here](LittleBank_Recommendations_detailed.md).
 
+> **Done comparing?** Score yourself with the [Self-Check](practice_kit/Data_Science_Case_Study_Self_Check.md).
+
 ---
 
 ## Models and Accuracy

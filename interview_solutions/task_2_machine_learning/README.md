@@ -25,7 +25,7 @@ The detailed solution in the repository root (`LittleBank_Case_Study_ML.ipynb`) 
 | Model | Test Accuracy | Recall | Precision |
 |-------|:-------------:|:------:|:---------:|
 | Logistic Regression | 0.7604 | 0.7239 | 0.7758 | 
-| **Random Forest** 🏆 | **0.8959** | **0,9032** | **0,8879** | 
+| **Random Forest** 🏆 | **0.8959** | **0.9032** | **0.8879** | 
 | Extreme Gradient Boosting | 0.8954 | 0.9097 | 0.8821 |
 
 > **Primary metric is recall** - we care about finding real subscribers, not maximising overall accuracy.
