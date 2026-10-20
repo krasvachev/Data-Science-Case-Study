@@ -12,16 +12,9 @@
 
 > **A complete, interview-ready Data Science Case Study for Big Four (Deloitte, EY, KPMG, PwC) technical interviews - featuring an exhaustive EDA, a full ML pipeline, business-focused recommendations and a detailed interview preparation guide.**
 
-
-
 ## Start Here
 
 **Interview coming up and short on time?** Follow these seven steps: read the brief, solve a real Big Four case study against the clock, check your work against a complete solution and walk into the interview prepared.
-
-```mermaid
-flowchart LR
-    A["1. Read the<br/>instructions"] --> B["2. Choose<br/>your track"] --> C["3. Solve the<br/>blank exam"] --> D["4. Compare<br/>results"] --> E["5. Turn data<br/>into insights"] --> F["6. Prepare for<br/>the interview"] --> G["7. Bonus:<br/>AI prompts"]
-```
 
 | Step | What to do | Time | Go to |
 |:----:|------------|:----:|-------|
