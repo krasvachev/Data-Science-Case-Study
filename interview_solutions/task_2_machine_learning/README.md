@@ -5,11 +5,12 @@
 
 ## Files
 
-| File | What it is | When to open it | Run |
-|------|------------|-----------------|-----|
-| `LittleBank_Case_Study_ML_Concise_Blank_Exam.ipynb` | The blank exam: `# TODO` code cells, hidden hints, ✍️ insight cells and an empty model comparison table. No solutions. | **First.** Start the timer before you run the first cell. | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/krasvachev/Data-Science-Case-Study/blob/main/interview_solutions/task_2_machine_learning/LittleBank_Case_Study_ML_Concise_Blank_Exam.ipynb) |
-| `LittleBank_Case_Study_ML_Concise_Solution.ipynb` | The concise solution, with outputs and insights. | **Only after the timer ends.** | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/krasvachev/Data-Science-Case-Study/blob/main/interview_solutions/task_2_machine_learning/LittleBank_Case_Study_ML_Concise_Solution.ipynb) |
-| `littlebank_case_study_ml_concise_solution.py` | Script version of the solution. | Optional: run it from the command line. | - |
+| File | What it is | When to open it |
+|------|------------|-----------------|
+| `LittleBank_Case_Study_ML_Concise_Blank_Exam.ipynb` | [The blank exam](https://colab.research.google.com/github/krasvachev/Data-Science-Case-Study/blob/main/interview_solutions/task_2_machine_learning/LittleBank_Case_Study_ML_Concise_Blank_Exam.ipynb): `# TODO` code cells, hidden hints, ✍️ insight cells and an empty model comparison table. No solutions. | **First.** Start the timer before you run the first cell. | 
+| `LittleBank_Case_Study_ML_Concise_Solution.ipynb` | [The concise solution](https://colab.research.google.com/github/krasvachev/Data-Science-Case-Study/blob/main/interview_solutions/task_2_machine_learning/LittleBank_Case_Study_ML_Concise_Solution.ipynb), with outputs and insights. | **Only after the timer ends.** |
+| `littlebank_case_study_ml_concise_solution.py` | Script version of the solution. | Optional: run it from the command line. |
+
 
 ## Why "Concise"?
 
