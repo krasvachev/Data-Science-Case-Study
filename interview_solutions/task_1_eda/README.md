@@ -1,13 +1,15 @@
-# Task 1 - EDA · Concise Interview Solution
+# Task 1 - EDA · Concise Blank Exam and Solution
 
-This folder contains the **concise solution** for **Task 1 - Exploratory Data Analysis**. It is the version you should actually use during the interview.
+> **What you do here:** solve the Task 1 blank exam against a 70-minute timer, then check it against the concise solution.
+> **Time:** about 105 minutes: 70 for the exam, 5 to re-run the notebook, 30 to compare.
 
 ## Files
 
-| File | Purpose |
-|------|---------|
-| `LittleBank_Case_Study_Concise_Solution.ipynb` | Jupyter notebook - run interactively |
-| `littlebank_case_study_concise_solution.py` | Script equivalent - run from the command line |
+| File | What it is | When to open it | Run |
+|------|------------|-----------------|-----|
+| `LittleBank_Case_Study_Concise_Blank_Exam.ipynb` | The blank exam: `# TODO` code cells, hidden hints and ✍️ insight cells. No solutions. | **First.** Start the timer before you run the first cell. | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/krasvachev/Data-Science-Case-Study/blob/main/interview_solutions/task_1_eda/LittleBank_Case_Study_Concise_Blank_Exam.ipynb) |
+| `LittleBank_Case_Study_Concise_Solution.ipynb` | The concise solution, with outputs and insights. | **Only after the timer ends.** | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/krasvachev/Data-Science-Case-Study/blob/main/interview_solutions/task_1_eda/LittleBank_Case_Study_Concise_Solution.ipynb) |
+| `littlebank_case_study_concise_solution.py` | Script version of the solution. | Optional: run it from the command line. | - |
 
 ## Why "Concise"?
 
@@ -18,17 +20,24 @@ The detailed solution in the repository root (`LittleBank_Case_Study.ipynb`) is 
 - 5–7 high-signal visualisations
 - A business insight at the end of each section.
 
-## How to Use for Interview Practice
+## How to Practise
 
-1. Open the notebook and **clear all outputs**.
-2. Set a **70-minute timer** (the recommended Task 1 budget).
-3. Work top-to-bottom without looking at the solution.
-4. At the end of the timer, compare your output to the reference notebook.
-5. Repeat until you can complete it confidently within the time limit.
+1. **Open the blank exam** in Colab or Jupyter and read the *Rules* cell. The setup cell finds the data file for you, so don't change the path.
+2. **Start a 70-minute timer**, then run the first cell.
+3. **Fill every `# TODO` cell and every ✍️ insight cell.** You can open a hint, but write down which ones you opened: each one is a topic to practise again.
+4. **Stop when the timer ends**, even if you haven't finished. Then restart the kernel and run all cells. A notebook that doesn't run top to bottom isn't finished.
+5. **Compare with the concise solution**, section by section:
+   - Do your key numbers match (class balance, duplicates, monthly success rates)?
+   - Did you find the same main result: **many calls, very few subscriptions**?
+   - Does each of your insights include a number and an action?
+6. **Score yourself** with page 1 of the [Self-Check](../../practice_kit/Data_Science_Case_Study_Self_Check.md).
+7. **Repeat** until you finish within 70 minutes without opening a hint.
 
 > **Tip.** After each section, practise saying your business insight out loud as if presenting to the head of loan sales. Big Four interviewers score you on **narrative**, not just code.
 
 ## Related
 
 - [← Back to main README](../../README.md)
-- [→ Task 2 · Machine Learning concise solution](../task_2_machine_learning/README.md)
+- [→ Task 2 · Machine Learning blank exam and solution](../task_2_machine_learning/README.md)
+- [Self-Check rubric](../../practice_kit/Data_Science_Case_Study_Self_Check.md)
+- [Detailed EDA solution](../../LittleBank_Case_Study.ipynb) (about 140 cells, for learning rather than timed practice)
