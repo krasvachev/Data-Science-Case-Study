@@ -22,6 +22,21 @@ The detailed solution in the repository root (`LittleBank_Case_Study_ML.ipynb`) 
 - **Feature importance** plots.
 - Evaluation on **Recall** (primary), Precision, and Accuracy.
 
+## How to Practise
+
+1. **Open the blank exam** in Colab or Jupyter and read the *Rules* cell. The setup cell finds the data file and installs `imbalanced-learn` if it is missing.
+2. **Start a 70-minute timer**, then run the first cell. Copy sections 0–1 from your Task 1 notebook where you can.
+3. **Fill every `# TODO` cell, every ✍️ insight cell and the comparison table** in section 9. You can open a hint, but write down which ones you opened.
+4. **Stop when the timer ends**, even if you haven't finished. Then restart the kernel and run all cells.
+5. **Compare with the concise solution:**
+   - Are your metrics within about ±0.01 of the table above? If not, look for differences in cleaning or splitting.
+   - Did you beat both baselines, and can you say by how much?
+   - Does your feature importance insight explain what the model means for the business, not just which features rank highest?
+6. **Score yourself** with page 1 of the [Self-Check](../../practice_kit/Data_Science_Case_Study_Self_Check.md).
+7. **Repeat** until you finish within 70 minutes without opening a hint.
+
+> **Tip.** Prepare a one-liner for each model before the interview. For Random Forest: *"A committee of decision trees, each trained on a random subset of the data - the forest predicts by majority vote."*
+
 ## Key Results (from this pipeline)
 
 | Model | Test Accuracy | Recall | Precision |
@@ -47,21 +62,6 @@ The brief asks you to explain every algorithm to a non-technical client. Rehears
 | **SMOTE-NC** | "Only 11% of customers subscribed, so we create realistic synthetic subscribers to give the model enough examples to learn from." |
 | **Feature importance** | "How much each trait helped the model separate subscribers from non-subscribers. It shows correlation, not cause." |
 | **Recall** | "Of all the customers who would subscribe, the share the model finds." |
-
-## How to Practise
-
-1. **Open the blank exam** in Colab or Jupyter and read the *Rules* cell. The setup cell finds the data file and installs `imbalanced-learn` if it is missing.
-2. **Start a 70-minute timer**, then run the first cell. Copy sections 0–1 from your Task 1 notebook where you can.
-3. **Fill every `# TODO` cell, every ✍️ insight cell and the comparison table** in section 9. You can open a hint, but write down which ones you opened.
-4. **Stop when the timer ends**, even if you haven't finished. Then restart the kernel and run all cells.
-5. **Compare with the concise solution:**
-   - Are your metrics within about ±0.01 of the table above? If not, look for differences in cleaning or splitting.
-   - Did you beat both baselines, and can you say by how much?
-   - Does your feature importance insight explain what the model means for the business, not just which features rank highest?
-6. **Score yourself** with page 1 of the [Self-Check](../../practice_kit/Data_Science_Case_Study_Self_Check.md).
-7. **Repeat** until you finish within 70 minutes without opening a hint.
-
-> **Tip.** Prepare a one-liner for each model before the interview. For Random Forest: *"A committee of decision trees, each trained on a random subset of the data - the forest predicts by majority vote."*
 
 ## Related
 
