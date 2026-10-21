@@ -1,13 +1,15 @@
-# Task 2 - Machine Learning · Concise Interview Solution
+# Task 2 - Machine Learning · Concise Blank Exam and Solution
 
-This folder contains the **concise solution** for **Task 2 - Machine Learning**. It is the version you should actually use during the interview.
+> **What you do here:** solve the Task 2 blank exam against a 70-minute timer, then check it against the concise solution.
+> **Time:** about 105 minutes: 70 for the exam, 5 to re-run the notebook, 30 to compare.
 
 ## Files
 
-| File | Purpose |
-|------|---------|
-| `LittleBank_Case_Study_ML_Concise_Solution.ipynb` | Jupyter notebook - run interactively |
-| `littlebank_case_study_ml_concise_solution.py` | Script equivalent - run from the command line |
+| File | What it is | When to open it | Run |
+|------|------------|-----------------|-----|
+| `LittleBank_Case_Study_ML_Concise_Blank_Exam.ipynb` | The blank exam: `# TODO` code cells, hidden hints, ✍️ insight cells and an empty model comparison table. No solutions. | **First.** Start the timer before you run the first cell. | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/krasvachev/Data-Science-Case-Study/blob/main/interview_solutions/task_2_machine_learning/LittleBank_Case_Study_ML_Concise_Blank_Exam.ipynb) |
+| `LittleBank_Case_Study_ML_Concise_Solution.ipynb` | The concise solution, with outputs and insights. | **Only after the timer ends.** | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/krasvachev/Data-Science-Case-Study/blob/main/interview_solutions/task_2_machine_learning/LittleBank_Case_Study_ML_Concise_Solution.ipynb) |
+| `littlebank_case_study_ml_concise_solution.py` | Script version of the solution. | Optional: run it from the command line. | - |
 
 ## Why "Concise"?
 
