@@ -48,6 +48,8 @@ The detailed solution in the repository root (`LittleBank_Case_Study_ML.ipynb`) 
 
 > **Primary metric is recall** - we care about finding real subscribers, not maximising overall accuracy.
 
+> These results come from a SMOTE-balanced test set. On the real class balance, Random Forest remains the best model, with 0.858 accuracy and 0.400 precision: its call list converts about 3.5 times better than calling customers at random. See [Model Audit: Leakage-Free Evaluation](../../README.md#model-audit-leakage-free-evaluation).
+
 ## Explain Each Model in One Sentence
 
 The brief asks you to explain every algorithm to a non-technical client. Rehearse these until you can say them without notes.
