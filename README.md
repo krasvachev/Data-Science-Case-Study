@@ -51,12 +51,13 @@
    - [Task 2 - Machine Learning](#task-2-ml)
    - [Task 3 - Recommendations](#task-3-recommendations)
 7. [Models and Accuracy](#models-and-accuracy)
-8. [Conclusion and Key Insights](#conclusion-and-key-insights)
-9. [How to Tackle the Interview](#how-to-tackle-the-interview)
-10. [Prompts](#prompts)
-11. [Requirements](#requirements)
-12. [Contributing](#contributing)
-13. [License](#license)
+8. [Model Audit: Leakage-Free Evaluation](#model-audit-leakage-free-evaluation)
+9. [Conclusion and Key Insights](#conclusion-and-key-insights)
+10. [How to Tackle the Interview](#how-to-tackle-the-interview)
+11. [Prompts](#prompts)
+12. [Requirements](#requirements)
+13. [Contributing](#contributing)
+14. [License](#license)
 
 ---
 
@@ -524,7 +525,9 @@ X_resampled.shape, y_resampled.shape
 ((56050, 20), (56050,))
 ```
 
-> **Why SMOTENC?** It improves the classification of the minority class. Another benefit of SMOTENC is the improvement of the ML model's variance. A disadvantage of the approach is the computational cost of the technique. However, in our case, it could be omitted because the data is relatively small.
+> **Why SMOTENC?** It improves the classification of the minority class. Another benefit of SMOTENC is the improvement of the ML model's variance. A disadvantage of the approach is the computational cost of the technique. However, in our case, it could be omitted because the data is relatively small. 
+
+> In this solution, SMOTE-NC is applied before the train/test split, a common shortcut under time pressure. Its effect on the scores is measured in [Model Audit: Leakage-Free Evaluation](#model-audit-leakage-free-evaluation).
 
 Next, the data is split into 80% train data and 20% test data.
 
@@ -605,6 +608,8 @@ print(f"Recall = {recall_test:.5f}, Precision = {precision_test:.5f}")
 Train Accuracy = 1.00000, Test Accuracy = 0.89590
 Recall = 0.90316, Precision = 0.88792
 ```
+> These scores come from a SMOTE-balanced test set. For results on the real class balance, see [Model Audit: Leakage-Free Evaluation](#model-audit-leakage-free-evaluation).
+
 ---
 
 #### 6. Feature Importance
@@ -674,9 +679,59 @@ Six model families were trained and evaluated on the data. The results are taken
 | **Random Forest** 🏆🏆🏆 | **1.00000**    | **0.8959**  | **0.9032**  | **0.8879**  |
 | Extreme Gradient Boosting | 0.9998         | 0.8954        | 0.9097    | 0.8821      |
 
-> **Top-performing model.** Without a doubt, the best results are achieved with the Random Forest model. It has the highest `test accuracy` and the second highest `recall`.
+> **Top-performing model.** Without a doubt, the best results are achieved with the Random Forest model. It has the highest `test accuracy` and the second highest `recall`. The scores in this table come from a SMOTE-balanced test set, so they're optimistic. Random Forest keeps the highest accuracy and precision in a leakage-free evaluation on the real class balance too: see [Model Audit: Leakage-Free Evaluation](#model-audit-leakage-free-evaluation).
 
 > **Primary metric: `Recall`.** In the business context, missing a genuine subscriber (false negative) is costlier than contacting a non-subscriber (false positive). The `Recall` metric measures this. It is the proportion of true subscribers that the model successfully identifies.
+
+---
+
+## Model Audit: Leakage-Free Evaluation
+
+Good models need honest evaluation. After finishing the pipeline, I audited it for data leakage and re-evaluated every model on a test set that keeps the real class balance. The result confirms the main conclusions and adds two lessons that matter in any case study interview.
+
+### Why a second evaluation
+
+The pipeline above applies SMOTE-NC to the full dataset and then splits it 80/20, a shortcut that is common in time-limited case studies and in many tutorials. It has two side effects:
+- Some synthetic customers in the test set are built from customers in the training set.
+- The test set becomes 50/50, while only about 11% of real customers subscribe.
+
+Both make the scores optimistic. I kept the original pipeline unchanged, so the notebooks reproduce the published results, and repeated the evaluation the strict way: **split first, then apply SMOTE-NC**.
+
+```python
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size = 0.2, random_state = 42, stratify = y)
+X_train_res, y_train_res = SMOTENC(categorical_features = categorical_cols_df, random_state = 42).fit_resample(X_train, y_train)
+```
+
+### Results on the real class balance
+
+The leakage-free test set has 6,322 customers, 717 of them subscribers (11.3%):
+
+| Model | Test accuracy (balanced → real) | Recall (balanced → real) | Precision (balanced → real) |
+|---|:---:|:---:|:---:|
+| **Random Forest** 🏆 | 0.896 → **0.858** | 0.903 → 0.498 | 0.888 → **0.400** |
+| XGBoost | 0.895 → 0.847 | 0.910 → 0.469 | 0.882 → 0.365 |
+
+**What the audit shows:**
+- **Random Forest remains the best model,** with the highest accuracy and precision on real data.
+- **The model creates clear business value.** Without it, about 1 in 9 calls converts (11.3%). On Random Forest's call list, 4 in 10 do: about **3.5 times more efficient** outreach.
+- **Recall is the right primary metric.** Predicting "no" for every customer scores 88.7% accuracy and finds no subscribers at all. Accuracy alone would hide that.
+
+### Reading Random Forest's 100% training accuracy
+
+With `max_depth = 35` and `min_samples_split = 2`, each tree grows until it fits its training rows exactly, so a training accuracy of 1.000 is expected for this configuration. What counts is performance on unseen data, where the forest keeps the highest accuracy and precision of all six models.
+
+There is still room to tune it. In a test on a simplified version of this pipeline, limiting tree growth (decrease `max_depth`, `min_samples_leaf`) would raise recall on the real test set at a slightly lower precision.
+
+### Interview tips from this audit
+
+**"How did you handle the class imbalance?"**
+> "I split the data first, with stratification, so the test set keeps the real 11% subscriber rate. Then I applied SMOTE-NC to the training set only. Oversampling before the split would put synthetic copies of training customers into the test set and make the scores look better than they are."
+
+**"Your best model has 86% accuracy. Is that good?"**
+> "On its own, accuracy doesn't say much here: predicting 'no' for everyone gives 89%, because only 11% subscribe. That's why I focus on recall and precision. The model's call list converts at about 40%, against 11% without it."
+
+**"Your Random Forest has 100% training accuracy. Is it overfitting?"**
+> "Deep forests always fit their training data closely. What matters is the score on data the model has never seen, and there it's the strongest model. I'd still tune the tree depth with cross-validation to see whether it can find more subscribers."
 
 ---
 
