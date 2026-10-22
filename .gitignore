@@ -2,6 +2,9 @@
 save/
 save/*.parquet
 
+# Generated when the ML notebooks and scripts run (the Random Forest file is ~540 MB)
+models/*.joblib
+
 # Python cache
 __pycache__/
 *.pyc
