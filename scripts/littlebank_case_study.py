@@ -19,7 +19,7 @@ import seaborn as sns
 """## 0. Load and Overview the Data"""
 
 # Find the repository so the data path works everywhere - locally from any folder,
-# on Google Colab, or when this notebook was downloaded on its own)
+# on Google Colab, or when this notebook was downloaded on its own
 
 import os
 import subprocess
@@ -143,7 +143,7 @@ df_tr["forward_rate"].median()
 # Store the file after the data cleaning
 #df_tr.to_csv("LittleBank_Case_Study_Cleaned.csv", index=False)
 
-"""## 2. Macroeconomic and Enviromental Factors Analysis"""
+"""## 2. Macroeconomic and Environmental Factors Analysis"""
 
 import pandas as pd
 import numpy as np
@@ -268,7 +268,7 @@ plt.xticks(months_x_axis)
 plt.legend()
 plt.show()
 
-"""Economy Parameters that aren't supposed to influence highly the outcome of the marketing"""
+"""Economic parameters that aren't expected to strongly influence the outcome of the marketing"""
 
 plt.plot(months_x_axis, df_economy_mean["num_employed"], "b", label = "All Outcomes")
 plt.plot(months_x_axis, df_economy_mean_true["num_employed"], "r", label = "Positive Outcome")
@@ -294,7 +294,7 @@ plt.show()
 
 """> The figures are not quite informative. Most of the section will be deleted in the final solution.
 
-## 3. Analyze the Influence of Day and Months Over the Outcome
+## 3. Analyze the Influence of Days and Months Over the Outcome
 
 This is the most important analysis. It should be done first. Don't forget that in data science tasks, the main goals are to understand the data and make the right conclusions.
 """
@@ -314,7 +314,7 @@ df_outcome_pivot.iloc[:, 0:3].plot(kind = "bar", figsize = (10, 8), rot = 45)
 
 plt.xlabel("Month")
 plt.ylabel("Number of Subscriptions")
-plt.title("Success of the Marketing Campaign by Months")
+plt.title("Success of the Marketing Campaign by Month")
 plt.show()
 
 df_outcome_pivot.iloc[:, 3].plot(kind = "line")
@@ -324,8 +324,8 @@ index_month = range(len(label_month))
 
 plt.xlabel("Month")
 plt.xticks(index_month, label_month)
-plt.ylabel("Succesful Rate (%)")
-plt.title("Percentage of Possitive Outcomes by Months")
+plt.ylabel("Successful Rate (%)")
+plt.title("Percentage of Positive Outcomes by Month")
 
 ax = plt.gca()
 ax.yaxis.set_major_formatter(plt.FuncFormatter(lambda y, _: f"{int(y)}%"))
@@ -408,7 +408,7 @@ plt.show()
 df_plot.plot(kind = "line",
              title = "The Outcome of the Advertisement Campaign",
              xticks = [],
-             xlabel = "Days of the Months",
+             xlabel = "Days of the Month",
              ylabel = "Outcome Count");
 # The advertisement campaign was a total failure...
 
@@ -418,7 +418,7 @@ df_plot.plot(kind = "line",
 
 > When we compare the results of the campaign by days of each month, the conclusion is the same - the marketing was a total failure. There are days when the success rate is above 50%, but a small number of people subscribed in absolute terms. The hypothesis that there is a day in the month when the subscription rate is relatively high could not be accepted.
 
-> Lets compare the positive outcomes with the total number of calls. In March, September, October and December, there is the highest percentage of successful outcomes. In March, more than half of the customers subscribed to the product (50.64%). However, in these months the marketing campaign was not very persuasive.
+> Let's compare the positive outcomes with the total number of calls. In March, September, October and December, there is the highest percentage of successful outcomes. In March, more than half of the customers subscribed to the product (50.64%). However, in these months the marketing campaign was not very persuasive.
 
 ## 4. Marketing Campaign Analysis
 """
@@ -541,10 +541,10 @@ df_tr.groupby(["month", "outcome"], sort = False)["call_centre_volume"].agg("med
 
 #### Successful Calls ✅
 > The second call for the successful outcome was made around 6 days after the first call. Hence, to increase the chances of success, the second call should be made around 6 days after the first call. In addition,
-It is very possible that the volume of the call centre does not affect the success of the call.
+it is very possible that the volume of the call centre does not affect the success of the call.
 
 #### Marketing in the Digital Era 💬
-> As it could be expected, most of the subscriptions came from a mobile device. This is true for each month. Nevertheless, in the digital era where everyone has a profile in more than one social network, there are certainly better ways to connect with your potential customers.
+> As expected, most of the subscriptions came from a mobile device. This is true for each month. Nevertheless, in the digital era where everyone has a profile in more than one social network, there are certainly better ways to connect with your potential customers.
 
 ## 5. Analysis Based on the Personal Info of the Customers
 """
@@ -642,14 +642,14 @@ df_education.plot(kind = "bar", rot = 45, figsize = (12, 10), colormap = "Spectr
                   xlabel = "Education", ylabel = "Outcome of the contact",
                   title = "Outcome of the Contact based on Education");
 
-df_age = df_tr[df_tr["age"] < 80]                # The Number of Customers above 80 is small and can be omited
+df_age = df_tr[df_tr["age"] < 80]                # The Number of Customers above 80 is small and can be ommited
 age_unique = df_age["age"].unique().tolist()
 age_unique.sort()
 #print(age_unique)
 
 age_counts = df_age["age"].value_counts().sort_index()
 
-df_age_true = df_outcome_true[df_outcome_true["age"] < 80]                # The Number of Customers above 80 is small and can be omited
+df_age_true = df_outcome_true[df_outcome_true["age"] < 80]                # The Number of Customers above 80 is small and can be ommited
 age_unique_true = df_age_true["age"].unique().tolist()
 age_unique_true.sort()
 #print(age_unique_true)
@@ -717,13 +717,13 @@ df_marital_pivot.plot(kind = "bar", rot = 45, figsize = (12, 10),
                       title = "Outcome of the Contact based on Marital Status");
 
 """#### Job of Customers 🛠️
-> Most of the people with a classic savings account have an administrative or technical job. Let's set a 15% treshold for the success rate. The success rate is the ratio of the successful outcomes of a call and the total calls. People who have an administrative job are above the threshold. We could add to them the people who retired, unemployed people and people who participate in full-time education. The product is not so attractive to customers working in other areas. A survey should be made amongst the customers, in order to understand how to improve the product.
+> Most of the people with a classic savings account have an administrative or technical job. Let's set a 15% threshold for the success rate. The success rate is the ratio of the successful outcomes of a call and the total calls. People who have an administrative job are above the threshold. We could add to them the people who retired, unemployed people and people who participate in full-time education. The product is not so attractive to customers working in other areas. A survey should be made amongst the customers, in order to understand how to improve the product.
 
 #### Type of Contact and Outcome of the Contact ☎️
 > The relation between the type of contact and the positive outcome was analysed. Figures proved one more time the point that mobile calls lead to more subscriptions, compared to landline phones.
 
 #### Personal Info of Customers Bonus Analysis 👦🏽
-> Most of the customers have a high school education or a university degree. In addition, marketing was focused on people between the ages of 20 and 60. More than half of the people who subscribed for the product also have a mortgage (2133 out of 3952). On the other hand, only 573 out of 3952 have a personal loan in the bank. Lastly, a connection between the marital status and the positive outcome wasn't found
+> Most of the customers have a high school education or a university degree. In addition, marketing was focused on people between the ages of 20 and 60. More than half of the people who subscribed to the product also have a mortgage (2133 out of 3952). On the other hand, only 573 out of 3952 have a personal loan in the bank. Lastly, a connection between the marital status and the positive outcome wasn't found.
 
 ## 6. Analysis Based on the Jobs of the Customers
 """

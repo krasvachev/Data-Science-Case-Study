@@ -23,7 +23,7 @@ from sklearn.model_selection import train_test_split
 """
 
 # Find the repository so the data path works everywhere - locally from any folder,
-# on Google Colab, or when this notebook was downloaded on its own)
+# on Google Colab, or when this notebook was downloaded on its own
 
 import os
 import subprocess
@@ -129,7 +129,7 @@ df_tr[df_tr.duplicated() == True]
 
 df_tr.head()
 
-"""### 1.2 Make Months and Days Column Numerical"""
+"""### 1.2 Make Months and Days Columns Numerical"""
 
 months_unique = df_tr.month.unique()
 days_unique = df_tr.day_of_week.unique()
@@ -257,7 +257,7 @@ plt.show()
 
 ### 3.1 Tackle Data Imbalance
 
-The data for the LittleBank campaign is imbalanced. Near 90% of the data consists of people who didn't subscribe for the savings account. Only 10% of the people accepted the offer and opened a classic savings account. As a result, the smaller class with the people who subscribed will often be misclassified. There is also a bias towards the people who didn't subscribe. To address these problems, a few techniques could be applied:
+The data for the LittleBank campaign is imbalanced. Nearly 90% of the data consists of people who didn't subscribe to the savings account. Only 10% of the people accepted the offer and opened a classic savings account. As a result, the smaller class with the people who subscribed will often be misclassified. There is also a bias towards the people who didn't subscribe. To address these problems, a few techniques could be applied:
 
 1. Under-sampling techniques - decrease the number of samples in the majority class
 
@@ -271,7 +271,7 @@ The most famous sampling techniques are:
 
 * ADASYN (Adaptive Synthetic Sampling)
 
-The SMOTE-NC technique was implemented in the notebook. The main difference from SMOTE is that SMOTE-NC is designed for datasets with numerical and categorical data. Why exactly SMOTE-NC? It improves the classification of the minority class. Another benefit of SMOTE is the improvement of the ML model's variance. A disadvantage of the approach is the computational cost of the technique. However, in our case, it could be omitted because the data is relatively small.
+The SMOTE-NC technique was implemented in the notebook. The main difference from SMOTE is that SMOTE-NC is designed for datasets with numerical and categorical data. Why exactly SMOTE-NC? It improves the classification of the minority class. Another benefit of SMOTE-NC is the improvement of the ML model's variance. A disadvantage of the approach is the computational cost of the technique. However, in our case, it can be ignored because the dataset is relatively small.
 
 Feel free to implement the other two over-sampling techniques and observe the result of the ML models. They could lead to better results in other tasks.
 """
@@ -376,7 +376,7 @@ save_files_dir = Path("save/")
 if save_files_dir.is_dir():
     print(f"The {save_files_dir} directory exists.")
 else:
-    print(f"{save_files_dir} directory do not exists. Creating one...")
+    print(f"{save_files_dir} directory does not exists. Creating one...")
     save_files_dir.mkdir(parents = True, exist_ok = True)
     print(f"{save_files_dir} directory is created.")
 
@@ -432,7 +432,7 @@ test_acc = accuracy_score(test_targets, test_preds)
 precision, recall, f1score, _ = precision_recall_fscore_support(test_targets, test_preds, pos_label = 1, average = "binary")
 print(f"Train Accuracy = {train_acc:.5f}, Test Accuracy = {test_acc:.5f}, Recall = {recall:.5f}, Precision = {precision:.5f}, F1_Score = {f1score:.5f}")
 
-"""### 6.2.2 Find the Best Parameters via Grid Search"""
+"""#### 6.2.2 Find the Best Parameters via Grid Search"""
 
 from sklearn.model_selection import GridSearchCV
 from sklearn.metrics import precision_recall_fscore_support
@@ -470,7 +470,7 @@ test_acc = accuracy_score(test_targets, test_preds)
 precision, recall, f1score, _ = precision_recall_fscore_support(test_targets, test_preds, pos_label = 1, average = "binary")
 print(f"Test Accuracy = {test_acc:.5f}, Recall = {recall:.5f}, Precision = {precision:.5f}, F1_Score = {f1score:.5f}")
 
-"""### 6.2.3 The Best Model"""
+"""#### 6.2.3 The Best Model"""
 
 model_log_regr = LogisticRegression(C = 0.98, solver = "lbfgs", max_iter = 500)
 #model_log_regr = clf.best_estimator_
@@ -744,7 +744,7 @@ plt.title("Feature Importance of the Decision Tree");
 
 # plt.title("Feature Importance of the Decision Tree");
 
-"""## 8.2 Random Forest"""
+"""### 8.2 Random Forest"""
 
 print("Random Forest")
 
@@ -837,7 +837,7 @@ train_acc = accuracy_score(train_targets, train_preds_xgb)
 test_acc, recall_test, precision_test = calculate_basic_metrics(test_targets, test_preds_xgb)
 
 print(f"Train Accuracy = {train_acc:.5f}, Test Accuracy = {test_acc:.5f}")
-print(f"Recall = {recall_test:.5}, Precision = {precision_test:.5f}")
+print(f"Recall = {recall_test:.5f}, Precision = {precision_test:.5f}")
 
 ## Without Data Resampling
 # Train Accuracy = 0.90046, Test Accuracy = 0.90046
@@ -888,7 +888,7 @@ train_acc = accuracy_score(train_targets, preds_best_model_train)
 test_acc, recall_test, precision_test = calculate_basic_metrics(test_targets, preds_best_model)
 
 print(f"Train Accuracy = {train_acc:.5f}, Test Accuracy = {test_acc:.5f}")
-print(f"Recall = {recall_test:.5}, Precision = {precision_test:.5}")
+print(f"Recall = {recall_test:.5f}, Precision = {precision_test:.5f}")
 
 """### 10.3 Pickle Save and Load"""
 
@@ -907,4 +907,4 @@ train_acc = accuracy_score(train_targets, preds_best_model_train)
 test_acc, recall_test, precision_test = calculate_basic_metrics(test_targets, preds_best_model)
 
 print(f"Train Accuracy = {train_acc:.5f}, Test Accuracy = {test_acc:.5f}")
-print(f"Recall = {recall_test:.5}, Precision = {precision_test:.5}")
+print(f"Recall = {recall_test:.5f}, Precision = {precision_test:.5f}")

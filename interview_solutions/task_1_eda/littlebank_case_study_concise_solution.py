@@ -17,7 +17,7 @@ import seaborn as sns
 """## 0. Load and Overview the Data"""
 
 # Find the repository so the data path works everywhere - locally from any folder,
-# on Google Colab, or when this notebook was downloaded on its own)
+# on Google Colab, or when this notebook was downloaded on its own
 
 import os
 import subprocess
@@ -195,7 +195,7 @@ df_outcome_false = df_tr[df_tr["outcome"] == "False"]
 
 df_tr.info()
 
-"""## 3. Analyze the Influence of Day and Months Over the Outcome
+"""## 3. Analyze the Influence of Days and Months Over the Outcome
 
 This is the most important analysis. It should be done first. Don't forget that in data science tasks, the main goals are to understand the data and make the right conclusions.
 """
@@ -213,7 +213,7 @@ df_outcome_pivot.iloc[:, 0:3].plot(kind = "bar", figsize = (10, 8), rot = 45)
 
 plt.xlabel("Month")
 plt.ylabel("Number of Subscriptions")
-plt.title("Success of the Marketing Campaign by Months")
+plt.title("Success of the Marketing Campaign by Month")
 plt.show()
 
 df_outcome_pivot.iloc[:, 3].plot(kind = "line")
@@ -223,8 +223,8 @@ index_month = range(len(label_month))
 
 plt.xlabel("Month")
 plt.xticks(index_month, label_month)
-plt.ylabel("Succesful Rate (%)")
-plt.title("Percentage of Possitive Outcomes by Months")
+plt.ylabel("Successful Rate (%)")
+plt.title("Percentage of Positive Outcomes by Month")
 
 ax = plt.gca()
 ax.yaxis.set_major_formatter(plt.FuncFormatter(lambda y, _: f"{int(y)}%"))
@@ -307,7 +307,7 @@ plt.show()
 df_plot.plot(kind = "line",
              title = "The Outcome of the Advertisement Campaign",
              xticks = [],
-             xlabel = "Days of the Months",
+             xlabel = "Days of the Month",
              ylabel = "Outcome Count");
 # The advertisement campaign was a total failure...
 
@@ -317,7 +317,7 @@ df_plot.plot(kind = "line",
 
 > When we compare the results of the campaign by days of each month, the conclusion is the same - the marketing was a total failure. There are days when the success rate is above 50%, but a small number of people subscribed in absolute terms. The hypothesis that there is a day in the month when the subscription rate is relatively high could not be accepted.
 
-> Lets compare the positive outcomes with the total number of calls. In March, September, October and December, there is the highest percentage of successful outcomes. In March, more than half of the customers subscribed to the product (50.64%). However, in these months the marketing campaign was not very persuasive.
+> Let's compare the positive outcomes with the total number of calls. In March, September, October and December, there is the highest percentage of successful outcomes. In March, more than half of the customers subscribed to the product (50.64%). However, in these months the marketing campaign was not very persuasive.
 
 ## 4. Marketing Campaign Analysis
 """
@@ -440,10 +440,10 @@ df_tr.groupby(["month", "outcome"], sort = False)["call_centre_volume"].agg("med
 
 #### Successful Calls ✅
 > The second call for the successful outcome was made around 6 days after the first call. Hence, to increase the chances of success, the second call should be made around 6 days after the first call. In addition,
-It is very possible that the volume of the call centre does not affect the success of the call.
+it is very possible that the volume of the call centre does not affect the success of the call.
 
 #### Marketing in the Digital Era 💬
-> As it could be expected, most of the subscriptions came from a mobile device. This is true for each month. Nevertheless, in the digital era where everyone has a profile in more than one social network, there are certainly better ways to connect with your potential customers.
+> As expected, most of the subscriptions came from a mobile device. This is true for each month. Nevertheless, in the digital era where everyone has a profile in more than one social network, there are certainly better ways to connect with your potential customers.
 
 
 
